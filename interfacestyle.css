@@ -1,0 +1,142 @@
+			body { margin: 0; }
+
+
+
+			.slidecontainer { /* stuff from https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+  width: 100%; /* Width of the outside container */
+}
+
+
+/*The following is from https://stackoverflow.com/questions/47297794/how-to-overlay-html-text-buttons-on-three-js,
+ meant to let buttons overlay on the 3D canvas*/
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+.ui {
+  position: absolute;
+}
+
+.ship{
+  margin: 40px;
+	 font-family: "Times New Roman", Times, serif;
+	 background-color: rgba(100,100,255);
+	 padding: 15 px;
+	 border-radius= 0px;
+	 overflow: auto;
+	 max-height: 80%;
+}
+
+table{
+	 border: 1px solid black;
+}
+td{
+	 border: 1px solid black;
+	  padding: 10px;
+}
+th {
+	 border: 1px solid black;
+	 background-color: gray;
+	 padding: 10px;
+}
+
+progress[value] {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 15px;
+	width: 100px;
+
+}
+
+progress[value]::-webkit-progress-bar {
+background-color: rgba(20,20,20);
+border-radius: 2px;
+box-shadow: 2px 2px black inset;
+}
+
+progress[value]::-webkit-progress-value {
+	/*See https://css-tricks.com/html5-progress-element/*/
+	background-color: rgba(125,0,125);
+	border-radius: 2px;
+
+}
+
+.enemy progress[value]::-webkit-progress-value {
+	/*See https://css-tricks.com/html5-progress-element/*/
+	background-color: rgba(125,40,20);
+	border-radius: 2px;
+
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+	background-color: white;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+canvas {
+	background: #eee;
+	display: block;
+	margin: 0 auto;
+}
+
+/* https://stackoverflow.com/questions/15935837/how-to-display-a-range-input-slider-vertically*/
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */;
+    padding: 0 5px;
+		background: #d3d3d3; /* Grey background */
+	  outline: none; /* Remove outline */
+	  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+	  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	  transition: opacity .2s;
+}
+
+.sliderVertical::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.sliderVertical::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+
+}
