@@ -999,7 +999,7 @@ gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
 
 	let lerp = (Date.now()-initialTime)/5000;
 	gl.uniform1f(gl.getUniformLocation(programInfo.program, "time"), lerp);
-	document.getElementById("yourShips").innerHTML = lerp;
+	//document.getElementById("yourShips").innerHTML = lerp;
 
 	// Set the shader uniforms
 
