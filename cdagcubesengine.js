@@ -198,12 +198,13 @@
 							}
 
 
-							initializeTypeOfCube(typeName,buffersObject,programInfoObject) {
+							initializeTypeOfCube(typeName,buffersObject,programInfoObject,textureObject) {
 
 								const cubeType = {
 									name: typeName,
 									buffers: buffersObject,
 									programInfo: programInfoObject,
+									texture:textureObject,
 								};
 								this.listOfCubeTypes.push([typeName,cubeType]);
 							}
@@ -211,7 +212,7 @@
 								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
-								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2,0.8,0.8,0.8,xCoord,yCoord,zCoord);}]);
+								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xCoord,yCoord,zCoord);}]);
 								//else {}
 							}
 							removeCubeFromScene(id) {
@@ -222,7 +223,33 @@
 
 							}
 
+							easyInitializeTextureCubeType(textureAddress, typeName) {
+								const shaderProgramTex = initShaderProgram(this.gl, vsSourceTex, fsSourceTex);
+								const programInfoTex = {
+						  program: shaderProgramTex,
+						  attribLocations: {
+						    vertexPosition: this.gl.getAttribLocation(shaderProgramTex, "aVertexPosition"),
+								vertexNormal: this.gl.getAttribLocation(shaderProgramTex, "aVertexNormal"),
+								//vertexColor: this.gl.getAttribLocation(shaderProgram,"aVertexColor"),
+								 textureCoord: this.gl.getAttribLocation(shaderProgramTex, "aTextureCoord"),
+						  },
+						  uniformLocations: {
+						    projectionMatrix: this.gl.getUniformLocation(shaderProgramTex, "uProjectionMatrix"),
+						    modelViewMatrix: this.gl.getUniformLocation(shaderProgramTex, "uModelViewMatrix"),
+								normalMatrix: this.gl.getUniformLocation(shaderProgramTex, "uNormalMatrix"),
+								 uSampler: this.gl.getUniformLocation(shaderProgramTex, "uSampler"),//added with texture; disable when just color?
+						  },
+						};
+
+						const texture = loadTexture(this.gl, textureAddress);
+						// Flip image pixels into the bottom-to-top order that WebGL expects.
+						this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
+								
+							}
+							
 						}
+
+						
 
 
 									main();
@@ -317,7 +344,7 @@
 						let deltaT = 0;
 						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoColor);
 						sceneObject.addCubeToScene("testCube","firstCube",-9,9,9);
-						sceneObject.removeCubeFromScene("firstCube");
+						//sceneObject.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
 						function render(now) {
