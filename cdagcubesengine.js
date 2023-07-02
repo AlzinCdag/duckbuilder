@@ -358,7 +358,7 @@
 								sceneObject.listOfCubesInScene[i][1]();
 							}
 
-							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, projectionScale,0.8,0.8,0.8,2,2,2);
+							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
 							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
 							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
 							then = now;
