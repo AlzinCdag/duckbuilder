@@ -336,13 +336,13 @@
 						const wireframeBuffers = initBufferGrid(gl);
 
 						// Load texture
-						//const texture = loadTexture(gl, document.getElementById("alznId").src);
+						const texture = loadTexture(gl, "Alzn%20Cdag%20logo.png");
 						// Flip image pixels into the bottom-to-top order that WebGL expects.
 						gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
 						let then = 0;
 						let deltaT = 0;
-						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoColor,"Alzn%20Cdag%20logo.png");
+						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoColor,texture);
 						sceneObject.addCubeToScene("testCube","firstCube",-9,9,9);
 						//sceneObject.removeCubeFromScene("firstCube");
 
