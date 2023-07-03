@@ -260,7 +260,7 @@
 
 
 									//export 
-var scene;
+var window.scene;
 
 									main();
 									//https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
