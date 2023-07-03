@@ -217,7 +217,7 @@
 							}
 
 
-							this.initializeTypeOfCube(typeName,buffersObject,programInfoObject,textureObject) {
+							initializeTypeOfCube(typeName,buffersObject,programInfoObject,textureObject) {
 								
 								
 								const cubeType = {
@@ -251,7 +251,7 @@
 						// Flip image pixels into the bottom-to-top order that WebGL expects.
 						this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
 
-						initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
+						this.initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
 							}
 							
 						}
