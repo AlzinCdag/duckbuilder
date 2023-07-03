@@ -195,6 +195,25 @@
 								this.gl = gl;
 								this.listOfCubeTypes = [];
 								this.listOfCubesInScene = [];
+
+								this.shaderProgramTex = initShaderProgram(this.gl, vsSourceTex, fsSourceTex);
+								this.programInfoTex = {
+						  program: this.shaderProgramTex,
+						  attribLocations: {
+						    vertexPosition: this.gl.getAttribLocation(this.shaderProgramTex, "aVertexPosition"),
+								vertexNormal: this.gl.getAttribLocation(this.shaderProgramTex, "aVertexNormal"),
+								//vertexColor: this.gl.getAttribLocation(this.shaderProgram,"aVertexColor"),
+								 textureCoord: this.gl.getAttribLocation(this.shaderProgramTex, "aTextureCoord"),
+						  },
+						  uniformLocations: {
+						    projectionMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uProjectionMatrix"),
+						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uModelViewMatrix"),
+								normalMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uNormalMatrix"),
+								 uSampler: this.gl.getUniformLocation(this.shaderProgramTex, "uSampler"),//added with texture; disable when just color?
+						  },
+						};
+
+					this.buffers = initBuffers(gl,[[1.0,0.0,0.0,1.0],[0.0,1.0,0.0,1.0],[0.0,0.0,1.0,1.0],[0.0,1.0,1.0,1.0],[1.0,1.0,0.0,1.0],[1.0,1.0,1.0,1.0]]);
 							}
 
 
@@ -226,27 +245,13 @@
 							}
 
 							easyInitializeTextureCubeType(textureAddress, typeName) {
-								const shaderProgramTex = initShaderProgram(this.gl, vsSourceTex, fsSourceTex);
-								const programInfoTex = {
-						  program: shaderProgramTex,
-						  attribLocations: {
-						    vertexPosition: this.gl.getAttribLocation(shaderProgramTex, "aVertexPosition"),
-								vertexNormal: this.gl.getAttribLocation(shaderProgramTex, "aVertexNormal"),
-								//vertexColor: this.gl.getAttribLocation(shaderProgram,"aVertexColor"),
-								 textureCoord: this.gl.getAttribLocation(shaderProgramTex, "aTextureCoord"),
-						  },
-						  uniformLocations: {
-						    projectionMatrix: this.gl.getUniformLocation(shaderProgramTex, "uProjectionMatrix"),
-						    modelViewMatrix: this.gl.getUniformLocation(shaderProgramTex, "uModelViewMatrix"),
-								normalMatrix: this.gl.getUniformLocation(shaderProgramTex, "uNormalMatrix"),
-								 uSampler: this.gl.getUniformLocation(shaderProgramTex, "uSampler"),//added with texture; disable when just color?
-						  },
-						};
+								
 
 						const texture = loadTexture(this.gl, textureAddress);
 						// Flip image pixels into the bottom-to-top order that WebGL expects.
 						this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
-								
+
+						initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
 							}
 							
 						}
@@ -344,7 +349,8 @@
 
 						let then = 0;
 						let deltaT = 0;
-						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
+						//sceneObject.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
+						sceneObject.easyInitializeTextureCubeType("AlznCdagLogo.png","testCube");
 						sceneObject.addCubeToScene("testCube","firstCube",-9,9,9);
 						//sceneObject.removeCubeFromScene("firstCube");
 
