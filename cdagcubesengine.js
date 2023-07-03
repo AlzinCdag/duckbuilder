@@ -351,10 +351,10 @@
 
 						let then = 0;
 						let deltaT = 0;
-						//sceneObject.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
-						sceneObject.easyInitializeTextureCubeType("AlznCdagLogo.png","testCube");
-						sceneObject.addCubeToScene("testCube","firstCube",-9,9,9);
-						//sceneObject.removeCubeFromScene("firstCube");
+						//scene.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
+						scene.easyInitializeTextureCubeType("AlznCdagLogo.png","testCube");
+						scene.addCubeToScene("testCube","firstCube",-9,9,9);
+						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
 						function render(now) {
@@ -363,9 +363,9 @@
 							//sceneRotZ += deltaT;
 							//gl.clearDepth(1.0);
 							gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-							for (let i = 0; i < sceneObject.listOfCubesInScene.length; i++)
+							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
-								sceneObject.listOfCubesInScene[i][1]();
+								scene.listOfCubesInScene[i][1]();
 							}
 
 							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
