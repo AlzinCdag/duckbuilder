@@ -342,7 +342,7 @@
 
 						let then = 0;
 						let deltaT = 0;
-						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoColor,texture);
+						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoColor,"AlznCdaglogo.png");
 						sceneObject.addCubeToScene("testCube","firstCube",-9,9,9);
 						//sceneObject.removeCubeFromScene("firstCube");
 
