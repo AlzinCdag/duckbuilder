@@ -352,7 +352,7 @@
 						let then = 0;
 						let deltaT = 0;
 						//scene.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
-						scene.easyInitializeTextureCubeType("AlznCdagLogo.png","testCube");
+						scene.easyInitializeTextureCubeType("AlznCdaglogo.png","testCube");
 						scene.addCubeToScene("testCube","firstCube",-9,9,9);
 						//scene.removeCubeFromScene("firstCube");
 
