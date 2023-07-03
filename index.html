@@ -156,14 +156,19 @@ input[type=range][orient=vertical]
   		<div style="top:0,right:0" id="yourShips" class="ship ui">
 			
 		</div>
-		<div style="top:0, right:0" id="versionNumber" class="ship ui">Version 0.00199 </div>
+		<div style="top:0, right:0" id="versionNumber" class="ship ui">Version 0.001991 </div>
   		<div style="top:0; right:0; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui"></div>
 			<canvas style="display:none" id="alzn" width="64" height="64"></canvas>
 			
 			  		  		<script src="cdagcubesengine.js" type="module"></script>
 							<script type="module" id="testScript">
+								window.addEventListener("keydown", (event)=>{
+									if (event.key == "j") {
 								window.scene.addCubeToScene("testCube","firstCube",-9,9,8);
 								window.scene.addCubeToScene("testCube","firstCube",-8,9,9);
+									}
+								}
+								);
 			      </script>
 			      <canvas id="glcanvas" width="500" height="500"></canvas>
       </body>
