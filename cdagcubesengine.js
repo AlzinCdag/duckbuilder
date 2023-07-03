@@ -199,12 +199,13 @@
 
 
 							initializeTypeOfCube(typeName,buffersObject,programInfoObject,textureObject) {
-
+								
+								
 								const cubeType = {
 									name: typeName,
 									buffers: buffersObject,
 									programInfo: programInfoObject,
-									texture:textureObject,
+									texture: textureObject,
 								};
 								this.listOfCubeTypes.push([typeName,cubeType]);
 							}
@@ -213,7 +214,8 @@
 
 								//if (type != undefined)
 								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xCoord,yCoord,zCoord);}]);
-								//else {}
+
+								
 							}
 							removeCubeFromScene(id) {
 								let index = this.listOfCubesInScene.findIndex(element=>element[0] == id);
@@ -342,7 +344,7 @@
 
 						let then = 0;
 						let deltaT = 0;
-						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoColor,"AlznCdaglogo.png");
+						sceneObject.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
 						sceneObject.addCubeToScene("testCube","firstCube",-9,9,9);
 						//sceneObject.removeCubeFromScene("firstCube");
 
