@@ -217,7 +217,7 @@
 							}
 
 
-							initializeTypeOfCube(typeName,buffersObject,programInfoObject,textureObject) {
+							this.initializeTypeOfCube(typeName,buffersObject,programInfoObject,textureObject) {
 								
 								
 								const cubeType = {
