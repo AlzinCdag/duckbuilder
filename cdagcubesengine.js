@@ -236,6 +236,12 @@
 
 								
 							}
+
+							addCubeToSceneSize(typeName,id,xCoord,yCoord,zCoord,size) {
+								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
+
+								//if (type != undefined)
+								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xCoord,yCoord,zCoord);}]);
 							removeCubeFromScene(id) {
 								let index = this.listOfCubesInScene.findIndex(element=>element[0] == id);
 
@@ -353,8 +359,12 @@
 						let then = 0;
 						let deltaT = 0;
 						//scene.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
-						scene.easyInitializeTextureCubeType("AlznCdaglogo.png","testCube");
+						scene.easyInitializeTextureCubeType("bluePattern.png","testCube");
+							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
 						scene.addCubeToScene("testCube","firstCube",-9,9,9);
+							scene.addCubeToSceneSize("missileCube","missile1",-7,9,9,0.7);
+							scene.addCubeToSceneSize("missileCube","missile2",-6,9,9,0.5);
+							scene.addCubeToSceneSize("missileCube","missile3",-7,9,9,0.3);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
