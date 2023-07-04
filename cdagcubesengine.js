@@ -242,7 +242,9 @@
 
 								//if (type != undefined)
 								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xCoord,yCoord,zCoord);}]);
-							removeCubeFromScene(id) {
+							}
+								
+						removeCubeFromScene(id) {
 								let index = this.listOfCubesInScene.findIndex(element=>element[0] == id);
 
 								if (index != -1)
