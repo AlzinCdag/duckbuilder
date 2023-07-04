@@ -364,9 +364,9 @@
 						scene.easyInitializeTextureCubeType("bluePattern.png","testCube");
 							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
 						scene.addCubeToScene("testCube","firstCube",-9,9,9);
-							scene.addCubeToSceneSize("missileCube","missile1",-7,9,9,0.7);
-							scene.addCubeToSceneSize("missileCube","missile2",-6,9,9,0.5);
-							scene.addCubeToSceneSize("missileCube","missile3",-7,9,9,0.3);
+							scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
+							scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
+							scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
