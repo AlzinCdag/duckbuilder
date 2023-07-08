@@ -265,8 +265,8 @@
 							
 
 							easyInitializeAnimation(spriteSheetAddress,typeName,widthOfEachElement,height,frameCount) {
-														  const texture = gl.createTexture();
-						  gl.bindTexture(gl.TEXTURE_2D, texture);
+														  const texture = this.gl.createTexture();
+						  this.gl.bindTexture(gl.TEXTURE_2D, texture);
 
 						  // Because images have to be downloaded over the internet
 						  // they might take a moment until they are ready.
@@ -274,15 +274,15 @@
 						  // use it immediately. When the image has finished downloading
 						  // we'll update the texture with the contents of the image.
 						  const level = 0;
-						  const internalFormat = gl.RGBA;
+						  const internalFormat = this.gl.RGBA;
 						  const widthPlaceholder = 1;
 						  const heightPlaceholder = 1;
 						  const border = 0;
-						  const srcFormat = gl.RGBA;
-						  const srcType = gl.UNSIGNED_BYTE;
+						  const srcFormat = this.gl.RGBA;
+						  const srcType = this.gl.UNSIGNED_BYTE;
 						  const pixel = new Uint8Array([0, 255, 255, 255]); // opaque blue
-						   gl.texImage2D(
-						    gl.TEXTURE_2D,
+						   this.gl.texImage2D(
+						    this.gl.TEXTURE_2D,
 						    level,
 						    internalFormat,
 						    widthPlaceholder,
@@ -296,9 +296,9 @@
 						  const image = new Image();
 							//image.src = url;
 						  image.onload = () => {
-						    gl.bindTexture(gl.TEXTURE_2D, texture);
-						    gl.texImage2D(
-						      gl.TEXTURE_2D,
+						    this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
+						    this.gl.texImage2D(
+						      this.gl.TEXTURE_2D,
 						      level,
 						      internalFormat,
 						      srcFormat,
