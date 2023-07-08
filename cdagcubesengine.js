@@ -261,6 +261,57 @@
 
 						this.initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
 							}
+
+							
+
+							easyInitializeAnimation(spriteSheetAddress,typeName,widthOfEachElement,height,frameCount) {
+														  const texture = gl.createTexture();
+						  gl.bindTexture(gl.TEXTURE_2D, texture);
+
+						  // Because images have to be downloaded over the internet
+						  // they might take a moment until they are ready.
+						  // Until then put a single pixel in the texture so we can
+						  // use it immediately. When the image has finished downloading
+						  // we'll update the texture with the contents of the image.
+						  const level = 0;
+						  const internalFormat = gl.RGBA;
+						  const width = 1;
+						  const height = 1;
+						  const border = 0;
+						  const srcFormat = gl.RGBA;
+						  const srcType = gl.UNSIGNED_BYTE;
+						  const pixel = new Uint8Array([0, 255, 255, 255]); // opaque blue
+						   gl.texImage2D(
+						    gl.TEXTURE_2D,
+						    level,
+						    internalFormat,
+						    width,
+						    height,
+						    border,
+						    srcFormat,
+						    srcType,
+						    pixel
+						  );
+
+						  const image = new Image();
+							//image.src = url;
+						  image.onload = () => {
+						    gl.bindTexture(gl.TEXTURE_2D, texture);
+						    gl.texImage2D(
+						      gl.TEXTURE_2D,
+						      level,
+						      internalFormat,
+						      srcFormat,
+						      srcType,
+						      image
+						    );
+							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
+								texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE, image);
+						  }	
+							image.src = spriteSheetAddress;	
+
+							this.initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
+							}
 							
 						}
 
@@ -362,11 +413,13 @@
 						let deltaT = 0;
 						//scene.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
 						scene.easyInitializeTextureCubeType("bluePattern.png","testCube");
+							scene.easyInitializeAnimation("BirdSprite.png","BirdTestCube",643,768,16);
 							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
 						scene.addCubeToScene("testCube","firstCube",-9,9,9);
 							scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
+							scene.addCubeToSceneSize("BirdTestCube","bird1",9,9,9,0.9);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
