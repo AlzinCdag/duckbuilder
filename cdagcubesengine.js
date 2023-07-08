@@ -266,7 +266,7 @@
 
 							easyInitializeAnimation(spriteSheetAddress,typeName,widthOfEachElement,height,frameCount) {
 														  const texture = this.gl.createTexture();
-						  this.gl.bindTexture(gl.TEXTURE_2D, texture);
+						  this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
 
 						  // Because images have to be downloaded over the internet
 						  // they might take a moment until they are ready.
