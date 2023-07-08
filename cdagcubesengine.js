@@ -275,8 +275,8 @@
 						  // we'll update the texture with the contents of the image.
 						  const level = 0;
 						  const internalFormat = gl.RGBA;
-						  const width = 1;
-						  const height = 1;
+						  const widthPlaceholder = 1;
+						  const heightPlaceholder = 1;
 						  const border = 0;
 						  const srcFormat = gl.RGBA;
 						  const srcType = gl.UNSIGNED_BYTE;
@@ -285,8 +285,8 @@
 						    gl.TEXTURE_2D,
 						    level,
 						    internalFormat,
-						    width,
-						    height,
+						    widthPlaceholder,
+						    heightPlaceholder,
 						    border,
 						    srcFormat,
 						    srcType,
