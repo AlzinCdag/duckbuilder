@@ -17,7 +17,7 @@
 /*The following is from https://stackoverflow.com/questions/47297794/how-to-overlay-html-text-buttons-on-three-js,
  meant to let buttons overlay on the 3D canvas*/
 body {
-  overflow: hidden;
+  overflow: scroll;
   margin: 0;
 }
 
@@ -154,7 +154,7 @@ input[type=range][orient=vertical]
   	<body>
 
   		<div style="top:0,right:0" id="yourShips" class="ship ui">
-			
+			<img id="birdSprite" src="BirdSprite.png" width="643" height="768">
 		</div>
 		<div style="top:0, right:0" id="versionNumber" class="ship ui">Version 0.001992 </div>
   		<div style="top:0; right:0; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui"></div>
