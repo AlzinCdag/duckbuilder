@@ -308,7 +308,7 @@
 							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
 
 							  //const imageBitMap = createImageBitmap(image).then((imageBit)=>{this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE,imageBit );});
-								this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, null,image );
+								this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.BYTE,image );
 						  }	
 							image.src = spriteSheetAddress;	
 
