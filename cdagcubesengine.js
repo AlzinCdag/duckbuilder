@@ -306,7 +306,7 @@
 						      image
 						    );
 							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
-								texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE, image);
+								this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE, image);
 						  }	
 							image.src = spriteSheetAddress;	
 
