@@ -195,6 +195,7 @@
 								this.gl = gl;
 								this.listOfCubeTypes = [];
 								this.listOfCubesInScene = [];
+								this.listOfAnimationInformation = [];
 
 								this.shaderProgramTex = initShaderProgram(this.gl, vsSourceTex, fsSourceTex);
 								this.programInfoTex = {
@@ -296,7 +297,9 @@
 						  const image = new Image();
 							//image.src = url;
 
-						const birdCanvas = document.getElementById("BirdSpriteCanvas");
+						const birdCanvas = document.createElement("canvas");
+						birdCanvas.width = 643;
+						birdCanvas.height = 768;
 						const birdContext = birdCanvas.getContext("2d");
 						
 						  image.onload = () => {
@@ -319,14 +322,54 @@
 							   this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
 						      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
 						      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
-							
+
+
+							  this.listOfAnimationInformation.push([typeName,birdContext,image,widthOfEachElement,height,frameCount,0,texture]);
 							  //const imageBitMap = createImageBitmap(image).then((imageBit)=>{this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE,imageBit );});
 								//this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.BYTE,birdImageData );
 						  }	
 							image.src = spriteSheetAddress;	
 
+							
 							this.initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
 							}
+
+						updateAnimations() {
+
+							const level = 0;
+						  const internalFormat = this.gl.RGBA;
+						 // const widthPlaceholder = 1;
+						 // const heightPlaceholder = 1;
+						  const border = 0;
+						  const srcFormat = this.gl.RGBA;
+						  const srcType = this.gl.UNSIGNED_BYTE;
+							
+							for (let i = 0; i<this.listOfAnimationInformation.length; i++) {
+								const anim = this.listOfAnimationInformation[i];
+								anim[1].drawImage(anim[2],0 + anim[3]*anim[6],0,anim[3],anim[4],0,0,anim[3],anim[4]);
+								anim[6]++;
+								if (anim[6] >= anim[5]) {anim[6] = 0;}
+
+								const data = anim[1].getImageData(0,0,anim[3],anim[4]);
+
+								 this.gl.bindTexture(this.gl.TEXTURE_2D, anim[7]);
+						    this.gl.texImage2D(
+						      this.gl.TEXTURE_2D,
+						      level,
+						      internalFormat,
+						      srcFormat,
+						      srcType,
+						      birdImageData
+						    );
+							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
+
+							   this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
+						      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
+						      this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
+
+								
+							}
+						}
 							
 						}
 
@@ -457,7 +500,7 @@
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
 							
-							
+							scene.updateAnimations();
 							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
 							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
 							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
