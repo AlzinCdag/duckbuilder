@@ -264,8 +264,8 @@
 
 							
 
-							easyInitializeAnimation(spriteSheetAddress,typeName,widthOfEachElement,height,frameCount) {
-														  const texture = this.gl.createTexture();
+					easyInitializeAnimation(spriteSheetAddress,typeName,widthOfEachElement,height,frameCount) {
+						const texture = this.gl.createTexture();
 						  this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
 
 						  // Because images have to be downloaded over the internet
@@ -302,7 +302,7 @@
 						  image.onload = () => {
 							birdContext.drawImage(image,0,0,643,768,0,0,643,768);
 							const birdImageData = birdContext.getImageData(0,0,643,768);
-							  birdContext.putImageData(birdImageData,-100,0);
+							  //birdContext.putImageData(birdImageData,-100,0);
 							
 							
 						    this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
@@ -315,6 +315,10 @@
 						      birdImageData
 						    );
 							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
+
+							   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+						      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+						      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 							
 							  //const imageBitMap = createImageBitmap(image).then((imageBit)=>{this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE,imageBit );});
 								//this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.BYTE,birdImageData );
