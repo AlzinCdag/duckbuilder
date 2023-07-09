@@ -302,7 +302,7 @@
 						  image.onload = () => {
 							birdContext.drawImage(image,0,0,643,768,0,0,643,768);
 							const birdImageData = birdContext.getImageData(0,0,643,768);
-							  birdContext.putImageData(image,20,0);
+							  birdContext.putImageData(birdImageData,20,0);
 							
 						/*	
 						    this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
