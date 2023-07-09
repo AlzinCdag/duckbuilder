@@ -359,7 +359,7 @@
 						      internalFormat,
 						      srcFormat,
 						      srcType,
-						      birdImageData
+						      data
 						    );
 							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
 
