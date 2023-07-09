@@ -374,6 +374,7 @@
 							
 						}
 
+var counterNumber = 0;
 						
 
 
@@ -501,9 +502,10 @@
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
 							
-							if (Date.now() % 100 == 0) {
+							if (counterNumber % 20 == 0) {
 							scene.updateAnimations();
 							}
+							counterNumber++;
 							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
 							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
 							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
