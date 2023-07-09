@@ -302,8 +302,9 @@
 						  image.onload = () => {
 							birdContext.drawImage(image,0,0,643,768,0,0,643,768);
 							const birdImageData = birdContext.getImageData(0,0,643,768);
+							  birdContext.putImageData(image,20,0);
 							
-							
+						/*	
 						    this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
 						    this.gl.texImage2D(
 						      this.gl.TEXTURE_2D,
@@ -314,7 +315,7 @@
 						      birdImageData
 						    );
 							  this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
-
+							*/
 							  //const imageBitMap = createImageBitmap(image).then((imageBit)=>{this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE,imageBit );});
 								//this.gl.texSubImage2D(this.gl.TEXTURE_2D, 0, 0, 0, widthOfEachElement, height, this.gl.RGBA, this.gl.BYTE,birdImageData );
 						  }	
