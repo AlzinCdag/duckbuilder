@@ -296,7 +296,7 @@
 						  const image = new Image();
 							//image.src = url;
 
-						const birdCanvas = window.getElementByID("BirdSpriteCanvas");
+						const birdCanvas = document.getElementByID("BirdSpriteCanvas");
 						const birdContext = birdCanvas.getContext("2d");
 						
 						  image.onload = () => {
