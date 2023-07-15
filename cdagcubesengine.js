@@ -346,8 +346,9 @@
 						  const srcType = this.gl.UNSIGNED_BYTE;
 							
 							for (let i = 0; i<this.listOfAnimationInformation.length; i++) {
-								if (anim[6] >= anim[5]) {anim[6] = 0;}
+								
 								const anim = this.listOfAnimationInformation[i];
+								if (anim[6] >= anim[5]) {anim[6] = 0;}
 								anim[1].clearRect(0,0,anim[3],anim[4]);
 								anim[1].drawImage(anim[2],0 + anim[3]*anim[6],0,anim[3],anim[4],0,0,anim[3],anim[4]);
 								anim[6]++;
