@@ -348,7 +348,9 @@
 							for (let i = 0; i<this.listOfAnimationInformation.length; i++) {
 								
 								const anim = this.listOfAnimationInformation[i];
-								if (anim[6] >= anim[5]) {anim[6] = 0;}
+								if (anim[6] >= anim[5]) {
+									window.getElementById("yourShips").innerHTML = anim[6] + " " +anim[5];
+									anim[6] = 0;}
 								anim[1].clearRect(0,0,anim[3],anim[4]);
 								anim[1].drawImage(anim[2],0 + anim[3]*anim[6],0,anim[3],anim[4],0,0,anim[3],anim[4]);
 								anim[6]++;
