@@ -476,7 +476,7 @@ var counterNumber = 0;
 						let deltaT = 0;
 						//scene.initializeTypeOfCube("testCube",buffers,programInfoTex,texture);
 						scene.easyInitializeTextureCubeType("bluePattern.png","testCube");
-							scene.easyInitializeAnimation("BirdSprite.png","BirdTestCube",643,768,16);
+							scene.easyInitializeAnimation("BirdSprite.png","BirdTestCube",643,768,17);
 							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
 						scene.addCubeToScene("testCube","firstCube",-9,9,9);
 							scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
