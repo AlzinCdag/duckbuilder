@@ -66,7 +66,7 @@
 								varying highp vec3 vLighting;
 
 						    void main(void) {
-						      gl_Position = uProjectionMatrix * aVertexPosition;
+						      gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
 						      vTextureCoord = aTextureCoord;
 
 									highp vec3 ambientLight = vec3(0.3, 0.3, 0.3);
