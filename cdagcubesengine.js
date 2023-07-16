@@ -550,14 +550,15 @@ var counterNumber = 0;
 							//sceneRotZ += deltaT;
 							//gl.clearDepth(1.0);
 							gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
-							{
-								scene.listOfCubesInScene[i][1]();
-							}
 							for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
 							{
 								scene.listOfFlatThingsInScene[i][1]();
 							}
+							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
+							{
+								scene.listOfCubesInScene[i][1]();
+							}
+							
 
 							//cursors
 							let cursorX = -9;
@@ -566,7 +567,17 @@ var counterNumber = 0;
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
+					
 							
+							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
+							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
+							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
+							then = now;
+
+							for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
+							{
+								scene.listOfFlatThingsInScene[i][1]();
+							}
 							if (counterNumber % 5 == 4) {
 							scene.updateAnimations();
 							counterNumber = 0;
@@ -574,12 +585,6 @@ var counterNumber = 0;
 							else{
 							counterNumber++;
 							}
-							
-							drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
-							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
-							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
-							then = now;
-
 
 
 						  requestAnimationFrame(render);
