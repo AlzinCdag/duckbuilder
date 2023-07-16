@@ -657,7 +657,7 @@ var counterNumber = 0;
 
 						return {
 						  position: positionBuffer,
-						  color: colorBuffer,
+						  //color: colorBuffer,
 							normal: normalBuffer,
 						  indices: indexBuffer,
 							textureCoord: textureBuffer,
