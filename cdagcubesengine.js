@@ -196,6 +196,8 @@
 								this.listOfCubeTypes = [];
 								this.listOfCubesInScene = [];
 								this.listOfAnimationInformation = [];
+								this.listOfFlatThingsInScene = [];
+								this.listOfTypesOfFlatThings = [];
 
 								this.shaderProgramTex = initShaderProgram(this.gl, vsSourceTex, fsSourceTex);
 								this.programInfoTex = {
@@ -214,7 +216,25 @@
 						  },
 						};
 
+
+								this.programInfoFlat = {
+						  program: this.shaderProgramTex,
+						  attribLocations: {
+						    vertexPosition: this.gl.getAttribLocation(this.shaderProgramTex, "aVertexPosition"),
+								vertexNormal: this.gl.getAttribLocation(this.shaderProgramTex, "aVertexNormal"),
+								//vertexColor: this.gl.getAttribLocation(this.shaderProgram,"aVertexColor"),
+								 textureCoord: this.gl.getAttribLocation(this.shaderProgramTex, "aTextureCoord"),
+						  },
+						  uniformLocations: {
+						    projectionMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uProjectionMatrix"),
+						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uModelViewMatrix"),
+								normalMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uNormalMatrix"),
+								 uSampler: this.gl.getUniformLocation(this.shaderProgramTex, "uSampler"),//added with texture; disable when just color?
+						  },
+						};
+
 					this.buffers = initBuffers(gl,[[1.0,0.0,0.0,1.0],[0.0,1.0,0.0,1.0],[0.0,0.0,1.0,1.0],[0.0,1.0,1.0,1.0],[1.0,1.0,0.0,1.0],[1.0,1.0,1.0,1.0]]);
+					this.flatBuffers = initFlatBuffers(gl);
 							}
 
 
@@ -229,21 +249,49 @@
 								};
 								this.listOfCubeTypes.push([typeName,cubeType]);
 							}
-							addCubeToScene(typeName,id,xCoord,yCoord,zCoord) {
+
+						initializeTypeOfFlatObject(typeName,buffersObject,programInfoObject,textureObject) {
+								
+								const cubeType = {
+									name: typeName,
+									buffers: buffersObject,
+									programInfo: programInfoObject,
+									texture: textureObject,
+								};
+								this.listOfTypesOfFlatThings.push([typeName,cubeType]);
+							}
+							
+						addCubeToScene(typeName,id,xCoord,yCoord,zCoord) {
 								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
 								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xCoord,yCoord,zCoord);}]);
 
-								
 							}
 
-							addCubeToSceneSize(typeName,id,xCoord,yCoord,zCoord,size) {
+						addCubeToSceneSize(typeName,id,xCoord,yCoord,zCoord,size) {
 								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
 								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xCoord,yCoord,zCoord);}]);
 							}
+
+						addFlatThingToSceneSize(typeName,id,xCoord,yCoord,zCoord,size) {
+								const type = this.listOfTypesOfFlatThings.find(element=>element[0] == typeName);
+
+								//if (type != undefined)
+								this.listOfFlatThingsInScene.push([id,()=>{drawFlatObject(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xCoord,yCoord,zCoord);},xCoord,yCoord,zCoord]);
+							}
+
+						changePositionOfFlatThing(id,xCoord,yCoord,zCoord) {
+							const flatThingIndex = this.listOfFlatThingsInScene.findIndex(element=>element[0] == id);
+
+							if (flatThingIndex != -1) {
+							this.listOfFlatThingsInScene[flatThingIndex][2] = xCoord;
+							this.listOfFlatThingsInScene[flatThingIndex][3] = yCoord;
+							this.listOfFlatThingsInScene[flatThingIndex][4] = zCoord;
+							}
+						}
 								
 						removeCubeFromScene(id) {
 								let index = this.listOfCubesInScene.findIndex(element=>element[0] == id);
@@ -253,7 +301,15 @@
 
 							}
 
-							easyInitializeTextureCubeType(textureAddress, typeName) {
+						removeFlatThingFromScene(id) {
+								let index = this.listOfFlatThingsInScene.findIndex(element=>element[0] == id);
+
+								if (index != -1)
+								{this.listOfFlatThingsInScene.splice(index,1);}
+
+							}
+
+					easyInitializeTextureCubeType(textureAddress, typeName) {
 								
 
 						const texture = loadTexture(this.gl, textureAddress);
@@ -332,7 +388,7 @@
 							image.src = spriteSheetAddress;	
 
 							
-							this.initializeTypeOfCube(typeName,this.buffers,this.programInfoTex,texture);
+							this.initializeTypeOfFlatObject(typeName,this.flatBuffers,this.programInfoFlat,texture);
 							}
 
 						updateAnimations() {
@@ -349,7 +405,7 @@
 								
 								const anim = this.listOfAnimationInformation[i];
 								if (anim[6] >= anim[5]) {
-									document.getElementById("yourShips").innerHTML = anim[6] + " " +anim[5]+ " "+anim[3]*anim[6];
+									//document.getElementById("yourShips").innerHTML = anim[6] + " " +anim[5]+ " "+anim[3]*anim[6];
 									anim[6] = 0;}
 								anim[1].clearRect(0,0,anim[3],anim[4]);
 								anim[1].drawImage(anim[2],0 + anim[3]*anim[6],0,anim[3],anim[4],0,0,anim[3],anim[4]);
@@ -481,10 +537,10 @@ var counterNumber = 0;
 							scene.easyInitializeAnimation("BirdSprite.png","BirdTestCube",643,768,17);
 							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
 						scene.addCubeToScene("testCube","firstCube",-9,9,9);
-							scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
-							scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
-							scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
-							scene.addCubeToSceneSize("BirdTestCube","bird1",9,9,9,0.9);
+							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
+							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
+							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",9,9,9,0.9);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
@@ -497,6 +553,10 @@ var counterNumber = 0;
 							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
 								scene.listOfCubesInScene[i][1]();
+							}
+							for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
+							{
+								scene.listOfFlatThingsInScene[i][1]();
 							}
 
 							//cursors
@@ -585,6 +645,26 @@ var counterNumber = 0;
 						};
 						}
 
+					function initFlatBuffers(gl) {
+						  const positionBuffer = initFlatPositionBuffer(gl);
+
+						//replace color or texture
+							//const colorBuffer = initColorBuffer(gl, colorsForBuffer);
+							const textureBuffer = initFlatTextureBuffer(gl);
+
+							const indexBuffer = initFlatIndexBuffer(gl);
+							const normalBuffer = initFlatNormalBuffer(gl);
+
+						return {
+						  position: positionBuffer,
+						  color: colorBuffer,
+							normal: normalBuffer,
+						  indices: indexBuffer,
+							textureCoord: textureBuffer,
+
+						};
+						}
+
 						function initBufferGrid(gl) {
 						  const positionBuffer = initPositionBufferGrid(gl);
 
@@ -630,6 +710,29 @@ var counterNumber = 0;
 
 						  // Left face
 						  -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0, -1.0,
+						];
+
+						  // Now pass the list of positions into WebGL to build the
+						  // shape. We do this by creating a Float32Array from the
+						  // JavaScript array, then use it to fill the current buffer.
+						  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+						  return positionBuffer;
+						}
+
+				function initFlatPositionBuffer(gl) {
+						  // Create a buffer for the square's positions.
+						  const positionBuffer = gl.createBuffer();
+
+						  // Select the positionBuffer as the one to apply buffer
+						  // operations to from here out.
+						  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+						  // Now create an array of positions for the square.
+							const positions = [
+						  // Front face
+						  -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1.0,
+
 						];
 
 						  // Now pass the list of positions into WebGL to build the
@@ -801,6 +904,34 @@ var counterNumber = 0;
 						  return indexBuffer;
 						}
 
+			function initFlatIndexBuffer(gl) {
+						  const indexBuffer = gl.createBuffer();
+						  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+
+						  // This array defines each face as two triangles, using the
+						  // indices into the vertex array to specify each triangle's
+						  // position.
+
+						  const indices = [
+						    0,
+						    1,
+						    2,
+						    0,
+						    2,
+						    3, // front
+						  ];
+
+						  // Now send the element array to GL
+
+						  gl.bufferData(
+						    gl.ELEMENT_ARRAY_BUFFER,
+						    new Uint16Array(indices),
+						    gl.STATIC_DRAW
+						  );
+
+						  return indexBuffer;
+						}
+
 
 						function initIndexBufferGrid(gl) {
 							const indexBuffer = gl.createBuffer();
@@ -854,6 +985,23 @@ var counterNumber = 0;
 						  return textureCoordBuffer;
 						}
 
+function initTextureBuffer(gl) {
+						  const textureCoordBuffer = gl.createBuffer();
+						  gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
+
+						  const textureCoordinates = [
+						    // Front
+						    0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
+						  ];
+
+						  gl.bufferData(
+						    gl.ARRAY_BUFFER,
+						    new Float32Array(textureCoordinates),
+						    gl.STATIC_DRAW
+						  );
+
+						  return textureCoordBuffer;
+						}
 
 	function initNormalBuffer(gl) {
   const normalBuffer = gl.createBuffer();
@@ -888,6 +1036,24 @@ var counterNumber = 0;
   return normalBuffer;
 }
 
+function initFlatNormalBuffer(gl) {
+  const normalBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
+
+  const vertexNormals = [
+    // Front
+    0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0,
+  ];
+
+  gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array(vertexNormals),
+    gl.STATIC_DRAW
+  );
+
+  return normalBuffer;
+}
+
 
 						// Tell WebGL how to pull out the colors from the color buffer
 						// into the vertexColor attribute.
@@ -910,10 +1076,6 @@ var counterNumber = 0;
 						}
 
 							function drawTransparentObjects(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale) {
-
-								//gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
-								//gl.clearDepth(1.0); // Clear everything
-								//gl.disable(gl.DEPTH_TEST); // Enable depth testing
 								gl.depthFunc(gl.LEQUAL); // Near things obscure far things
 								gl.enable(gl.CULL_FACE);
 								gl.cullFace(gl.FRONT);
@@ -1031,9 +1193,6 @@ var counterNumber = 0;
 						  // Now move the drawing position a bit to where we want to
 						  // start drawing the square.
 
-
-
-
 						  // Tell WebGL how to pull out the positions from the position
 						  // buffer into the vertexPosition attribute.
 						  setPositionAttribute(gl, buffers, programInfo);
@@ -1061,9 +1220,6 @@ var counterNumber = 0;
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						//	for (let i = 0; i < 10; i++) {
-						//		for (let j = 0; j<10; j++) {
-						//			for (let k = 0; k<10; k++) {
 						  gl.uniformMatrix4fv(
 						    programInfo.uniformLocations.modelViewMatrix,
 						    false,
@@ -1096,12 +1252,95 @@ var counterNumber = 0;
 							  const offset = 0;
 							  gl.drawElements(gl.TRIANGLES, vertexCount, type, offset);
 							}
-						//}//for k
-						//} // for j
-						//}//for i
+					
 						gl.disable(gl.CULL_FACE);
 }
 
+
+function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShift,yShift,zShift) {
+						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
+						  //gl.clearDepth(1.0); // Clear everything
+						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
+						  gl.depthFunc(gl.LEQUAL); // Near things obscure far things
+
+						  // Clear the canvas before we start drawing on it.
+//gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+						  const zNear = -12;
+						  const zFar = 100.0;
+						  const projectionMatrix = createPerspectiveProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
+						//document.getElementById('yourShips').innerHTML += projectionMatrix;
+						  // Set the drawing position to the "identity" point, which is
+						  // the center of the scene.
+						var modelViewMatrix = createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,rotX,rotY,rotZ,0,0,0);
+						  // Now move the drawing position a bit to where we want to
+						  // start drawing the square.
+
+						  // Tell WebGL how to pull out the positions from the position
+						  // buffer into the vertexPosition attribute.
+						  setPositionAttribute(gl, buffers, programInfo);
+
+						if (texture == null)	{
+							setColorAttribute(gl, buffers, programInfo);
+						}
+						else {
+							setTextureAttribute(gl, buffers, programInfo);
+						}
+
+						setNormalAttribute(gl, buffers, programInfo);
+
+							// Tell WebGL which indices to use to index the vertices
+						gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
+
+						  // Tell WebGL to use our program when drawing
+						  gl.useProgram(programInfo.program);
+
+						  // Set the shader uniforms
+
+						  gl.uniformMatrix4fv(
+						    programInfo.uniformLocations.projectionMatrix,
+						    false,
+						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
+						  );
+
+						  gl.uniformMatrix4fv(
+						    programInfo.uniformLocations.modelViewMatrix,
+						    false,
+						    convert4dMatrixToColumnMajorOrder(modelViewMatrix)
+						  );
+
+							const normalMatrix = transposeMatrix(invertMatrix(modelViewMatrix));
+
+							gl.uniformMatrix4fv(
+  							programInfo.uniformLocations.normalMatrix,
+  							false,
+  							convert4dMatrixToColumnMajorOrder(normalMatrix)
+);
+
+
+							if (texture != null) {
+								// Tell WebGL we want to affect texture unit 0
+						gl.activeTexture(gl.TEXTURE0);
+
+						// Bind the texture to texture unit 0
+						gl.bindTexture(gl.TEXTURE_2D, texture);
+
+						// Tell the shader we bound the texture to texture unit 0
+						gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+							}
+
+							{
+							  const vertexCount = 6;
+							  const type = gl.UNSIGNED_SHORT;
+							  const offset = 0;
+							  gl.drawElements(gl.TRIANGLES, vertexCount, type, offset);
+							}
+					
+						gl.disable(gl.CULL_FACE);
+}
+
+
+							
 function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale,now,shaderProgramWireframe) {
 
 	gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
