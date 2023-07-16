@@ -52,6 +52,34 @@
 						    }
 						  `;
 
+
+										const vsSourceFlat = `
+						    attribute vec4 aVertexPosition;
+						    attribute vec2 aTextureCoord;
+								attribute vec3 aVertexNormal;
+
+						    uniform mat4 uModelViewMatrix;
+						    uniform mat4 uProjectionMatrix;
+								uniform mat4 uNormalMatrix;
+
+						    varying highp vec2 vTextureCoord;
+								varying highp vec3 vLighting;
+
+						    void main(void) {
+						      gl_Position = uProjectionMatrix * aVertexPosition;
+						      vTextureCoord = aTextureCoord;
+
+									highp vec3 ambientLight = vec3(0.3, 0.3, 0.3);
+      						highp vec3 directionalLightColor = vec3(1, 1, 1);
+      						highp vec3 directionalVector = normalize(vec3(0.85, 0.8, 0.75));
+
+      						highp vec4 transformedNormal = uNormalMatrix * vec4(aVertexNormal, 1.0);
+
+      						highp float directional = max(dot(transformedNormal.xyz, directionalVector), 0.0);
+      						vLighting = ambientLight + (directionalLightColor * directional);
+						    }
+						  `;
+
 							const vsSourceWireframe = `
 							attribute vec4 aVertexPosition;
 							attribute vec4 aVertexColor;
@@ -200,6 +228,7 @@
 								this.listOfTypesOfFlatThings = [];
 
 								this.shaderProgramTex = initShaderProgram(this.gl, vsSourceTex, fsSourceTex);
+								this.shaderProgramFlat = initShaderProgram(this.gl, vsSourceFlat, fsSourceTex);
 								this.programInfoTex = {
 						  program: this.shaderProgramTex,
 						  attribLocations: {
@@ -218,18 +247,18 @@
 
 
 								this.programInfoFlat = {
-						  program: this.shaderProgramTex,
+						  program: this.shaderProgramFlat,
 						  attribLocations: {
-						    vertexPosition: this.gl.getAttribLocation(this.shaderProgramTex, "aVertexPosition"),
-								vertexNormal: this.gl.getAttribLocation(this.shaderProgramTex, "aVertexNormal"),
+						    vertexPosition: this.gl.getAttribLocation(this.shaderProgramFlat, "aVertexPosition"),
+								vertexNormal: this.gl.getAttribLocation(this.shaderProgramFlat, "aVertexNormal"),
 								//vertexColor: this.gl.getAttribLocation(this.shaderProgram,"aVertexColor"),
-								 textureCoord: this.gl.getAttribLocation(this.shaderProgramTex, "aTextureCoord"),
+								 textureCoord: this.gl.getAttribLocation(this.shaderProgramFlat, "aTextureCoord"),
 						  },
 						  uniformLocations: {
-						    projectionMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uProjectionMatrix"),
-						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uModelViewMatrix"),
-								normalMatrix: this.gl.getUniformLocation(this.shaderProgramTex, "uNormalMatrix"),
-								 uSampler: this.gl.getUniformLocation(this.shaderProgramTex, "uSampler"),//added with texture; disable when just color?
+						    projectionMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uProjectionMatrix"),
+						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uModelViewMatrix"),
+								normalMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uNormalMatrix"),
+								 uSampler: this.gl.getUniformLocation(this.shaderProgramFlat, "uSampler"),//added with texture; disable when just color?
 						  },
 						};
 
