@@ -985,7 +985,7 @@ var counterNumber = 0;
 						  return textureCoordBuffer;
 						}
 
-function initTextureBuffer(gl) {
+function initFlatTextureBuffer(gl) {
 						  const textureCoordBuffer = gl.createBuffer();
 						  gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
 
