@@ -1324,7 +1324,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
 						  // the center of the scene.
-						var modelViewMatrix = createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,0,0,0,0,0,0);
+						var modelViewMatrix = createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,rotX,rotY,rotZ,-rotX,-rotY,-rotZ);
 						  // Now move the drawing position a bit to where we want to
 						  // start drawing the square.
 
