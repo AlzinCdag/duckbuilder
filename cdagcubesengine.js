@@ -1662,7 +1662,7 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 						//debugging inspiration from, but not taking anything directly from, https://community.khronos.org/t/rotation-after-translation/77215/5
 						function createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
-						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createTranslationMatrix(0,-0,20)),createScaleMatrix(xScale,yScale,zScale)))));
+						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
 
 						}
 
