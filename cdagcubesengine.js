@@ -1324,7 +1324,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
 						  // the center of the scene.
-						var modelViewMatrix = createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,rotX,rotY,rotZ,-rotX,-rotY,-rotZ);
+						var modelViewMatrix = createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,rotX,rotY,rotZ,-rotX,-rotY,-rotZ);
 						  // Now move the drawing position a bit to where we want to
 						  // start drawing the square.
 
@@ -1657,6 +1657,12 @@ function setNormalAttribute(gl, buffers, programInfo) {
 						translation matrix*rotation matrix * scale matrix*/
 						function createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
 						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
+
+						}
+
+						//debugging inspiration from, but not taking anything directly from, https://community.khronos.org/t/rotation-after-translation/77215/5
+						function createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
+						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createTranslationMatrix(0,-0,20)),createScaleMatrix(xScale,yScale,zScale)))));
 
 						}
 
