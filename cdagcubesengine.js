@@ -1339,7 +1339,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 							setTextureAttribute(gl, buffers, programInfo);
 						}
 
-						setNormalAttribute(gl, buffers, programInfo);
+						//setNormalAttribute(gl, buffers, programInfo);
 
 							// Tell WebGL which indices to use to index the vertices
 						gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
