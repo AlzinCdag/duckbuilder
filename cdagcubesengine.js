@@ -263,7 +263,7 @@ const fsSourceFlat = `
 						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uModelViewMatrix"),
 						    normalMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uNormalMatrix"),
 						    uSampler: this.gl.getUniformLocation(this.shaderProgramFlat, "uSampler"),//added with texture; disable when just color?
-						    centerLocation: this.gl.getUniformLocation(this.shaderProgramFlat, "uCenterLocation"),
+						    //centerLocation: this.gl.getUniformLocation(this.shaderProgramFlat, "uCenterLocation"),
 						  },
 						};
 
