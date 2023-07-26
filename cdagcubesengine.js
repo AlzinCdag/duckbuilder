@@ -263,7 +263,7 @@ const fsSourceFlat = `
 						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uModelViewMatrix"),
 						    normalMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uNormalMatrix"),
 						    uSampler: this.gl.getUniformLocation(this.shaderProgramFlat, "uSampler"),//added with texture; disable when just color?
-						    //centerLocation: this.gl.getUniformLocation(this.shaderProgramFlat, "uCenterLocation"),
+						    centerLocation: this.gl.getUniformLocation(this.shaderProgramFlat, "uCenterLocation"),
 						  },
 						};
 
@@ -1358,7 +1358,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						//gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
+						gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
 
 						  gl.uniformMatrix4fv(
 						    programInfo.uniformLocations.modelViewMatrix,
