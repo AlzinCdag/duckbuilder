@@ -70,7 +70,7 @@
 						    void main(void) {
 
    							
-						      gl_Position = uProjectionMatrix * uModelViewMatrix * [uCenterLocation.x+aVertexPosition.x*uCameraRight,ucenterLocation.y+aVertexPosition.y*uCameraUp,avertexPosition.z,avertexPosition.w];
+						      gl_Position = uProjectionMatrix * uModelViewMatrix * [aVertexPosition.x,aVertexPosition.y,avertexPosition.z,avertexPosition.w];
 						      vTextureCoord = aTextureCoord;
 						    }
 						  `;
