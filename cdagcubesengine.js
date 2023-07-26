@@ -68,7 +68,9 @@
 								varying highp vec3 vLighting;
 
 						    void main(void) {
-						      gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+
+   							
+						      gl_Position = uProjectionMatrix * uModelViewMatrix * [uCenterLocation.x+aVertexPosition.x*uCameraRight,ucenterLocation.y+aVertexPosition.y*uCameraUp,avertexPosition.z,avertexPosition.a];
 						      vTextureCoord = aTextureCoord;
 						    }
 						  `;
@@ -1318,7 +1320,7 @@ function initFlatNormalBuffer(gl) {
 
 
 function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShift,yShift,zShift) {
-						document.getElementById("versionNumber").innerHTML = "SceneX: "+ rotX + " sceneY: "+ rotY +" sceneZ "+rotZ;
+						//document.getElementById("versionNumber").innerHTML = "SceneX: "+ rotX + " sceneY: "+ rotY +" sceneZ "+rotZ;
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
