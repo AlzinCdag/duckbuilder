@@ -61,7 +61,7 @@
 						    uniform mat4 uModelViewMatrix;
 						    uniform mat4 uProjectionMatrix;
 								uniform mat4 uNormalMatrix;
-						uniform lowp vec3 uCenterLocation;
+						uniform highp vec3 uCenterLocation;
       						uniform highp vec4 uCameraUp;
 	    					uniform highp vec4 uCameraRight;
 						    varying highp vec2 vTextureCoord;
@@ -70,7 +70,7 @@
 						    void main(void) {
 
    							
-						      gl_Position = uProjectionMatrix * uModelViewMatrix * [uCenterLocation.x+aVertexPosition.x*uCameraRight,ucenterLocation.y+aVertexPosition.y*uCameraUp,avertexPosition.z,avertexPosition.a];
+						      gl_Position = uProjectionMatrix * uModelViewMatrix * [uCenterLocation.x+aVertexPosition.x*uCameraRight,ucenterLocation.y+aVertexPosition.y*uCameraUp,avertexPosition.z,avertexPosition.w];
 						      vTextureCoord = aTextureCoord;
 						    }
 						  `;
@@ -184,7 +184,7 @@ const fsSourceFlat = `
 						    varying highp vec2 vTextureCoord;
 						    varying highp vec3 vLighting;
 						    uniform sampler2D uSampler;
-	  					    uniform lowp vec3 u;
+	  					    uniform highp vec3 uCenterLocation;
 	    					    uniform highp vec4 uCameraUp;
 	    					    uniform highp vec4 uCameraRight;
 
