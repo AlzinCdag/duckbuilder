@@ -52,7 +52,7 @@
 						    }
 						  `;
 
-
+//inspiration from http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
 										const vsSourceFlat = `
 						    attribute vec4 aVertexPosition;
 						    attribute vec2 aTextureCoord;
@@ -61,7 +61,7 @@
 						    uniform mat4 uModelViewMatrix;
 						    uniform mat4 uProjectionMatrix;
 								uniform mat4 uNormalMatrix;
-
+						uniform vec3 uCenterLocation;
 						    varying highp vec2 vTextureCoord;
 								varying highp vec3 vLighting;
 
@@ -180,6 +180,7 @@ const fsSourceFlat = `
 						    varying highp vec2 vTextureCoord;
 						    varying highp vec3 vLighting;
 						    uniform sampler2D uSampler;
+	  					    uniform vec3 uCenterLocation;
 
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
@@ -260,8 +261,9 @@ const fsSourceFlat = `
 						  uniformLocations: {
 						    projectionMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uProjectionMatrix"),
 						    modelViewMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uModelViewMatrix"),
-								normalMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uNormalMatrix"),
-								 uSampler: this.gl.getUniformLocation(this.shaderProgramFlat, "uSampler"),//added with texture; disable when just color?
+						    normalMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uNormalMatrix"),
+						    uSampler: this.gl.getUniformLocation(this.shaderProgramFlat, "uSampler"),//added with texture; disable when just color?
+						    centerLocation: this.gl.getUniformLocation(this.shaderProgramFlat, "uCenterLocation"),
 						  },
 						};
 
@@ -1355,6 +1357,8 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    false,
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
+
+						gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
 
 						  gl.uniformMatrix4fv(
 						    programInfo.uniformLocations.modelViewMatrix,
