@@ -61,7 +61,7 @@
 						    uniform mat4 uModelViewMatrix;
 						    uniform mat4 uProjectionMatrix;
 								uniform mat4 uNormalMatrix;
-						uniform vec3 uCenterLocation;
+						uniform lowp vec3 uCenterLocation;
 						    varying highp vec2 vTextureCoord;
 								varying highp vec3 vLighting;
 
@@ -180,7 +180,7 @@ const fsSourceFlat = `
 						    varying highp vec2 vTextureCoord;
 						    varying highp vec3 vLighting;
 						    uniform sampler2D uSampler;
-	  					    uniform vec3 uCenterLocation;
+	  					    uniform lowp vec3 uCenterLocation;
 
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
