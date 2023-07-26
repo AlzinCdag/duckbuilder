@@ -1358,7 +1358,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
+						//gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
 
 						  gl.uniformMatrix4fv(
 						    programInfo.uniformLocations.modelViewMatrix,
