@@ -62,6 +62,8 @@
 						    uniform mat4 uProjectionMatrix;
 								uniform mat4 uNormalMatrix;
 						uniform lowp vec3 uCenterLocation;
+      						uniform highp vec4 uCameraUp;
+	    					uniform highp vec4 uCameraRight;
 						    varying highp vec2 vTextureCoord;
 								varying highp vec3 vLighting;
 
@@ -180,7 +182,9 @@ const fsSourceFlat = `
 						    varying highp vec2 vTextureCoord;
 						    varying highp vec3 vLighting;
 						    uniform sampler2D uSampler;
-	  					    uniform lowp vec3 uCenterLocation;
+	  					    uniform lowp vec3 u;
+	    					    uniform highp vec4 uCameraUp;
+	    					    uniform highp vec4 uCameraRight;
 
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
@@ -264,6 +268,8 @@ const fsSourceFlat = `
 						    normalMatrix: this.gl.getUniformLocation(this.shaderProgramFlat, "uNormalMatrix"),
 						    uSampler: this.gl.getUniformLocation(this.shaderProgramFlat, "uSampler"),//added with texture; disable when just color?
 						    centerLocation: this.gl.getUniformLocation(this.shaderProgramFlat, "uCenterLocation"),
+					            cameraUp: this.gl.getUniformLocation(this.shaderProgramFlat, "uCameraUp"),
+						    cameraRight: this.gl.getUniformLocation(this.shaderProgramFlat, "uCameraRight"),
 						  },
 						};
 
@@ -1359,6 +1365,13 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  );
 
 						gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
+
+						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
+						let upVector = multiplyMatrixByVector([0,1,0,0],invertMatrix(modelViewMatrix));
+						let rightVector = multiplyMatrixByVector([1,0,0,0],invertMatrix(modelViewMatrix));
+
+	gl.uniform4fv(programInfo.uniformLocations.cameraUp,upVector);
+	gl.uniform4fv(programInfo.uniformLocations.cameraRight,rightVector);
 
 						  gl.uniformMatrix4fv(
 						    programInfo.uniformLocations.modelViewMatrix,
