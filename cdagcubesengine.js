@@ -70,7 +70,7 @@
 						    void main(void) {
 
    							
-						      gl_Position = uProjectionMatrix * uModelViewMatrix * [aVertexPosition.x,aVertexPosition.y,avertexPosition.z,avertexPosition.w];
+						      gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aVertexPosition.x,aVertexPosition.y,avertexPosition.z,avertexPosition.w);
 						      vTextureCoord = aTextureCoord;
 						    }
 						  `;
