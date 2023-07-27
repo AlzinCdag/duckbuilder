@@ -68,9 +68,9 @@
 								varying highp vec3 vLighting;
 
 						    void main(void) {
-							highp vec4 vertexFlatPosition = vec4(aVertexPosition.x,aVertexPosition.y,aVertexPosition.z,aVertexPosition.w);
+							highp vec4 vertexFlatPosition = aVertexPosition+uCameraUp+uCameraRight;
    							
-						      gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
 						    }
 						  `;
