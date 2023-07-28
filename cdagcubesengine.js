@@ -1336,7 +1336,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
 						  // the center of the scene.
-						var modelViewMatrix = createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,rotX,rotY,rotZ,-rotX,0,-rotY);
+						var modelViewMatrix = createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,rotX,rotY,rotZ,0,0,0);
 						  // Now move the drawing position a bit to where we want to
 						  // start drawing the square.
 
@@ -1367,7 +1367,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						gl.uniform3f(programInfo.uniformLocations.centerLocation,0,0,-5);
+						gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
 
 						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
 						let upVector = [modelViewMatrix[1][0],modelViewMatrix[1][1],modelViewMatrix[1][2],0];//multiplyMatrixByVector4d([0,1,0,0],invertMatrix(modelViewMatrix));
