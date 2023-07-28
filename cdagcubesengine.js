@@ -794,7 +794,7 @@ var counterNumber = 0;
 						  // Now create an array of positions for the square.
 							const positions = [
 						  // Front face
-						  -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1.0,
+						  -1.0, -1.0, 0.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, -1.0, 1.0, 0.0,
 
 						];
 
