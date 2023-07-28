@@ -1371,7 +1371,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
 						let upVector = [modelViewMatrix[0][1],modelViewMatrix[1][1],modelViewMatrix[2][1]];//multiplyMatrixByVector4d([0,1,0,0],invertMatrix(modelViewMatrix));
-						let rightVector [modelViewMatrix[0][0],modelViewMatrix[1][0],modelViewMatrix[2][0]];= //multiplyMatrixByVector4d([1,0,0,0],invertMatrix(modelViewMatrix));
+						let rightVector =[modelViewMatrix[0][0],modelViewMatrix[1][0],modelViewMatrix[2][0]];= //multiplyMatrixByVector4d([1,0,0,0],invertMatrix(modelViewMatrix));
 
 	gl.uniform4fv(programInfo.uniformLocations.cameraUp,upVector);
 	gl.uniform4fv(programInfo.uniformLocations.cameraRight,rightVector);
