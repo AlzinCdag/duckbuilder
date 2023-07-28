@@ -1370,7 +1370,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						//let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTransformationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
 
-						document.getElementById("versionNumber").innerHTML = "<p> Z:"+finalPositionOrientation[2] + "</p><p> Y: " + finalPositionOrientation[1]+"</p><p> X: "+finalPositionOrientation[0]+"</p>";
+						document.getElementById("versionNumber").innerHTML = createRotationMatrix(rotX,rotY,rotZ);
 						gl.uniform3f(programInfo.uniformLocations.centerLocation,finalPositionOrientation[0],finalPositionOrientation[1],finalPositionOrientation[2]);
 
 						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
