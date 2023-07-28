@@ -1367,7 +1367,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						gl.uniform3f(programInfo.uniformLocations.centerLocation,xShift,yShift,zShift);
+						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTransformationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+
+						gl.uniform3f(programInfo.uniformLocations.centerLocation,finalPositionOrientation[0],finalPositionOrientation[1],finalPositionOrientation[2]);
 
 						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
 						let upVector = [modelViewMatrix[1][0],modelViewMatrix[1][1],modelViewMatrix[1][2],0];//multiplyMatrixByVector4d([0,1,0,0],invertMatrix(modelViewMatrix));
