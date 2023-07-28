@@ -68,7 +68,7 @@
 								varying highp vec3 vLighting;
 
 						    void main(void) {
-							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
+							highp vec4 vertexFlatPosition = vec4(0);
        							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight+aVertexPosition.y*uCameraUp;
    							
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
