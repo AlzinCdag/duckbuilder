@@ -583,7 +583,7 @@ var counterNumber = 0;
 							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird1",9,9,9,0.9);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0,0,0,0.9);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
@@ -1367,7 +1367,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([0,0,0,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						//let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
 
 						document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
