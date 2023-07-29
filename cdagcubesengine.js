@@ -1698,19 +1698,19 @@ function setNormalAttribute(gl, buffers, programInfo) {
 						function createRotationMatrix(xTheta,yTheta,zTheta) {
 							//https://en.wikipedia.org/wiki/Rotation_matrix, and the logic from http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/ involving translations and the 4d matrices
 							let matX = [[1,     0,                 0,                  0],
-							            [0,     Math.cos(xTheta), -1*Math.sin(xTheta), 0],
-													[0,     Math.sin(xTheta),  Math.cos(xTheta),   0],
+							            [0,     Math.cos(xTheta).toFixed(2), -1*Math.sin(xTheta).toFixed(2), 0],
+													[0,     Math.sin(xTheta).toFixed(2),  Math.cos(xTheta).toFixed(2),   0],
 													[0,     0,                 0,                  1]
 												];
 
-						 let matY = [[Math.cos(yTheta),   0, Math.sin(yTheta),0],
+						 let matY = [[Math.cos(yTheta).toFixed(2),   0, Math.sin(yTheta).toFixed(2),0],
 						             [0,                  1, 0,               0],
-											   [-1*Math.sin(yTheta),0, Math.cos(yTheta),0],
+											   [-1*Math.sin(yTheta).toFixed(2),0, Math.cos(yTheta).toFixed(2),0],
 											   [0,                  0, 0,               1]];
 
 						let matZ = [
-												[Math.cos(zTheta),-1*Math.sin(zTheta),0,0],
-												[Math.sin(zTheta),   Math.cos(zTheta),0,0],
+												[Math.cos(zTheta).toFixed(2),-1*Math.sin(zTheta).toFixed(2),0,0],
+												[Math.sin(zTheta).toFixed(2),   Math.cos(zTheta).toFixed(2),0,0],
 												[0,0,1,0],
 												[0,0,0,1]
 						];
