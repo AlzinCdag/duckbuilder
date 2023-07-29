@@ -583,7 +583,7 @@ var counterNumber = 0;
 							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0,0,0,0.9);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0.1,0.1,0.1,0.9);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
