@@ -1370,9 +1370,11 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+						//let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						//let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
-
+						let semiFinalPositionOrientation = multiplyMatrixByVector4d([-0,0,-20,0],invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+						let finalPositionOrientation = [xShift+semiFinalPositionOrientation[0],yShift+semiFinalPositionOrientation[1],zShift+semiFinalPositionOrientation[2],semiFinalPositionOrientation[3]];
+	
 						//document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
 						//	"<p> Level2: "+multiplyMatrixByVector4d([xShift,yShift,zShift,0],createTranslationMatrix(-0,0,-20))+"</p>"+
 						//	"<p> Level3: "+multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ))+"</p>";
