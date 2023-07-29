@@ -1654,6 +1654,9 @@ function setNormalAttribute(gl, buffers, programInfo) {
 						}
 
 
+						const decPlaces = 6;
+
+
 						//https://en.wikipedia.org/wiki/Orthographic_projection
 						//https://ogldev.org/www/tutorial12/tutorial12.html
 
@@ -1700,19 +1703,19 @@ function setNormalAttribute(gl, buffers, programInfo) {
 						function createRotationMatrix(xTheta,yTheta,zTheta) {
 							//https://en.wikipedia.org/wiki/Rotation_matrix, and the logic from http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/ involving translations and the 4d matrices
 							let matX = [[1,     0,                 0,                  0],
-							            [0,     Math.cos(xTheta).toFixed(4), -1*Math.sin(xTheta).toFixed(4), 0],
-													[0,     Math.sin(xTheta).toFixed(4),  Math.cos(xTheta).toFixed(4),   0],
+							            [0,     Math.cos(xTheta).toFixed(decPlaces), -1*Math.sin(xTheta).toFixed(decPlaces), 0],
+													[0,     Math.sin(xTheta).toFixed(decPlaces),  Math.cos(xTheta).toFixed(decPlaces),   0],
 													[0,     0,                 0,                  1]
 												];
 
-						 let matY = [[Math.cos(yTheta).toFixed(4),   0, Math.sin(yTheta).toFixed(4),0],
+						 let matY = [[Math.cos(yTheta).toFixed(decPlaces),   0, Math.sin(yTheta).toFixed(decPlaces),0],
 						             [0,                  1, 0,               0],
-											   [-1*Math.sin(yTheta).toFixed(4),0, Math.cos(yTheta).toFixed(4),0],
+											   [-1*Math.sin(yTheta).toFixed(decPlaces),0, Math.cos(yTheta).toFixed(decPlaces),0],
 											   [0,                  0, 0,               1]];
 
 						let matZ = [
-												[Math.cos(zTheta).toFixed(4),-1*Math.sin(zTheta).toFixed(4),0,0],
-												[Math.sin(zTheta).toFixed(4),   Math.cos(zTheta).toFixed(4),0,0],
+												[Math.cos(zTheta).toFixed(decPlaces),-1*Math.sin(zTheta).toFixed(decPlaces),0,0],
+												[Math.sin(zTheta).toFixed(decPlaces),   Math.cos(zTheta).toFixed(decPlaces),0,0],
 												[0,0,1,0],
 												[0,0,0,1]
 						];
@@ -1738,11 +1741,11 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 							 */
 
-							return [matrix[0][0]*vector[0]+matrix[0][1]*vector[1]+matrix[0][2]*vector[2]+matrix[0][3]*vector[3],
-							        matrix[1][0]*vector[0]+matrix[1][1]*vector[1]+matrix[1][2]*vector[2]+matrix[1][3]*vector[3],
-						          matrix[2][0]*vector[0]+matrix[2][1]*vector[1]+matrix[2][2]*vector[2]+matrix[2][3]*vector[3],
-										  matrix[3][0]*vector[0]+matrix[3][1]*vector[1]+matrix[3][2]*vector[2]+matrix[3][3]*vector[3]];
-						}
+							return [matrix[0][0].toFixed(decPlaces)*vector[0].toFixed(decPlaces)    +    matrix[0][1].toFixed(decPlaces)*vector[1].toFixed(decPlaces)    +    matrix[0][2].toFixed(decPlaces)*vector[2].toFixed(decPlaces)     +     matrix[0][3].toFixed(decPlaces)*vector[3].toFixed(decPlaces),
+							        matrix[1][0].toFixed(decPlaces)*vector[0].toFixed(decPlaces)    +    matrix[1][1].toFixed(decPlaces)*vector[1].toFixed(decPlaces)    +    matrix[1][2].toFixed(decPlaces)*vector[2].toFixed(decPlaces)     +     matrix[1][3].toFixed(decPlaces)*vector[3].toFixed(decPlaces),
+						                matrix[2][0].toFixed(decPlaces)*vector[0].toFixed(decPlaces)    +    matrix[2][1].toFixed(decPlaces)*vector[1].toFixed(decPlaces)    +    matrix[2][2].toFixed(decPlaces)*vector[2].toFixed(decPlaces)     +     matrix[2][3].toFixed(decPlaces)*vector[3].toFixed(decPlaces),
+								matrix[3][0].toFixed(decPlaces)*vector[0].toFixed(decPlaces)    +    matrix[3][1].toFixed(decPlaces)*vector[1].toFixed(decPlaces)    +    matrix[3][2].toFixed(decPlaces)*vector[2].toFixed(decPlaces)     +     matrix[3][3].toFixed(decPlaces)*vector[3].toFixed(decPlaces)];
+					}
 
 						function multiplyMatrices4d(m1,m2) {
 
