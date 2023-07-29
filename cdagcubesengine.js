@@ -584,6 +584,8 @@ var counterNumber = 0;
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0.1,0.1,0.1,0.9);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",4,4,4,0.9);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",8,8,8,0.9);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
@@ -1370,9 +1372,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						//let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
 
-						document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
-							"<p> Level2: "+multiplyMatrixByVector4d([xShift,yShift,zShift,0],createTranslationMatrix(-0,0,-20))+"</p>"+
-							"<p> Level3: "+multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ))+"</p>";
+						//document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
+						//	"<p> Level2: "+multiplyMatrixByVector4d([xShift,yShift,zShift,0],createTranslationMatrix(-0,0,-20))+"</p>"+
+						//	"<p> Level3: "+multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ))+"</p>";
 						gl.uniform3f(programInfo.uniformLocations.centerLocation,finalPositionOrientation[0],finalPositionOrientation[1],finalPositionOrientation[2]);
 
 						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
