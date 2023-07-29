@@ -1367,7 +1367,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						    convert4dMatrixToColumnMajorOrder(projectionMatrix)
 						  );
 
-						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+						let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift*xScale,yShift*yScale,zShift*zScale,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						//let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
 
 						document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
