@@ -586,6 +586,7 @@ var counterNumber = 0;
 							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0.1,0.1,0.1,0.9);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird1",4,4,4,0.9);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird1",8,8,8,0.9);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",4,8,4,0.9);
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
