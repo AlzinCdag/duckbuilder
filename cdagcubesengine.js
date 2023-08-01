@@ -579,7 +579,7 @@ var counterNumber = 0;
 						scene.easyInitializeTextureCubeType("bluePattern.png","testCube");
 							scene.easyInitializeAnimation("BirdSprite.png","BirdTestCube",643,768,17);
 							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
-						scene.addCubeToScene("testCube","firstCube",-9,9,9);
+						scene.addCubeToScene("testCube","firstCube",-4,5,5);
 							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
@@ -604,9 +604,9 @@ var counterNumber = 0;
 							
 
 							//cursors
-							let cursorX = -9;
-							let cursorY = -9;
-							let cursorZ = 9;
+							let cursorX = -4;
+							let cursorY = -4;
+							let cursorZ = 5;
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
@@ -1233,7 +1233,7 @@ function initFlatNormalBuffer(gl) {
 
 
 
-						function drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShift,yShift,zShift) {
+						function drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShifta,yShifta,zShifta) {
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -1244,6 +1244,14 @@ function initFlatNormalBuffer(gl) {
 						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 						  const zNear = -12;
 						  const zFar = 100.0;
+
+							//xShift, yShift, and zShift, to snap to grid, are in odd values from -9 to 9.
+							//xShifta, etc. must be integers from -4 to 5, including zero.
+							//-4*2-1 = -9
+							//5*2-1 = 9
+						let xShift = xShifta*2-1;
+						let yShift = yShifta*2-1;
+						let zShift = zShifta*2-1;
 							//const xShift = -0.0;
 							//const yShift = 0.0;
 							//const zShift = -5.0;
@@ -1322,7 +1330,7 @@ function initFlatNormalBuffer(gl) {
 						gl.disable(gl.CULL_FACE);
 }
 
-
+/*xShifta, yShifta, and zShifta values: to center in each cube, integer values from -4 to 5, including zero*/
 function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShifta,yShifta,zShifta) {
 						//document.getElementById("versionNumber").innerHTML = "SceneX: "+ rotX + " sceneY: "+ rotY +" sceneZ "+rotZ;
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
