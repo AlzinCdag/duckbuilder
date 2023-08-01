@@ -69,7 +69,7 @@
 
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
-       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.5+aVertexPosition.y*uCameraUp*0.5;
+       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.25+aVertexPosition.y*uCameraUp*0.25;
    							
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
@@ -1323,12 +1323,16 @@ function initFlatNormalBuffer(gl) {
 }
 
 
-function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShift,yShift,zShift) {
+function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShifta,yShifta,zShifta) {
 						//document.getElementById("versionNumber").innerHTML = "SceneX: "+ rotX + " sceneY: "+ rotY +" sceneZ "+rotZ;
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
 						  gl.depthFunc(gl.LEQUAL); // Near things obscure far things
+
+	xShift = xShifta/2;
+	yShift = yShifta/2;
+	zShift = zShifta/2;
 
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
