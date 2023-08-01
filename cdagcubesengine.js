@@ -52,7 +52,7 @@
 						    }
 						  `;
 
-//inspiration from http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
+//inspiration from http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/. Also, some code pertaining to this is practically taken from this site, but fortunately the site licenses it under the WTF license.
 										const vsSourceFlat = `
 						    attribute vec4 aVertexPosition;
 						    attribute vec2 aTextureCoord;
@@ -69,7 +69,7 @@
 
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
-       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight+aVertexPosition.y*uCameraUp;
+       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight/3+aVertexPosition.y*uCameraUp/3;
    							
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
