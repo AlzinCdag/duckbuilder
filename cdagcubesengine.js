@@ -1330,9 +1330,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
 						  gl.depthFunc(gl.LEQUAL); // Near things obscure far things
 
-	let xShift = xShifta/2;
-	let yShift = yShifta/2;
-	let zShift = zShifta/2;
+	let xShift = (xShifta - Math.sign(xShifta)*0.5)/2;
+	let yShift = (yShifta- Math.sign(yShifta)*0.5)/2;
+	let zShift = (zShifta- Math.sign(zShifta)*0.5)/2;
 
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
