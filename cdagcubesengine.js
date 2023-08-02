@@ -308,7 +308,7 @@ const fsSourceFlat = `
 								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
-								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xCoord,yCoord,zCoord);}]);
+								this.listOfCubesInScene.push([id,(xC,yC,zC)=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xC,yC,zC);},,xCoord,yCoord,zCoord]);
 
 							}
 
@@ -316,7 +316,7 @@ const fsSourceFlat = `
 								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
-								this.listOfCubesInScene.push([id,()=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xCoord,yCoord,zCoord);}]);
+								this.listOfCubesInScene.push([id,(xC,yC,zC)=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xC,yC,zC);},xCoord,yCoord,zCoord]);
 							}
 
 						addFlatThingToSceneSize(typeName,id,xCoord,yCoord,zCoord,size) {
@@ -333,6 +333,16 @@ const fsSourceFlat = `
 							this.listOfFlatThingsInScene[flatThingIndex][2] = xCoord;
 							this.listOfFlatThingsInScene[flatThingIndex][3] = yCoord;
 							this.listOfFlatThingsInScene[flatThingIndex][4] = zCoord;
+							}
+						}
+
+						changePositionOfCube(id,xCoord,yCoord,zCoord) {
+							const cubeIndex = this.listOfCubesInScene.findIndex(element=>element[0] == id);
+
+							if (cubeIndex != -1) {
+							this.listOfCubesInScene[cubeIndex][2] = xCoord;
+							this.listOfCubesInScene[cubeIndex][3] = yCoord;
+							this.listOfCubesInScene[cubeIndex][4] = zCoord;
 							}
 						}
 								
@@ -599,7 +609,7 @@ var counterNumber = 0;
 						
 							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
-								scene.listOfCubesInScene[i][1]();
+								scene.listOfCubesInScene[i][1](scene.listOfCubesInScene[i][2],scene.listOfCubesInScene[i][3],scene.listOfCubesInScene[i][4]);
 							}
 							
 
@@ -619,7 +629,7 @@ var counterNumber = 0;
 
 							for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
 							{
-								scene.listOfFlatThingsInScene[i][1]();
+								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
 							}
 
 
