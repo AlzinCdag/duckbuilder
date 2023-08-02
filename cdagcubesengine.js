@@ -611,6 +611,10 @@ var counterNumber = 0;
 							{
 								scene.listOfCubesInScene[i][1](scene.listOfCubesInScene[i][2],scene.listOfCubesInScene[i][3],scene.listOfCubesInScene[i][4]);
 							}
+							for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
+							{
+								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
+							}
 							
 
 							//cursors
