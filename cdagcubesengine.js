@@ -323,7 +323,7 @@ const fsSourceFlat = `
 								const type = this.listOfTypesOfFlatThings.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
-								this.listOfFlatThingsInScene.push([id,()=>{drawFlatObject(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xCoord,yCoord,zCoord);},xCoord,yCoord,zCoord]);
+								this.listOfFlatThingsInScene.push([id,(xC,yC,zC)=>{drawFlatObject(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,size,size,size,xC,yC,zC);},xCoord,yCoord,zCoord]);
 							}
 
 						changePositionOfFlatThing(id,xCoord,yCoord,zCoord) {
@@ -625,7 +625,7 @@ var counterNumber = 0;
 
 														for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
-								scene.listOfCubesInScene[i][1]();
+								scene.listOfCubesInScene[i][1](scene.listOfCubesInScene[i][2],scene.listOfCubesInScene[i][3],scene.listOfCubesInScene[i][4]);
 							}
 							
 
