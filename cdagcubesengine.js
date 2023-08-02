@@ -308,7 +308,7 @@ const fsSourceFlat = `
 								const type = this.listOfCubeTypes.find(element=>element[0] == typeName);
 
 								//if (type != undefined)
-								this.listOfCubesInScene.push([id,(xC,yC,zC)=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xC,yC,zC);},,xCoord,yCoord,zCoord]);
+								this.listOfCubesInScene.push([id,(xC,yC,zC)=>{drawOpaqueCube(this.gl, type[1].programInfo, type[1].buffers, sceneRotX,sceneRotY,sceneRotZ,type[1].texture,10.2,0.8,0.8,0.8,xC,yC,zC);},xCoord,yCoord,zCoord]);
 
 							}
 
