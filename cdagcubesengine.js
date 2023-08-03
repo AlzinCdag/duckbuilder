@@ -621,15 +621,14 @@ var counterNumber = 0;
 							let cursorX = -4;
 							let cursorY = -4;
 							let cursorZ = 5;
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
+							//drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
+							//drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
+							//drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
 					
 							
 							//drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
 							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
-							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
-							then = now;
+			
 
 				
 
@@ -663,7 +662,8 @@ var counterNumber = 0;
 							else{
 							counterNumber++;
 							}
-
+							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
+							then = now;
 
 						  requestAnimationFrame(render);
 						}
