@@ -1358,7 +1358,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
-						  gl.depthFunc(gl.LEQUAL); // Near things obscure far things
+						  gl.depthFunc(gl.GEQUAL); // Near things obscure far things
 
 	let xShift = (xShifta - 0.5)/2;
 	let yShift = (yShifta- 0.5)/2;
