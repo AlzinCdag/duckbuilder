@@ -665,6 +665,11 @@ var counterNumber = 0;
 							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
 							then = now;
 
+						for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
+							{
+								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
+							}
+
 						  requestAnimationFrame(render);
 						}
 						requestAnimationFrame(render);
@@ -1352,8 +1357,8 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						//document.getElementById("versionNumber").innerHTML = "SceneX: "+ rotX + " sceneY: "+ rotY +" sceneZ "+rotZ;
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
-						  //gl.enable(gl.DEPTH_TEST); // Enable depth testing
-						  //gl.depthFunc(gl.LEQUAL); // Near things obscure far things
+						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
+						  gl.depthFunc(gl.LEQUAL); // Near things obscure far things
 
 	let xShift = (xShifta - 0.5)/2;
 	let yShift = (yShifta- 0.5)/2;
