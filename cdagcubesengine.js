@@ -196,7 +196,7 @@ const fsSourceFlat = `
 						  `;
 
 
-							const pointsInGridArray = 792;
+							const pointsInGridArray = 792*2;
 
 						let sceneRotX = 0;
 						let sceneRotY = 0;
@@ -846,43 +846,67 @@ var counterNumber = 0;
 
 							for (let i = -5; i<=5; i++) {
 								positions.push(i/5,-1,-1);
+								positions.push(i/5,0,-1);
+								positions.push(i/5,0,-1);
 								positions.push(i/5,1,-1);
 
 								positions.push(i/5,1,-1);
+								positions.push(i/5,1,0);
+								positions.push(i/5,1,0);
 								positions.push(i/5,1,1);
 
 								positions.push(i/5,1,1);
+								positions.push(i/5,0,1);
+								positions.push(i/5,0,1);
 								positions.push(i/5,-1,1);
 
 								positions.push(i/5,-1,1);
+								positions.push(i/5,-1,0);
+								positions.push(i/5,-1,0);
 								positions.push(i/5,-1,-1);
 
 
 
 								positions.push(-1,i/5,-1);
+								positions.push(0,i/5,-1);
+								positions.push(0,i/5,-1);
 								positions.push(1,i/5,-1);
 
 								positions.push(1,i/5,-1);
+								positions.push(1,i/5,0);
+								positions.push(1,i/5,0);
 								positions.push(1,i/5,1);
 
 								positions.push(1,i/5,1);
+								positions.push(0,i/5,1);
+								positions.push(0,i/5,1);
 								positions.push(-1,i/5,1);
 
 								positions.push(-1,i/5,1);
+								positions.push(-1,i/5,0);
+								positions.push(-1,i/5,0);
 								positions.push(-1,i/5,-1);
 
 
 
 								positions.push(-1,-1,i/5);
+								positions.push(0,-1,i/5);
+								positions.push(0,-1,i/5);
 								positions.push(1,-1,i/5);
 
 								positions.push(1,-1,i/5);
+								positions.push(1,0,i/5);
+								positions.push(1,0,i/5);
 								positions.push(1,1,i/5);
 
 								positions.push(1,1,i/5);
+								positions.push(0,1,i/5);
+								positions.push(0,1,i/5);
 								positions.push(-1,1,i/5);
 
 								positions.push(-1,1,i/5);
+								positions.push(-1,0,i/5);
+								positions.push(-1,0,i/5);
 								positions.push(-1,-1,i/5);
 
 
