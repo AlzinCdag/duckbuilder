@@ -180,7 +180,7 @@
 									gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
 						    }
 						  `;
-
+//The if-discard statement from https://stackoverflow.com/questions/8509051/is-discard-bad-for-program-performance-in-opengl
 const fsSourceFlat = `
 						    varying highp vec2 vTextureCoord;
 						    varying highp vec3 vLighting;
@@ -191,7 +191,11 @@ const fsSourceFlat = `
 
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
+	    						if (texelColor.a == 0)
+	   							{discard;}
 									gl_FragColor = vec4(texelColor.rgb, texelColor.a);
+
+  							
 						    }
 						  `;
 
@@ -1387,9 +1391,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  gl.depthFunc(gl.GEQUAL); // Near things obscure far things
 
 	//inspiration from https://www.chinedufn.com/webgl-particle-effect-billboard-tutorial/
-	//https://stackoverflow.com/questions/8509051/is-discard-bad-for-program-performance-in-opengl
+	
 	gl.enable(gl.BLEND);
-	gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+	gl.blendFunc(gl.ONE,gl.ZERO);
 
 	let xShift = (xShifta - 0.5)/2;
 	let yShift = (yShifta- 0.5)/2;
