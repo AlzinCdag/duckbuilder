@@ -669,11 +669,7 @@ var counterNumber = 0;
 							{
 								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
 							}
-							// Set the backbuffer's alpha to 1.0 // this code taken verbatim from https://webglfundamentals.org/webgl/lessons/webgl-and-alpha.html
 							
-gl.clearColor(1, 1, 1, 1);
-gl.colorMask(false, false, false, true);
-gl.clear(gl.COLOR_BUFFER_BIT);
 
 						  requestAnimationFrame(render);
 
