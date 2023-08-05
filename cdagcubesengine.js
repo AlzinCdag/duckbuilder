@@ -1386,6 +1386,10 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
 						  gl.depthFunc(gl.GEQUAL); // Near things obscure far things
 
+	//inspiration from https://www.chinedufn.com/webgl-particle-effect-billboard-tutorial/
+	gl.enable(gl.BLEND);
+	gl.blendFunc(gl.ZERO,gl.ONE);
+
 	let xShift = (xShifta - 0.5)/2;
 	let yShift = (yShifta- 0.5)/2;
 	let zShift = (zShifta-0.5)/2;
@@ -1481,6 +1485,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 							}
 					
 						gl.disable(gl.CULL_FACE);
+						gl.disable(gl.BLEND);
 }
 
 
