@@ -1387,8 +1387,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  gl.depthFunc(gl.GEQUAL); // Near things obscure far things
 
 	//inspiration from https://www.chinedufn.com/webgl-particle-effect-billboard-tutorial/
+	//https://stackoverflow.com/questions/8509051/is-discard-bad-for-program-performance-in-opengl
 	gl.enable(gl.BLEND);
-	gl.blendFunc(gl.ONE,gl.ZERO);
+	gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
 
 	let xShift = (xShifta - 0.5)/2;
 	let yShift = (yShifta- 0.5)/2;
