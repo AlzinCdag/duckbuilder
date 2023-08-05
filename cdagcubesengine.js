@@ -72,6 +72,7 @@
        							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.25+aVertexPosition.y*uCameraUp*0.25;
    							
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
+	    					      gl_Position.z = 1;
 						      vTextureCoord = aTextureCoord;
 						    }
 						  `;
