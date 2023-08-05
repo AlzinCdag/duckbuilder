@@ -1388,7 +1388,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 	//inspiration from https://www.chinedufn.com/webgl-particle-effect-billboard-tutorial/
 	gl.enable(gl.BLEND);
-	gl.blendFunc(gl.ZERO,gl.ONE);
+	gl.blendFunc(gl.ONE,gl.ZERO);
 
 	let xShift = (xShifta - 0.5)/2;
 	let yShift = (yShifta- 0.5)/2;
