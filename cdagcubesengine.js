@@ -73,6 +73,7 @@
    							
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
+	    						vTextureCoord = vec2(gl_Position.z,gl_Position.z);
 						    }
 						  `;
 
@@ -194,7 +195,7 @@ const fsSourceFlat = `
 							//if (texelColor.a < 0.1)
        							//	{discard;}
 							//		gl_FragColor = vec4(texelColor.rgb, texelColor.a);
-       							gl_FragColor = vec4(gl_Position.z,gl_Position.z,gl_Position.z, 1.0);
+       							gl_FragColor = vec4(vTextureCoord.x,vTextureCoord.x,vTextureCoord.x, 1.0);
 	 								
 
   							
