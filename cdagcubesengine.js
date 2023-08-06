@@ -1441,7 +1441,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 						//let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						//let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
-						let semiFinalPositionOrientation = multiplyMatrixByVector4d([-0,0,-30,0],invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+						let semiFinalPositionOrientation = multiplyMatrixByVector4d([-0,0,0,0],invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						let finalPositionOrientation = [xShift+semiFinalPositionOrientation[0],yShift+semiFinalPositionOrientation[1],zShift+semiFinalPositionOrientation[2],semiFinalPositionOrientation[3]];
 	
 						//document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
@@ -1761,13 +1761,13 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 						translation matrix*rotation matrix * scale matrix*/
 						function createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
-						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
+						return multiplyMatrices4d(createTranslationMatrix(-0,0,0),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
 
 						}
 
 						//debugging inspiration from, but not taking anything directly from, https://community.khronos.org/t/rotation-after-translation/77215/5
 						function createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
-						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
+						return multiplyMatrices4d(createTranslationMatrix(-0,0,0),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
 
 						}
 
