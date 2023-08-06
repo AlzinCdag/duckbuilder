@@ -1754,7 +1754,7 @@ function setNormalAttribute(gl, buffers, programInfo) {
 							];
 
 							let shift = createTranslationMatrix(-0,0,-20);
-							return multiplyMatrices4d(shift,matToRet);
+							return multiplyMatrices4d(matToRet,shift);
 							}
 
 						//http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
