@@ -194,7 +194,7 @@ const fsSourceFlat = `
 							//if (texelColor.a < 0.1)
        							//	{discard;}
 							//		gl_FragColor = vec4(texelColor.rgb, texelColor.a);
-       							gl_FragColor = vec4(gl_Position.z,gl_Position.z,gl_Position.z, 1);
+       							gl_FragColor = vec4(gl_Position.z,gl_Position.z,gl_Position.z, 1.0);
 	 								
 
   							
