@@ -1391,7 +1391,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
-						  gl.depthFunc(gl.GEQUAL); // Near things obscure far things
+						  gl.depthFunc(gl.LEQUAL); // Near things obscure far things
 
 	//inspiration from https://www.chinedufn.com/webgl-particle-effect-billboard-tutorial/
 	
@@ -1444,7 +1444,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 						//let finalPositionOrientation = multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						//let finalPositionOrientation = multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ));
-						let semiFinalPositionOrientation = multiplyMatrixByVector4d([-0,0,-20,0],invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
+						let semiFinalPositionOrientation = multiplyMatrixByVector4d([-0,0,20,0],invertMatrix(createRotationMatrix(rotX,rotY,rotZ)));
 						let finalPositionOrientation = [xShift+semiFinalPositionOrientation[0],yShift+semiFinalPositionOrientation[1],zShift+semiFinalPositionOrientation[2],semiFinalPositionOrientation[3]];
 	
 						//document.getElementById("versionNumber").innerHTML = "<p> Level1: "+multiplyMatrixByVector4d(multiplyMatrixByVector4d(multiplyMatrixByVector4d([xShift,yShift,zShift,0],createRotationMatrix(rotX,rotY,rotZ)),createTranslationMatrix(-0,0,-20)),invertMatrix(createRotationMatrix(rotX,rotY,rotZ)))+"</p>"+
