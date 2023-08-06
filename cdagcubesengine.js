@@ -69,7 +69,7 @@
 
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
-       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.25+aVertexPosition.y*uCameraUp*0.25;
+       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.125+aVertexPosition.y*uCameraUp*0.125;
 	  						//vertexFlatPosition = vec4(vertexFlatPosition.x,vertexFlatPosition.y,uCenterLocation.z,vertexFlatPosition.w);
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
@@ -1389,9 +1389,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 
 
-	let xShift = (xShifta - 0.5)/4;
-	let yShift = (yShifta- 0.5)/4;
-	let zShift = (zShifta-0.5)/4;
+	let xShift = (xShifta - 0.5)/8;
+	let yShift = (yShifta- 0.5)/8;
+	let zShift = (zShifta-0.5)/8;
 
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
