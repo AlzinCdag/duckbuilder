@@ -70,7 +70,7 @@
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
        							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.25+aVertexPosition.y*uCameraUp*0.25;
-	  						vertexFlatPosition = vec4(vertexFlatPosition.x,vertexFlatPosition.y,uCenterLocation.z,vertexFlatPosition.w);
+	  						//vertexFlatPosition = vec4(vertexFlatPosition.x,vertexFlatPosition.y,uCenterLocation.z,vertexFlatPosition.w);
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
 	    						vTextureCoord = vec2(gl_Position.z,gl_Position.z);
@@ -650,12 +650,12 @@ var counterNumber = 0;
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
-
+/**
 							for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
 							{
 								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
 							}
-
+*/
 					
 							
 							//drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
