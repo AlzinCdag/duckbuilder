@@ -1389,9 +1389,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 
 
-	let xShift = 0;//(xShifta - 0.5)/2;
-	let yShift = 0;//(yShifta- 0.5)/2;
-	let zShift = 0;//(zShifta-0.5)/2;
+	let xShift = -1;//(xShifta - 0.5)/2;
+	let yShift = -1;//(yShifta- 0.5)/2;
+	let zShift = -1;//(zShifta-0.5)/2;
 
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
