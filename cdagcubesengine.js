@@ -1746,12 +1746,15 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 
 						function createPerspectiveProjectionMatrix(left,right,bottom,top,near,far,aspectRatio) {
-							return [
+							let matToRet = [
 							[1/(aspectRatio)*near, 0,              0,              0],
 							[0,              (near), 0,              0],
 							[0,              0,              (near),  -1],
 							[0,              0,              (near),                0]
 							];
+
+							let shift = createTranslationMatrix(-0,0,-20);
+							return multiplyMatrices4d(shift,matToRet);
 							}
 
 						//http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
