@@ -191,9 +191,10 @@ const fsSourceFlat = `
 
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
-							if (texelColor.a < 0.1)
-       								{discard;}
-									gl_FragColor = vec4(texelColor.rgb, texelColor.a);
+							//if (texelColor.a < 0.1)
+       							//	{discard;}
+							//		gl_FragColor = vec4(texelColor.rgb, texelColor.a);
+       							gl_FragColor = vec4(gl_Position.z,gl_Position.z,gl_Position.z, 1);
 	 								
 
   							
