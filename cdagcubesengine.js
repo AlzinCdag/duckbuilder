@@ -600,8 +600,8 @@ var counterNumber = 0;
 							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird1",5,5,5,1);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird2",5,5,3,1);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0,0.5,0.5,1);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird2",0,-0.5,-0.5,1);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird3",5,5,1,1);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird4",5,5,-1,1);
 						//scene.removeCubeFromScene("firstCube");
@@ -1389,9 +1389,9 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 
 
-	let xShift = 0;//0.01*Math.sin(Date.now()/1000);//(xShifta - 0.5)/2;
-	let yShift = 0;//0.1*Math.sin(Date.now()/1000);//(yShifta- 0.5)/2;
-	let zShift = 0.5+Math.sin(Date.now()/1000);//(zShifta-0.5)/2;
+	let xShift = xShifta;//0.01*Math.sin(Date.now()/1000);//(xShifta - 0.5)/2;
+	let yShift = yShifta;//0.1*Math.sin(Date.now()/1000);//(yShifta- 0.5)/2;
+	let zShift = zShifta;//(zShifta-0.5)/2;
 
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
