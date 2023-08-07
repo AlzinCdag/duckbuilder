@@ -602,8 +602,10 @@ var counterNumber = 0;
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0,0.5,0.5,1);
 							scene.addFlatThingToSceneSize("BirdTestCube","bird2",0,-0.5,-0.5,1);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird3",5,5,1,1);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird4",5,5,-1,1);
+
+							for (let i = -10; i<10; i++) {
+							scene.addFlatThingToSceneSize("BirdTestCube","bird"+String(i),0,i/100,i/100,1);
+							}
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
