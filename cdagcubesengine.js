@@ -1391,7 +1391,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 	let xShift = 0;//0.01*Math.sin(Date.now()/1000);//(xShifta - 0.5)/2;
 	let yShift = 0;//0.1*Math.sin(Date.now()/1000);//(yShifta- 0.5)/2;
-	let zShift = -20+0.01*Math.sin(Date.now()/1000);//(zShifta-0.5)/2;
+	let zShift = 0.01*Math.sin(Date.now()/1000);//(zShifta-0.5)/2;
 
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -1444,8 +1444,8 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						gl.uniform3f(programInfo.uniformLocations.centerLocation,finalPositionOrientation[0],finalPositionOrientation[1],finalPositionOrientation[2]);
 
 						//http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/billboards/
-						let upVector = [modelViewMatrix[1][0],modelViewMatrix[1][1],modelViewMatrix[1][2],0];//multiplyMatrixByVector4d([0,1,0,0],invertMatrix(modelViewMatrix));
-						let rightVector = [modelViewMatrix[0][0],modelViewMatrix[0][1],modelViewMatrix[0][2],0]; //multiplyMatrixByVector4d([1,0,0,0],invertMatrix(modelViewMatrix));
+						let upVector = [modelViewMatrix[1][0]/20,modelViewMatrix[1][1]/20,modelViewMatrix[1][2]/20,0];//multiplyMatrixByVector4d([0,1,0,0],invertMatrix(modelViewMatrix));
+						let rightVector = [modelViewMatrix[0][0]/20,modelViewMatrix[0][1]/20,modelViewMatrix[0][2]/20,0]; //multiplyMatrixByVector4d([1,0,0,0],invertMatrix(modelViewMatrix));
 
 	gl.uniform4fv(programInfo.uniformLocations.cameraUp,upVector);
 	gl.uniform4fv(programInfo.uniformLocations.cameraRight,rightVector);
