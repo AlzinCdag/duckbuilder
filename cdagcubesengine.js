@@ -1749,7 +1749,7 @@ function setNormalAttribute(gl, buffers, programInfo) {
 							[0,              0,              (near),                0]
 							];
 
-							let shift = createTranslationMatrix(-0,0,-20);
+							let shift = createTranslationMatrix(-0,0,0);
 							return multiplyMatrices4d(matToRet,shift);
 							}
 
@@ -1760,13 +1760,13 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 						translation matrix*rotation matrix * scale matrix*/
 						function createTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
-						return multiplyMatrices4d(createTranslationMatrix(-0,0,0),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
+						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
 
 						}
 
 						//debugging inspiration from, but not taking anything directly from, https://community.khronos.org/t/rotation-after-translation/77215/5
 						function createFlatTransformationMatrix(xShift,yShift,zShift,xScale,yScale,zScale,xTheta,yTheta,zTheta,inModelXTheta,inModelYTheta,inModelZTheta) {
-						return multiplyMatrices4d(createTranslationMatrix(-0,0,0),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
+						return multiplyMatrices4d(createTranslationMatrix(-0,0,-20),multiplyMatrices4d(createRotationMatrix(xTheta,yTheta,zTheta),multiplyMatrices4d(createTranslationMatrix(xShift,yShift,zShift),multiplyMatrices4d(createRotationMatrix(inModelXTheta,inModelYTheta,inModelZTheta),createScaleMatrix(xScale,yScale,zScale)))));
 
 						}
 
