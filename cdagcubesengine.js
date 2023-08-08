@@ -165,7 +165,7 @@
 							varying highp vec3 vLighting;
 					void main() {
 						//gl_FragColor = vec4(vColor.rgb*vLighting,vColor.a);
-      						gl_FragColor = vec4(vColor.x*40.0,0.5,0.0, 1.0);
+      						gl_FragColor = vec4(vColor.x,0.5,0.0, 1.0);
 					}
 				`;
 
@@ -196,7 +196,7 @@ const fsSourceFlat = `
 							//if (texelColor.a < 0.1)
        							//	{discard;}
 							//		gl_FragColor = vec4(texelColor.rgb, texelColor.a);
-       							gl_FragColor = vec4(vTextureCoord.x*40.0,0.5,0.0, 1.0);
+       							gl_FragColor = vec4(vTextureCoord.x,0.5,0.0, 1.0);
 	 								
 
   							
