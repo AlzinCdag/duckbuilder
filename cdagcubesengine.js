@@ -1212,7 +1212,7 @@ const far = 80;
 								const xScale =10;
 								const yScale =10;
 								const zScale = 10;
-								const projectionMatrix = createOrthographicProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
+								const projectionMatrix = createHybridProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 							//document.getElementById('yourShips').innerHTML += projectionMatrix;
 								// Set the drawing position to the "identity" point, which is
 								// the center of the scene.
@@ -1311,7 +1311,7 @@ const far = 80;
 							//const xScale =1;
 							//const yScale =1;
 							//const zScale = 1;
-						  const projectionMatrix = createOrthographicProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
+						  const projectionMatrix = createHybridProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
 						  // the center of the scene.
@@ -1402,7 +1402,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 						  const zNear = -10;
 						  const zFar = far;
-						  const projectionMatrix = createOrthographicProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
+						  const projectionMatrix = createHybridProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
 						  // the center of the scene.
@@ -1515,7 +1515,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 	const xScale =10;
 	const yScale =10;
 	const zScale = 10;
-	const projectionMatrix = createOrthographicProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
+	const projectionMatrix = createHybridProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 //document.getElementById('yourShips').innerHTML += projectionMatrix;
 	// Set the drawing position to the "identity" point, which is
 	// the center of the scene.
@@ -1753,6 +1753,19 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 							let shift = createTranslationMatrix(-0,0,0);
 							return multiplyMatrices4d(matToRet,shift);
+							}
+
+						// inspired by https://community.khronos.org/t/the-precision-issue-in-16-bit-z-buffer/68409/13, replace the third row from perspective with orthographic
+						function createHybridProjectionMatrix(left,right,bottom,top,near,far,aspectRatio) {
+							let matToRet = [
+							[1/(aspectRatio)*near, 0,              0,              0],
+							[0,                    (near),         0,              0],
+							[0,              0,              -2/(far-near),   -(far+near)/(far-near)],
+							[0,                    0,              (near),         0]
+							];
+
+							
+							return matToRet;
 							}
 
 						//http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
