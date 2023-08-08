@@ -69,7 +69,7 @@
 
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
-       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.125+aVertexPosition.y*uCameraUp*0.125;
+       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight+aVertexPosition.y*uCameraUp;
 	  						//vertexFlatPosition = vec4(vertexFlatPosition.x,vertexFlatPosition.y,uCenterLocation.z,vertexFlatPosition.w);
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
@@ -1203,7 +1203,7 @@ function initFlatNormalBuffer(gl) {
 
 								const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 								const zNear = -10;
-								const zFar = 100.0;
+								const zFar = 10.0;
 								const xShift = -0.0;
 								const yShift = 0.0;
 								const zShift = -5.0;
@@ -1294,7 +1294,7 @@ function initFlatNormalBuffer(gl) {
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 						  const zNear = -12;
-						  const zFar = 100.0;
+						  const zFar = 10.0;
 
 							//xShift, yShift, and zShift, to snap to grid, are in odd values from -9 to 9.
 							//xShifta, etc. must be integers from -4 to 5, including zero.
@@ -1398,8 +1398,8 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 						  // Clear the canvas before we start drawing on it.
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
-						  const zNear = -12;
-						  const zFar = 100.0;
+						  const zNear = -10;
+						  const zFar = 10.0;
 						  const projectionMatrix = createPerspectiveProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
@@ -1506,7 +1506,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 
 	const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 	const zNear = -10;
-	const zFar = 100.0;
+	const zFar = 10.0;
 	const xShift = -0.0;
 	const yShift = 0.0;
 	const zShift = 0.0;
