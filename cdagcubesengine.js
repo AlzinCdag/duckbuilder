@@ -70,7 +70,7 @@
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
        							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight+aVertexPosition.y*uCameraUp;
-	  						//vertexFlatPosition = vec4(vertexFlatPosition.x,vertexFlatPosition.y,uCenterLocation.z,vertexFlatPosition.w);
+	  						vertexFlatPosition = vec4(vertexFlatPosition.x,vertexFlatPosition.y,uCenterLocation.z/10.0,vertexFlatPosition.w);
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 						      vTextureCoord = aTextureCoord;
 	    						vTextureCoord = vec2(gl_Position.z,gl_Position.z);
@@ -665,13 +665,15 @@ var counterNumber = 0;
 							else{
 							counterNumber++;
 							}
-							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
-							then = now;
-
+							
 						for (let i = 0; i < scene.listOfFlatThingsInScene.length; i++)
 							{
 								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
 							}
+
+							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
+							then = now;
+
 							
 
 						  requestAnimationFrame(render);
