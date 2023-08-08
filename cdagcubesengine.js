@@ -1195,7 +1195,7 @@ function initFlatNormalBuffer(gl) {
 						  gl.enableVertexAttribArray(programInfo.attribLocations.vertexColor);
 						}
 
-const far = 80;
+const far = 20;
 
 							function drawTransparentObjects(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale) {
 								gl.depthFunc(gl.LEQUAL); // Near things obscure far things
