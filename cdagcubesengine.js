@@ -140,7 +140,7 @@
 								);
 
 								gl_Position = uProjectionMatrix * uModelViewMatrix *transform* aVertexPosition;
-								vColor = aVertexColor;
+								vColor = vec4(gl_Position.z,aVertexColor.yzw);
 
 								highp vec3 ambientLight = vec3(0.3, 0.3, 0.3);
 							highp vec3 directionalLightColor = vec3(1, 1, 1);
@@ -165,7 +165,8 @@
 							varying lowp vec4 vColor;
 							varying highp vec3 vLighting;
 					void main() {
-						gl_FragColor = vec4(vColor.rgb*vLighting,vColor.a);
+						//gl_FragColor = vec4(vColor.rgb*vLighting,vColor.a);
+      						gl_FragColor = vec4(vColor.x,0.5,0.0, 1.0);
 					}
 				`;
 
@@ -179,6 +180,7 @@
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
 									gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
+	
 						    }
 						  `;
 //The if-discard statement from https://stackoverflow.com/questions/8509051/is-discard-bad-for-program-performance-in-opengl
