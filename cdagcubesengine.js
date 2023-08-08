@@ -1192,6 +1192,8 @@ function initFlatNormalBuffer(gl) {
 						  gl.enableVertexAttribArray(programInfo.attribLocations.vertexColor);
 						}
 
+const far = 80;
+
 							function drawTransparentObjects(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale) {
 								gl.depthFunc(gl.LEQUAL); // Near things obscure far things
 								gl.enable(gl.CULL_FACE);
@@ -1203,7 +1205,7 @@ function initFlatNormalBuffer(gl) {
 
 								const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 								const zNear = -10;
-								const zFar = 10.0;
+								const zFar = far;
 								const xShift = -0.0;
 								const yShift = 0.0;
 								const zShift = -5.0;
@@ -1294,7 +1296,7 @@ function initFlatNormalBuffer(gl) {
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 						  const zNear = -12;
-						  const zFar = 10.0;
+						  const zFar = far;
 
 							//xShift, yShift, and zShift, to snap to grid, are in odd values from -9 to 9.
 							//xShifta, etc. must be integers from -4 to 5, including zero.
@@ -1399,7 +1401,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 //gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 						  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 						  const zNear = -10;
-						  const zFar = 10.0;
+						  const zFar = far;
 						  const projectionMatrix = createOrthographicProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 						//document.getElementById('yourShips').innerHTML += projectionMatrix;
 						  // Set the drawing position to the "identity" point, which is
@@ -1506,7 +1508,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 
 	const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 	const zNear = -10;
-	const zFar = 10.0;
+	const zFar = far;
 	const xShift = -0.0;
 	const yShift = 0.0;
 	const zShift = 0.0;
