@@ -73,7 +73,7 @@
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 	    						gl_Position = vec4(gl_Position.x,gl_Position.y,gl_Position.z*0.5,gl_Position.w);
 						      vTextureCoord = aTextureCoord;
-	    						vTextureCoord = vec2(gl_Position.x,gl_Position.y);
+	    						//vTextureCoord = vec2(gl_Position.x,gl_Position.y);
 						    }
 						  `;
 
