@@ -524,7 +524,7 @@ var counterNumber = 0;
 						  gl.clear(gl.COLOR_BUFFER_BIT);
 
 							//https://xem.github.io/articles/webgl-guide-part-2.html#1a
-							gl.enable(gl.BLEND);
+							//gl.enable(gl.BLEND);
 							gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
 							const shaderProgramTex = initShaderProgram(gl, vsSourceTex, fsSourceTex);
@@ -607,6 +607,7 @@ var counterNumber = 0;
 							for (let i = -10; i<10; i++) {
 							scene.addFlatThingToSceneSize("BirdTestCube","bird"+String(i),0,i/100,i/100,1);
 							}
+							
 						//scene.removeCubeFromScene("firstCube");
 
 						// Draw the scene repeatedly
@@ -1491,7 +1492,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 							}
 					
 						gl.disable(gl.CULL_FACE);
-						gl.disable(gl.BLEND);
+						//gl.disable(gl.BLEND);
 }
 
 
