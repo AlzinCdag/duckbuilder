@@ -605,7 +605,7 @@ var counterNumber = 0;
 							//scene.addFlatThingToSceneSize("BirdTestCube","bird2",0,-0.5,-0.5,1);
 
 							for (let i = -2; i<3; i++) {
-							scene.addFlatThingToSceneSize("BirdTestCube","bird"+String(i),0,i+0.5,i+0.5,4.5);
+							scene.addFlatThingToSceneSize("BirdTestCube","bird"+String(i),4.5,i+0.5,i+0.5,0.8);
 							}
 							
 						//scene.removeCubeFromScene("firstCube");
