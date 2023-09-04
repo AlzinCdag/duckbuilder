@@ -69,7 +69,7 @@
 
 						    void main(void) {
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
-       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight+aVertexPosition.y*uCameraUp;
+       							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight*0.5+aVertexPosition.y*uCameraUp*0.5;
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 	    						gl_Position = vec4(gl_Position.x,gl_Position.y,gl_Position.z*0.5,gl_Position.w);
 						      vTextureCoord = aTextureCoord;
@@ -658,7 +658,7 @@ var counterNumber = 0;
 								
 							//drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
 							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
-							//drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
+							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
 							//then = now;
 							if (counterNumber % 5 == 4) {
 							scene.updateAnimations();
