@@ -73,7 +73,7 @@
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
 	    						gl_Position = vec4(gl_Position.x,gl_Position.y,gl_Position.z*0.5,gl_Position.w);
 						      vTextureCoord = aTextureCoord;
-	    						vTextureCoord = vec2(gl_Position.z*0.5,gl_Position.z);
+	    						vTextureCoord = vec2(gl_Position.x,gl_Position.y);
 						    }
 						  `;
 
@@ -602,11 +602,12 @@ var counterNumber = 0;
 							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird1",0,0.5,0.5,1);
-							scene.addFlatThingToSceneSize("BirdTestCube","bird2",0,-0.5,-0.5,1);
+							
+							//scene.addFlatThingToSceneSize("BirdTestCube","bird1",0,0.5,0.5,1);
+							//scene.addFlatThingToSceneSize("BirdTestCube","bird2",0,-0.5,-0.5,1);
 
-							for (let i = -10; i<10; i++) {
-							scene.addFlatThingToSceneSize("BirdTestCube","bird"+String(i),0,i/100,i/100,1);
+							for (let i = -4; i<5; i++) {
+							scene.addFlatThingToSceneSize("BirdTestCube","bird"+String(i),0,i,i,1);
 							}
 							
 						//scene.removeCubeFromScene("firstCube");
