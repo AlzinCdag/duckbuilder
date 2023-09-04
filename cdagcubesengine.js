@@ -194,8 +194,6 @@ const fsSourceFlat = `
 
 						    void main(void) {
 						      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
-							//if (texelColor.a < 0.1)
-       							//	{discard;}
 									gl_FragColor = vec4(texelColor.rgb, texelColor.a);
        							//gl_FragColor = vec4(vTextureCoord.x,0.5,0.0, 1.0);
 	 								
@@ -525,7 +523,7 @@ var counterNumber = 0;
 						  gl.clear(gl.COLOR_BUFFER_BIT);
 
 							//https://xem.github.io/articles/webgl-guide-part-2.html#1a
-							//gl.enable(gl.BLEND);
+							gl.enable(gl.BLEND);
 							gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
 							const shaderProgramTex = initShaderProgram(gl, vsSourceTex, fsSourceTex);
