@@ -71,8 +71,9 @@
 							highp vec4 vertexFlatPosition = vec4(uCenterLocation,0);
        							vertexFlatPosition= vertexFlatPosition+aVertexPosition.x*uCameraRight+aVertexPosition.y*uCameraUp;
 						      gl_Position = uProjectionMatrix * uModelViewMatrix * vertexFlatPosition;
+	    						gl_Position = vec4(gl_position.xy,gl_position.z*0.5,gl_position.w);
 						      vTextureCoord = aTextureCoord;
-	    						vTextureCoord = vec2(gl_Position.z,gl_Position.z);
+	    						vTextureCoord = vec2(gl_Position.z*0.5,gl_Position.z);
 						    }
 						  `;
 
