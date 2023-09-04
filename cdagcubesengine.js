@@ -617,6 +617,16 @@ var counterNumber = 0;
 							//sceneRotZ += deltaT;
 							//gl.clearDepth(1.0);
 							gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
+
+							let cursorX = -4;
+							let cursorY = -4;
+							let cursorZ = 5;
+
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
 						
 							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
@@ -627,21 +637,6 @@ var counterNumber = 0;
 								scene.listOfFlatThingsInScene[i][1](scene.listOfFlatThingsInScene[i][2],scene.listOfFlatThingsInScene[i][3],scene.listOfFlatThingsInScene[i][4]);
 							}
 							
-
-							//cursors
-							let cursorX = -4;
-							let cursorY = -4;
-							let cursorZ = 5;
-							//drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
-							//drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
-							//drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
-					
-							
-							//drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
-							//drawTransparentObjects(gl, programInfoWireframe, wireframeBuffers, sceneRotX,sceneRotY,sceneRotZ,null,10.2);
-			
-
-				
 
 														for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
