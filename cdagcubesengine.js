@@ -1,4 +1,37 @@
-									const vsSourceColor = `
+let cursorX=0;
+let cursorY = 0;
+let cursorZ =0;
+
+window.addEventListener('keydown',(event)=>{
+							if (event.key== "W" || event.code == "w") {
+								cursorY = integerToCurb(cursorY -1);
+							}
+  							if (event.key== "S" || event.code == "s") {
+								cursorY = integerToCurb(cursorY + 1);
+							}
+  							if (event.key== "A" || event.code == "a") {
+								cursorX = integerToCurb(cursorX - 1);
+							}
+    							if (event.key== "D" || event.code == "d") {
+								cursorX = integerToCurb(cursorX - 1);
+							}
+						});
+
+/** Restrict an integer to a value between 0 and 9*/
+function curbTo9(integerToCurb) {
+  if (integerToCurb <=9 && integerToCurb >=0)
+  {return integerToCurb;}
+  else if (integerToCurb >9)
+  {return 9;}
+  else if (integerToCurb < 0)
+  {return 0;}
+}
+
+
+
+
+
+const vsSourceColor = `
 									    attribute vec4 aVertexPosition;
 											attribute vec4 aVertexColor;
 											attribute vec3 aVertexNormal;
@@ -620,9 +653,6 @@ var counterNumber = 0;
 
 							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
 
-							let cursorX = -4;
-							let cursorY = -4;
-							let cursorZ = 5;
 
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
@@ -1925,14 +1955,3 @@ function setNormalAttribute(gl, buffers, programInfo) {
 
 						}
 
-						function createCube() {}
-
-						function hideCube() {}
-
-						function createWireCube() {}
-
-						function hideWireCube() {}
-
-						function rotateCamera() {}
-
-						function createCubeWithImageTexture() {}
