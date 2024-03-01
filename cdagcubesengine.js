@@ -4,16 +4,16 @@ let cursorZ =0;
 
 window.addEventListener('keydown',(event)=>{
 							if (event.key== "W" || event.code == "w") {
-								cursorY = integerToCurb(cursorY -1);
+								cursorY = curbTo9(cursorY -1);
 							}
   							if (event.key== "S" || event.code == "s") {
-								cursorY = integerToCurb(cursorY + 1);
+								cursorY = curbTo9(cursorY + 1);
 							}
   							if (event.key== "A" || event.code == "a") {
-								cursorX = integerToCurb(cursorX - 1);
+								cursorX = curbTo9(cursorX - 1);
 							}
     							if (event.key== "D" || event.code == "d") {
-								cursorX = integerToCurb(cursorX - 1);
+								cursorX = curbTo9(cursorX - 1);
 							}
 						});
 
