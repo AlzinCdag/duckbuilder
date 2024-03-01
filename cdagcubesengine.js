@@ -3,28 +3,28 @@ let cursorY = 0;
 let cursorZ =0;
 
 window.addEventListener('keydown',(event)=>{
-							if (event.key== "W" || event.code == "w") {
+							if (event.key== "W" || event.key == "w") {
 								cursorY = curbTo9(cursorY -1);
 							}
-  							if (event.key== "S" || event.code == "s") {
+  							if (event.key== "S" || event.key == "s") {
 								cursorY = curbTo9(cursorY + 1);
 							}
-  							if (event.key== "A" || event.code == "a") {
+  							if (event.key== "A" || event.key == "a") {
 								cursorX = curbTo9(cursorX - 1);
 							}
-    							if (event.key== "D" || event.code == "d") {
-								cursorX = curbTo9(cursorX - 1);
+    							if (event.key== "D" || event.key == "d") {
+								cursorX = curbTo9(cursorX + 1);
 							}
 						});
 
 /** Restrict an integer to a value between 0 and 9*/
-function curbTo9(integerToCurb) {
-  if (integerToCurb <=9 && integerToCurb >=0)
+function curbTo5(integerToCurb) {
+  if (integerToCurb <=5 && integerToCurb >=-4)
   {return integerToCurb;}
-  else if (integerToCurb >9)
-  {return 9;}
-  else if (integerToCurb < 0)
-  {return 0;}
+  else if (integerToCurb >5)
+  {return 5;}
+  else if (integerToCurb < -4)
+  {return -4;}
 }
 
 
