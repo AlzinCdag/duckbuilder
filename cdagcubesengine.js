@@ -4,21 +4,21 @@ let cursorZ =0;
 
 window.addEventListener('keydown',(event)=>{
 							if (event.key== "W" || event.key == "w") {
-								cursorY = curbTo9(cursorY -1);
+								cursorY = curbInt(cursorY -1);
 							}
   							if (event.key== "S" || event.key == "s") {
-								cursorY = curbTo9(cursorY + 1);
+								cursorY = curbInt(cursorY + 1);
 							}
   							if (event.key== "A" || event.key == "a") {
-								cursorX = curbTo9(cursorX - 1);
+								cursorX = curbInt(cursorX - 1);
 							}
     							if (event.key== "D" || event.key == "d") {
-								cursorX = curbTo9(cursorX + 1);
+								cursorX = curbInt(cursorX + 1);
 							}
 						});
 
 /** Restrict an integer to a value between 0 and 9*/
-function curbTo5(integerToCurb) {
+function curbInt(integerToCurb) {
   if (integerToCurb <=5 && integerToCurb >=-4)
   {return integerToCurb;}
   else if (integerToCurb >5)
