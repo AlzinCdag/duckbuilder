@@ -15,15 +15,29 @@
 class Ship {
   const id;
   const cubeTexture;
-  var[] cubeShape;
   var originX;
   var originY;
   var originZ;
   
-  constructor() {}
+  constructor(cubeTypeName,cubeShape, id) {
+    window.scene.easyInitializeTextureCubeType(cubeTexture, cubeTypeName);
+    this.cubeShape = cubeShape;
+    this.id = id;
+  }
 
   // Put the ship down on the board
-  placeDown(xCoord,yCoord,zCoord) {}
+  placeDown(xCoord,yCoord,zCoord) {
+    if (checkIfPlacementWithinBounds(xCoord,yCoord,zCoord))
+    {
+      originX = xCoord;
+      originY = yCoord;
+      originZ = zCoord;
+      for (let i = 0; i< cubeShape.length; i++) {
+        window.scene.addCubeToScene(cubeTypeName, id+i, xCoord + cubeShape[i][0], yCoord+ cubeShape[i][1], zCoord+cubeShape[i][2]);
+      }
+    }
+      
+  }
   checkIfPlacementWithinBounds(xCoord,yCoord,zCoord) {
     let cubeLen = cubeShape.length;
     let isWithinBounds = true;
@@ -35,7 +49,27 @@ class Ship {
     return isWithinBounds;
   }
   getID() {return id;}
-  move(xShift,yShift,zShift) {}
+
+  // return the id of the hit cube, null otherwise
+  checkIfHit(xCoord,yCoord,zCoord) {
+    for (let i = 0; i<cubeShape.length; i++){
+      if ((xCoord == originX+cubeShape[i][0]) && (yCoord == originY+cubeShape[i][1]) && (zCoord == originZ+cubeShape[i][2]))
+      {return id.toString()+i;}
+    }
+    return null;
+  }
+  move(xShift,yShift,zShift) {
+    if (checkIfPlacementWithinBounds(originX+xShift,originY+yShift,originZ+zShift))
+    {
+
+
+
+//TODO
+
+
+      
+    }
+  }
   getOrigin() {return [originX,originY,originZ];}
   getTexture() {return texture;}
   onEndOfTurn() {}
