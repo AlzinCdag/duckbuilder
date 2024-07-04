@@ -15,6 +15,12 @@ window.addEventListener('keydown',(event)=>{
     							if (event.key== "D" || event.key == "d") {
 								cursorX = curbInt(cursorX + 1);
 							}
+	    						if (event.key== "Z" || event.key == "z") {
+								cursorZ = curbInt(cursorZ + 1);
+							}
+	    						if (event.key== "C" || event.key == "c") {
+								cursorZ = curbInt(cursorZ - 1);
+							}
 						});
 
 /** Restrict an integer to a value between 0 and 9*/
@@ -629,7 +635,7 @@ var counterNumber = 0;
 						scene.easyInitializeTextureCubeType("bluePattern.png","testCube");
 							scene.easyInitializeAnimation("BirdSprite.png","BirdTestCube",643,768,17);
 							scene.easyInitializeTextureCubeType("missTex.png","missileCube");
-						scene.addCubeToScene("testCube","firstCube",-4,5,5);
+						//scene.addCubeToScene("testCube","firstCube",-4,5,5);
 							//scene.addCubeToSceneSize("missileCube","missile1",-7,5,9,0.7);
 							//scene.addCubeToSceneSize("missileCube","missile2",-6,5,9,0.5);
 							//scene.addCubeToSceneSize("missileCube","missile3",-5,5,9,0.3);
