@@ -74,8 +74,13 @@ return true;
   onBump() {}
   onTelefrag() {}
   onBeingHit() {}
-  onAllHit() {}
+
+  let stillAliveVar = true;
+  onAllHit() { stillAliveVar = false;}
+  
   onLevelReset() {}
+
+  stillAlive() {return stillAliveVar;}
   
 
   // The following are placeholders to be used in the GUI for certain elements
