@@ -22,6 +22,7 @@ class Ship {
     this.originX = -20;
     this.originY = -20;
     this.originZ = -20;
+    this.stillAliveVar=true;
   }
 
   // Put the ship down on the board
@@ -74,10 +75,11 @@ return true;
   onTelefrag() {}
   onBeingHit() {}
 
-  let stillAliveVar = true;
   onAllHit() { stillAliveVar = false;}
   
-  onLevelReset() {}
+  onLevelReset() {
+    stillAliveVar=true;
+  }
 
   stillAlive() {return stillAliveVar;}
   
