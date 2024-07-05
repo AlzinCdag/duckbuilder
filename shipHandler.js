@@ -42,7 +42,7 @@ class Ship {
     let isWithinBounds = true;
     for (let i = 0; i<cubeLen; i++)
       {
-        if xCoord+cubeShape[i][0] < -4 ||  xCoord+cubeShape[i][0] > 5 ||  yCoord+cubeShape[i][1] < -4 || yCoord+cubeShape[i][1] >5 ||  zCoord+cubeShape[i][2] < -4 || zCoord+cubeShape[i][2] >5
+        if (xCoord+cubeShape[i][0] < -4) ||  (xCoord+cubeShape[i][0] > 5) ||  (yCoord+cubeShape[i][1] < -4) || (yCoord+cubeShape[i][1] >5) ||  (zCoord+cubeShape[i][2] < -4) || (zCoord+cubeShape[i][2] >5)
          isWithinBounds = false;
       }
     return isWithinBounds;
