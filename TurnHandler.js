@@ -1,4 +1,4 @@
-import ShipHandler.js;
+import shipHandler.js;
 // start match
 // load the list of all ships
 // Click to expand each ship's GUI
