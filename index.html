@@ -155,18 +155,21 @@ input[type=range][orient=vertical]
 
   		<div style="top:0,right:0" id="yourShips" class="ship ui">
 		</div>
+		  <div style="top:0,right:50" id="select" class="ship ui">
+		</div>
 		<div style="top:0, right:0" id="versionNumber" class="ship ui">Version 0.0025 </div>
   		<div style="top:0; right:0; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui"></div>
 			<canvas style="display:none" id="alzn" width="64" height="64"></canvas>
 			  		  		<script src="cdagcubesengine.js" type="module"></script>
+							<script src="shipHandler.js" type="module"></script>
+							<script src="turnHandler.js" type="module"></script>
 							<script type="module" id="testScript">
-								//window.addEventListener("keydown", (event)=>{
-									//if (event.key == "j") {
-								//window.scene.addCubeToScene("testCube","firstCube",-4,5,4);
-								//window.scene.addCubeToScene("testCube","firstCube",-3,5,5);
-									//}
-								//}
-								//);
+								window.addEventListener("keydown", (event)=>{
+									if (event.key == "j") {
+										TurnHandler.selectShipSide1();
+									}
+								
+								);
 			      </script>
 			      <canvas id="glcanvas" width="500" height="500"></canvas>
       </body>
