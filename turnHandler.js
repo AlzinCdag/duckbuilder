@@ -11,10 +11,12 @@
 
 class TurnHandler {
   
-  constructor() {}
+  constructor() {
+
+    let listOfShips1 = {};
+    let listOfShips2 = {};
+  }
   
-  var listOfShips1 ={};
-  var listOfShips2 ={};
 
   startTurn() {}
 
@@ -47,7 +49,7 @@ class TurnHandler {
   
   endTurn() {}
 
-  static selectShipSide1() {
+   selectShipSide1() {
     let select = document.getElementById("selectShip1");
     select.style.display = "block";
     let option1 = document.createElement("div");
