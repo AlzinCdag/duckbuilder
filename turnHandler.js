@@ -66,3 +66,5 @@ class TurnHandler {
     
   }
 }
+
+window.TurnHandler = new TurnHandler();
