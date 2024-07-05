@@ -19,7 +19,7 @@ class Ship {
   var originY;
   var originZ;
   
-  constructor(cubeTypeName,cubeShape, id) {
+  constructor(cubeTexture,cubeTypeName,cubeShape, id) {
     window.scene.easyInitializeTextureCubeType(cubeTexture, cubeTypeName);
     this.cubeShape = cubeShape;
     this.id = id;
