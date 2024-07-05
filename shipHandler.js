@@ -13,8 +13,6 @@
 //   An event to trigger on being hit by a missile (e.g. deactivate all moving and such, revenge hit)
 //   An event to trigger on having all its cells be hit by a missile (e.g. explode)
 class Ship {
-  const id;
-  const cubeTexture;
   var originX;
   var originY;
   var originZ;
