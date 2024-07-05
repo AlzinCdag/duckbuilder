@@ -61,8 +61,8 @@ class TurnHandler {
   select.style.display="none";};
 
   select.innerHTML = "";
-  select.addChild(option1);
-  select.addChild(option2);
+  select.appendChild(option1);
+  select.appendChild(option2);
     
   }
 }
