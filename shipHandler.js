@@ -60,7 +60,7 @@ class Ship {
   move(xShift,yShift,zShift) {
     if (checkIfPlacementWithinBounds(originX+xShift,originY+yShift,originZ+zShift))
     {
-      for (let i = 0; i<cubeShape.length,i++) {
+      for (let i = 0; i<cubeShape.length;i++) {
         window.scene.changePositionOfCube(id.toString()+i,originX+xShift+cubeShape[i][0],originY+yShift+cubeShape[i][1],originZ+zShift+cubeShape[i][2]);
       }
 return true;
