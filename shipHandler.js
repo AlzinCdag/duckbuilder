@@ -19,9 +19,9 @@ class Ship {
     window.scene.easyInitializeTextureCubeType(cubeTexture, cubeTypeName);
     this.cubeShape = cubeShape;
     this.id = id;
-    originX = -20;
-    originY = -20;
-    originZ = -20;
+    this.originX = -20;
+    this.originY = -20;
+    this.originZ = -20;
   }
 
   // Put the ship down on the board
