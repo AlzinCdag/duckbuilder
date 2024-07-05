@@ -61,22 +61,21 @@ class Ship {
   move(xShift,yShift,zShift) {
     if (checkIfPlacementWithinBounds(originX+xShift,originY+yShift,originZ+zShift))
     {
-
-
-
-//TODO
-
-
-      
+      for (let i = 0; i<cubeShape.length,i++) {
+        window.scene.changePositionOfCube(id.toString()+i,originX+xShift+cubeShape[i][0],originY+yShift+cubeShape[i][1],originZ+zShift+cubeShape[i][2]);
+      }
+return true;
     }
+    return false;
   }
   getOrigin() {return [originX,originY,originZ];}
   getTexture() {return texture;}
   onEndOfTurn() {}
-  onBump() {};
-  onTelefrag() {};
-  onBeingHit() {};
-  onAllHit() {};
+  onBump() {}
+  onTelefrag() {}
+  onBeingHit() {}
+  onAllHit() {}
+  onLevelReset() {}
   
 
   // The following are placeholders to be used in the GUI for certain elements
