@@ -50,7 +50,7 @@ class TurnHandler {
   endTurn() {}
 
    selectShipSide1() {
-    let select = document.getElementById("selectShip1");
+    let select = document.getElementById("select");
     select.style.display = "block";
     let option1 = document.createElement("div");
     let option2 = document.createElement("div");
@@ -67,4 +67,4 @@ class TurnHandler {
   }
 }
 
-window.TurnHandler = new TurnHandler();
+window.turnHandler = new TurnHandler();
