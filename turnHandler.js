@@ -56,9 +56,9 @@ class TurnHandler {
     let option2 = document.createElement("div");
     option1.innerHTML = "Option 1";
     option2.innerHTML = "Option 2";
-    option1.onClick= function(){const test1 = new Ship("testCube","testShip",{{0,0,0},{0,0,1},{1,0,0}}, "testShipOne");
+    option1.onClick= function() {const test1 = new Ship("testCube","testShip",{{0,0,0},{0,0,1},{1,0,0}}, "testShipOne");
   listOfShips1.push(test1);
-  select.style.display="none";}
+  select.style.display="none";};
 
   select.innerHTML = "";
   select.addChild(option1);
