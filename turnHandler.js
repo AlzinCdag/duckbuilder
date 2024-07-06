@@ -1,3 +1,5 @@
+import * as sh from "./shipHandler";
+
 // start match
 // load the list of all ships
 // Click to expand each ship's GUI
@@ -58,7 +60,7 @@ class TurnHandler {
     option1.innerHTML = "Option 1";
     option2.innerHTML = "Option 2";
     option1.onclick= function() {
-      const test1 = new Ship("testCube","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
+      const test1 = new sh.Ship("testCube","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
   listOfShips1.push(test1);
   select.style.display="none";};
 
