@@ -1,4 +1,4 @@
-import * as sh from "./shipHandler";
+import * as sh from "shipHandler";
 
 // start match
 // load the list of all ships
