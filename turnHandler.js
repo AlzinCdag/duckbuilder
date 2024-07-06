@@ -52,8 +52,9 @@ class TurnHandler {
    selectShipSide1() {
     let select = document.getElementById("select");
     select.style.display = "block";
-    let option1 = document.createElement("div");
-    let option2 = document.createElement("div");
+    let option1 = document.createElement("button");
+    let option2 = document.createElement("button");
+     option1.style.margin = "25";
     option1.innerHTML = "Option 1";
     option2.innerHTML = "Option 2";
     option1.onClick= function() {const test1 = new Ship("testCube","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
