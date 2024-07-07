@@ -59,7 +59,7 @@ class TurnHandler {
     option1.innerHTML = "Option 1";
     option2.innerHTML = "Option 2";
     option1.onclick= function() {
-      const test1 = new window.shipHandler.Ship("testCube","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
+      const test1 = new window.shipHandler.createRandomizedShip();
   listOfShips1.push(test1);
   select.style.display="none";};
 
