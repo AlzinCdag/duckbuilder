@@ -14,8 +14,8 @@ class TurnHandler {
   
   constructor() {
 
-    let listOfShips1 = {};
-    let listOfShips2 = {};
+    this.listOfShips1 = [];
+    this.listOfShips2 = [];
   }
   
 
