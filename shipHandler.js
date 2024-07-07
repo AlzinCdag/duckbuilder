@@ -1,4 +1,8 @@
+// The following outward class is a wrapper with which to transport the content to other modules
+class ShipHandler {
 
+  constructor() {}
+  
 // Each of the battleship types should extend this class.
 // Each battleship should have the following parameters intrinsically:
 //   A unique ship ID;
@@ -101,4 +105,9 @@ return true;
   onGuiModification() {}
 
   //
-}
+}//ship
+
+
+}//shiphandler
+
+window.shipHandler = new ShipHandler();
