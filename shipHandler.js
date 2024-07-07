@@ -1,8 +1,4 @@
-// The following outward class is a wrapper with which to transport the content to other modules
-class ShipHandler {
-
-  constructor() {}
-  
+ 
 // Each of the battleship types should extend this class.
 // Each battleship should have the following parameters intrinsically:
 //   A unique ship ID;
@@ -107,7 +103,14 @@ return true;
   //
 }//ship
 
+class ShipHandler {
+  constructor() {
+  }
 
+  //placeholder for now
+  createRandomizedShip() {
+    return new Ship("testCube","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
+  }
 }//shiphandler
 
 window.shipHandler = new ShipHandler();
