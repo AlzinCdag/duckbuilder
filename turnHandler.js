@@ -60,7 +60,7 @@ class TurnHandler {
     option2.innerHTML = "Option 2";
     option1.onclick= function() {
       const test1 = window.shipHandler.createRandomizedShip();
-  listOfShips1.push(test1);
+  this.listOfShips1.push(test1);
   select.style.display="none";};
 
   select.innerHTML = "";
