@@ -27,16 +27,16 @@ class TurnHandler {
   checkWin() {
     let matchOver = 0;
     let side1IsAlive = false;
-    for (let i =0; i<listOfShips1; i++)
+    for (let i =0; i<this.listOfShips1; i++)
     {
-      if (listOfShips1[i].stillAlive()) {
+      if (this.listOfShips1[i].stillAlive()) {
         side1IsAlive = true;
       }
     }
         let side2IsAlive = false;
-    for (let i =0; i<listOfShips2; i++)
+    for (let i =0; i<this.listOfShips2; i++)
     {
-      if (listOfShips2[i].stillAlive()) {
+      if (this.listOfShips2[i].stillAlive()) {
         side2IsAlive = true;
       }
     }
