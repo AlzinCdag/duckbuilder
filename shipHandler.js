@@ -29,21 +29,21 @@ class Ship {
   placeDown(xCoord,yCoord,zCoord) {
     if (this.checkIfPlacementWithinBounds(xCoord,yCoord,zCoord))
     {
-      originX = xCoord;
-      originY = yCoord;
-      originZ = zCoord;
-      for (let i = 0; i< cubeShape.length; i++) {
-        window.scene.addCubeToScene(cubeTypeName, id+i, xCoord + cubeShape[i][0], yCoord+ cubeShape[i][1], zCoord+cubeShape[i][2]);
+      this.originX = xCoord;
+      this.originY = yCoord;
+      this.originZ = zCoord;
+      for (let i = 0; i< this.cubeShape.length; i++) {
+        window.scene.addCubeToScene(cubeTypeName, id+i, xCoord + this.cubeShape[i][0], yCoord+ this.cubeShape[i][1], zCoord+this.cubeShape[i][2]);
       }
     }
       
   }
   checkIfPlacementWithinBounds(xCoord,yCoord,zCoord) {
-    let cubeLen = cubeShape.length;
+    let cubeLen = this.cubeShape.length;
     let isWithinBounds = true;
     for (let i = 0; i<cubeLen; i++)
       {
-        if ((xCoord+cubeShape[i][0] < -4) ||  (xCoord+cubeShape[i][0] > 5) ||  (yCoord+cubeShape[i][1] < -4) || (yCoord+cubeShape[i][1] >5) ||  (zCoord+cubeShape[i][2] < -4) || (zCoord+cubeShape[i][2] >5))
+        if ((xCoord+this.cubeShape[i][0] < -4) ||  (xCoord+this.cubeShape[i][0] > 5) ||  (yCoord+this.cubeShape[i][1] < -4) || (yCoord+this.cubeShape[i][1] >5) ||  (zCoord+this.cubeShape[i][2] < -4) || (zCoord+this.cubeShape[i][2] >5))
          isWithinBounds = false;
       }
     return isWithinBounds;
@@ -52,24 +52,24 @@ class Ship {
 
   // return the id of the hit cube, null otherwise
   checkIfHit(xCoord,yCoord,zCoord) {
-    for (let i = 0; i<cubeShape.length; i++){
-      if ((xCoord == originX+cubeShape[i][0]) && (yCoord == originY+cubeShape[i][1]) && (zCoord == originZ+cubeShape[i][2]))
+    for (let i = 0; i<this.cubeShape.length; i++){
+      if ((xCoord == originX+this.cubeShape[i][0]) && (yCoord == originY+this.cubeShape[i][1]) && (zCoord == originZ+this.cubeShape[i][2]))
       {return id.toString()+i;}
     }
     return null;
   }
   move(xShift,yShift,zShift) {
-    if (checkIfPlacementWithinBounds(originX+xShift,originY+yShift,originZ+zShift))
+    if (checkIfPlacementWithinBounds(this.originX+xShift,this.originY+yShift,this.originZ+zShift))
     {
-      for (let i = 0; i<cubeShape.length;i++) {
-        window.scene.changePositionOfCube(id.toString()+i,originX+xShift+cubeShape[i][0],originY+yShift+cubeShape[i][1],originZ+zShift+cubeShape[i][2]);
+      for (let i = 0; i<this.cubeShape.length;i++) {
+        window.scene.changePositionOfCube(id.toString()+i,this.originX+xShift+this.cubeShape[i][0],this.originY+yShift+this.cubeShape[i][1],this.originZ+zShift+this.cubeShape[i][2]);
       }
 return true;
     }
     return false;
   }
-  getOrigin() {return [originX,originY,originZ];}
-  getTexture() {return texture;}
+  getOrigin() {return [this.originX,this.originY,this.originZ];}
+  getTexture() {return this.texture;}
   onEndOfTurn() {}
   onBump() {}
   onTelefrag() {}
