@@ -1368,6 +1368,8 @@ const far = 20;
 
 
 						function drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShifta,yShifta,zShifta) {
+							if (((currently2dX)&&(xShifta === cursorX))||((currently2dY)&&(yShifta === cursorY))||((currently2dZ)&&(zShifta === cursorZ)) || ((!(currently2dX)) &&(!(currently2dY))&&(!(currently2dZ))   )) {
+							
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
 						  gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -1462,6 +1464,7 @@ const far = 20;
 							}
 					
 						gl.disable(gl.CULL_FACE);
+							}
 }
 
 /*xShifta, yShifta, and zShifta values: to center in each cube, integer values from -4 to 5, including zero*/
