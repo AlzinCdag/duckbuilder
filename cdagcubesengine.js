@@ -2,6 +2,10 @@ let cursorX=0;
 let cursorY = 0;
 let cursorZ =0;
 
+let currently2dX = true;
+let currently2dY = false;
+let currently2dZ = false;
+
 window.addEventListener('keydown',(event)=>{
 							if (event.key== "W" || event.key == "w") {
 								cursorY = curbInt(cursorY -1);
@@ -1542,7 +1546,12 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 							
 function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale,now,shaderProgramWireframe) {
-
+	if(currently2dX) {
+	drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, null, 10.2,0.25,10.2,10.2,cursorX,0,0);
+	}
+	else if (currently2dY){}
+	else if (currently2dZ){}
+	else {
 	gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 	//gl.clearDepth(1.0); // Clear everything
 	gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -1640,6 +1649,7 @@ gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
 //} // for j
 //}//for i
 	gl.disable(gl.CULL_FACE);
+	}
 }
 
 						// tell webgl how to pull out the texture coordinates from buffer
