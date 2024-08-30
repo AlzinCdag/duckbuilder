@@ -1547,7 +1547,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 							
 function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale,now,shaderProgramWireframe) {
 	if(currently2dX) {
-	drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, null, 10.2,0.25,10.2,10.2,cursorX,0,0);
+	drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, texture, 10.2,0.25,10.2,10.2,cursorX,0,0);
 	}
 	else if (currently2dY){}
 	else if (currently2dZ){}
