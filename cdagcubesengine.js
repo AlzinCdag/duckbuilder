@@ -2,9 +2,32 @@ let cursorX=0;
 let cursorY = 0;
 let cursorZ =0;
 
-let currently2dX = true;
+let currently2dX = false;
 let currently2dY = false;
 let currently2dZ = false;
+
+function make2dX() {
+ currently2dX = true;
+ currently2dY = false;
+ currently2dZ = false;
+}
+
+function make2dY() {
+ currently2dX = false;
+ currently2dY = true;
+ currently2dZ = false;
+}
+function make2dZ() {
+ currently2dX = false;
+ currently2dY = false;
+ currently2dZ = true;
+}
+
+function reset2d() {
+ currently2dX = false;
+ currently2dY = false;
+ currently2dZ = false;
+}
 
 window.addEventListener('keydown',(event)=>{
 							if (event.key== "W" || event.key == "w") {
