@@ -1546,12 +1546,7 @@ function drawFlatObject(gl, programInfo, buffers, rotX,rotY,rotZ, texture, proje
 
 							
 function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionScale,now,shaderProgramWireframe) {
-	if(currently2dX) {
-	drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, texture, 10.2,0.25,10.2,10.2,cursorX,0,0);
-	}
-	else if (currently2dY){}
-	else if (currently2dZ){}
-	else {
+
 	gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 	//gl.clearDepth(1.0); // Clear everything
 	gl.enable(gl.DEPTH_TEST); // Enable depth testing
@@ -1566,12 +1561,39 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 	const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 	const zNear = -10;
 	const zFar = far;
-	const xShift = -0.0;
+
+	var xShift, yShift, zShift, xScale, yScale, zScale;
+	if (currently2dX) {
+		xShift = 2*cursorX-1;
+		xScale = 10;
+	}
+	else {
+		xShift = -0.0;
+		xScale = 10;
+	}
+	if (currently2dY) {
+		yShift = 2*cursorY-1;
+		yScale = 10;
+	}
+	else {
+		yShift = 0.0;
+		yScale = 10;
+	}
+		if (currently2dZ) {
+		zShift = 2*cursorZ-1;
+		zScale = 10;
+	}
+	else {
+		zShift = 0.0;
+		zScale = 10;
+	}
+	/*const xShift = -0.0;
 	const yShift = 0.0;
 	const zShift = 0.0;
-	const xScale =10;
+	//const xScale =10;
 	const yScale =10;
 	const zScale = 10;
+ */
 	const projectionMatrix = createHybridProjectionMatrix(-projectionScale,projectionScale,-projectionScale,projectionScale,zNear,zFar,aspect);
 //document.getElementById('yourShips').innerHTML += projectionMatrix;
 	// Set the drawing position to the "identity" point, which is
@@ -1649,7 +1671,7 @@ gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
 //} // for j
 //}//for i
 	gl.disable(gl.CULL_FACE);
-	}
+	//}
 }
 
 						// tell webgl how to pull out the texture coordinates from buffer
