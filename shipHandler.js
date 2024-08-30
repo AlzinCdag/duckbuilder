@@ -109,7 +109,7 @@ class ShipHandler {
 
   //placeholder for now
   createRandomizedShip() {
-    return new Ship("redPattern","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
+    return new Ship("redPattern.png","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
   }
 }//shiphandler
 
