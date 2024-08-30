@@ -62,6 +62,7 @@ class TurnHandler {
     option2.innerHTML = "Option 2";
     option1.onclick= ()=> {
       const test1 = window.shipHandler.createRandomizedShip();
+      test1.placeDown(1,1,1);
       this.listOfShips1.push(test1);
       select.style.display="none";};
 
