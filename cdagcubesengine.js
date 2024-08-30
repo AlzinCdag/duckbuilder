@@ -29,6 +29,12 @@ function reset2d() {
  currently2dZ = false;
 }
 
+window.make2dX = make2dX;
+window.make2dY = make2dY;
+window.make2dZ = make2dZ;
+window.reset2d = reset2d;
+
+
 window.addEventListener('keydown',(event)=>{
 							if (event.key== "W" || event.key == "w") {
 								cursorY = curbInt(cursorY -1);
