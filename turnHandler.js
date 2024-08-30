@@ -56,12 +56,14 @@ class TurnHandler {
     let option1 = document.createElement("button");
     let option2 = document.createElement("button");
      option1.style.margin = "25";
+     const test2 = window.shipHandler.createRandomizedShip();
+      this.listOfShips1.push(test2);
     option1.innerHTML = "Option 1";
     option2.innerHTML = "Option 2";
-    option1.onclick= function() {
+    option1.onclick= ()=> {
       const test1 = window.shipHandler.createRandomizedShip();
-  this.listOfShips1.push(test1);
-  select.style.display="none";};
+      this.listOfShips1.push(test1);
+      select.style.display="none";};
 
   select.innerHTML = "";
   select.appendChild(option1);
