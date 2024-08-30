@@ -23,6 +23,7 @@ class Ship {
     this.originY = -20;
     this.originZ = -20;
     this.stillAliveVar=true;
+    this.cubeTypeName = cubeTypeName;
   }
 
   // Put the ship down on the board
@@ -33,7 +34,7 @@ class Ship {
       this.originY = yCoord;
       this.originZ = zCoord;
       for (let i = 0; i< this.cubeShape.length; i++) {
-        window.scene.addCubeToScene(cubeTypeName, id+i, xCoord + this.cubeShape[i][0], yCoord+ this.cubeShape[i][1], zCoord+this.cubeShape[i][2]);
+        window.scene.addCubeToScene(this.cubeTypeName, id+i, xCoord + this.cubeShape[i][0], yCoord+ this.cubeShape[i][1], zCoord+this.cubeShape[i][2]);
       }
     }
       
