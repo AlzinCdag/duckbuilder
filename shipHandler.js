@@ -27,7 +27,7 @@ class Ship {
 
   // Put the ship down on the board
   placeDown(xCoord,yCoord,zCoord) {
-    if (checkIfPlacementWithinBounds(xCoord,yCoord,zCoord))
+    if (this.checkIfPlacementWithinBounds(xCoord,yCoord,zCoord))
     {
       originX = xCoord;
       originY = yCoord;
