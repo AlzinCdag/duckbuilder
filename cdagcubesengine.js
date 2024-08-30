@@ -1565,7 +1565,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 	var xShift, yShift, zShift, xScale, yScale, zScale;
 	if (currently2dX) {
 		xShift = 2*cursorX-1;
-		xScale = 10;
+		xScale = 0.25;
 	}
 	else {
 		xShift = -0.0;
@@ -1573,7 +1573,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 	}
 	if (currently2dY) {
 		yShift = 2*cursorY-1;
-		yScale = 10;
+		yScale = 0.25;
 	}
 	else {
 		yShift = 0.0;
@@ -1581,7 +1581,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 	}
 		if (currently2dZ) {
 		zShift = 2*cursorZ-1;
-		zScale = 10;
+		zScale = 0.25;
 	}
 	else {
 		zShift = 0.0;
