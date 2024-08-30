@@ -34,7 +34,7 @@ class Ship {
       this.originY = yCoord;
       this.originZ = zCoord;
       for (let i = 0; i< this.cubeShape.length; i++) {
-        window.scene.addCubeToScene(this.cubeTypeName, id+i, xCoord + this.cubeShape[i][0], yCoord+ this.cubeShape[i][1], zCoord+this.cubeShape[i][2]);
+        window.scene.addCubeToScene(this.cubeTypeName, this.id+i, xCoord + this.cubeShape[i][0], yCoord+ this.cubeShape[i][1], zCoord+this.cubeShape[i][2]);
       }
     }
       
@@ -49,13 +49,13 @@ class Ship {
       }
     return isWithinBounds;
   }
-  getID() {return id;}
+  getID() {return this.id;}
 
   // return the id of the hit cube, null otherwise
   checkIfHit(xCoord,yCoord,zCoord) {
     for (let i = 0; i<this.cubeShape.length; i++){
       if ((xCoord == originX+this.cubeShape[i][0]) && (yCoord == originY+this.cubeShape[i][1]) && (zCoord == originZ+this.cubeShape[i][2]))
-      {return id.toString()+i;}
+      {return this.id.toString()+i;}
     }
     return null;
   }
@@ -63,7 +63,7 @@ class Ship {
     if (checkIfPlacementWithinBounds(this.originX+xShift,this.originY+yShift,this.originZ+zShift))
     {
       for (let i = 0; i<this.cubeShape.length;i++) {
-        window.scene.changePositionOfCube(id.toString()+i,this.originX+xShift+this.cubeShape[i][0],this.originY+yShift+this.cubeShape[i][1],this.originZ+zShift+this.cubeShape[i][2]);
+        window.scene.changePositionOfCube(this.id.toString()+i,this.originX+xShift+this.cubeShape[i][0],this.originY+yShift+this.cubeShape[i][1],this.originZ+zShift+this.cubeShape[i][2]);
       }
 return true;
     }
