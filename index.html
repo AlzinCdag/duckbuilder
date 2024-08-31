@@ -36,11 +36,13 @@ body {
 }
 
 table{
-	 border: 1px solid black;
+	
 }
 td{
 	 border: 1px solid black;
 	  padding: 10px;
+	  width: 20%;
+          height: 90%;
 }
 th {
 	 border: 1px solid black;
@@ -201,6 +203,13 @@ input[type=range][orient=vertical]
 									document.getElementById('cardTable').style.display='none';
 									document.getElementById('showCardsButton').style.display='block';
 									document.getElementById('hideCardsButton').style.display='none';
+								}
+								function showCards() {
+									document.getElementById('cardHolder').style.height='40%';
+									document.getElementById('cardHolder').style.top='60%';
+									document.getElementById('cardTable').style.display='block';
+									document.getElementById('hideCardsButton').style.display='block';
+									document.getElementById('showCardsButton').style.display='none';
 								}
 
 								window.hideCards = hideCards;
