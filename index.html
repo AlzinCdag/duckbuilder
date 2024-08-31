@@ -167,16 +167,7 @@ input[type=range][orient=vertical]
   		<div style="top:0; right:75%; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui">EnemyShips</div>
 
 		<div id="cardHolder" style="top:60%; width:100%; height:40%;" class="ship ui">
-			<button id="hideCardsButton" onclick="()=>{
-				
-				document.getElementById('cardHolder').style.height='4%';
-				document.getElementById('cardHolder').style.top='90%';
-				document.getElementById('cardTable').style.display='none';
-				document.getElementById('showCardsButton').style.display='block';
-				document.getElementById('hideCardsButton').style.display='none';
-			}"
-				
-				>X</button>
+			<button id="hideCardsButton" onclick="()=>{document.getElementById('cardHolder').style.height='4%';document.getElementById('cardHolder').style.top='90%';document.getElementById('cardTable').style.display='none';document.getElementById('showCardsButton').style.display='block';document.getElementById('hideCardsButton').style.display='none';}">X</button>
 			<button id="showCardsButton" style="display:none"
 				onclick="()=>{
 				document.getElementById('cardHolder').style.height='40%';
