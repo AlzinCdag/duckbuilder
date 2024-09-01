@@ -215,11 +215,13 @@ input[type=range][orient=vertical]
 								}
 
 								function showCardsNumber(number) {
-									number = 6;//number % 9;
-									for (let i = 0; i<number; i++) {
+									document.getElementById("card1").style.display = "block";
+									document.getElementById("card1").style.background-color ="green";
+									let number1 = number % 9;
+									for (let i = 0; i<number1; i++) {
 										document.getElementById(String("card"+i)).style.display = "block";
 									}
-									for (let j = number; j<10; j++) {
+									for (let j = number1; j<10; j++) {
 										document.getElementById(String("card"+j)).style.display = "none";
 									}									
 									
