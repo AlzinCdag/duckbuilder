@@ -175,15 +175,21 @@ input[type=range][orient=vertical]
 
 		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui">
 			<button id="hideCardsButton" onclick="window.hideCards()">X</button>
+			<button id = "hit" onclick="()=>{window.showCardsNumber(window.cardsNumber); window.cardsNumber++;}">Hit</button>
 			<button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button>
 			<table id ="cardTable">
 				<tbody>
 					<tr>
-						<td style="transform:rotate(-20deg); background-color:white;"></td>
-						<td style="transform:rotate(-10deg) translateY(-20px); background-color:white;"></td>
-						<td style="transform:translateY(-30px); background-color:white;"></td>
-						<td style="transform:rotate(10deg) translateY(-20px); background-color:white;"></td>
-						<td style="transform:rotate(20deg); background-color:white;"></td>
+						<td id="card0"style="background-color:white;"></td>
+						<td id="card1" style=" background-color:white;"></td>
+						<td id="card2" style="background-color:white;"></td>
+						<td id="card3" style="background-color:white;"></td>
+						<td id="card4" style="background-color:white;"></td>
+						<td id="card5"style="background-color:white;"></td>
+						<td id="card6"style="background-color:white;"></td>
+						<td id="card7"style="background-color:white;"></td>
+						<td id="card8"style="background-color:white;"></td>
+						<td id="card9"style="background-color:white;"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -208,8 +214,21 @@ input[type=range][orient=vertical]
 									document.getElementById('showCardsButton').style.display='none';
 								}
 
+								function showCardsNumber(number) {
+									number = number % 9;
+									for (let i = 0; i<number; i++) {
+										document.getElementById("card"+i).display = "block";
+									}
+									for (let j = number; j<10; j++) {
+										document.getElementById("card"+j).display = "none";
+									}									
+									
+								}
+								
+								window.cardsNumber = 0;
 								window.hideCards = hideCards;
 								window.showCards = showCards;
+								window.showCardsNumber = showCardsNumber;
 								
 								window.addEventListener("keydown", (event)=>{
 									if (event.key == "j") {
