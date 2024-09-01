@@ -173,11 +173,11 @@ input[type=range][orient=vertical]
 		</div>
   		<div style="top:0; right:75%; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui">EnemyShips</div>
 
-		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui">
+		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui" style="display:flex;">
 			<button id="hideCardsButton" onclick="window.hideCards()">X</button>
 			<button id = "hit" onclick="()=>{window.showCardsNumber(window.cardsNumber); window.cardsNumber++;}">Hit</button>
 			<button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button>
-			<table id ="cardTable">
+			<table id ="cardTable" style="display:flex; align-items:center;">
 				<tbody>
 					<tr>
 						<td id="card0"style="background-color:white;"></td>
@@ -209,7 +209,7 @@ input[type=range][orient=vertical]
 								function showCards() {
 									document.getElementById('cardHolder').style.height='40%';
 									document.getElementById('cardHolder').style.top='60%';
-									document.getElementById('cardTable').style.display='block';
+									document.getElementById('cardTable').style.display='flex';
 									document.getElementById('hideCardsButton').style.display='block';
 									document.getElementById('showCardsButton').style.display='none';
 								}
@@ -217,10 +217,10 @@ input[type=range][orient=vertical]
 								function showCardsNumber(number) {
 									number = number % 9;
 									for (let i = 0; i<number; i++) {
-										document.getElementById("card"+i).display = "block";
+										document.getElementById("card"+i).style.display = "block";
 									}
 									for (let j = number; j<10; j++) {
-										document.getElementById("card"+j).display = "none";
+										document.getElementById("card"+j).style.display = "none";
 									}									
 									
 								}
