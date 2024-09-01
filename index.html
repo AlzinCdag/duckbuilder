@@ -175,7 +175,7 @@ input[type=range][orient=vertical]
 
 		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui" style="display:flex;">
 			<button id="hideCardsButton" onclick="window.hideCards()">X</button>
-			<button id = "hit" onclick="()=>{window.showCardsNumber(window.cardsNumber); window.cardsNumber=window.cardsNumber++;}">Hit</button>
+			<button id = "hit" onclick="window.showCardsNumber()">Hit</button>
 			<button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button>
 			<table id ="cardTable" style="display:flex; align-items:center;">
 				<tbody>
@@ -214,10 +214,11 @@ input[type=range][orient=vertical]
 									document.getElementById('showCardsButton').style.display='none';
 								}
 
-								function showCardsNumber(number) {
+								function showCardsNumber() {
 									document.getElementById("card1").style.display = "block";
 									document.getElementById("card1").style.backgroundColor ="green";
-									let number1 = number % 9;
+									let number1 = window.cardsNumber % 9;
+									window.cardsNumber = window.cardsNumber+1;
 									for (let i = 0; i<number1; i++) {
 										document.getElementById(String("card"+i)).style.display = "block";
 									}
