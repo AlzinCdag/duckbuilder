@@ -198,9 +198,9 @@ input[type=range][orient=vertical]
 							<script src="turnHandler.js" type="module"></script>
 							<script type="module" id="testScript">
 								function hideCards() {
+									document.getElementById('cardTable').style.display='none';
 									document.getElementById('cardHolder').style.height='4%';
 									document.getElementById('cardHolder').style.top='90%';
-									document.getElementById('cardTable').style.display='none';
 									document.getElementById('showCardsButton').style.display='block';
 									document.getElementById('hideCardsButton').style.display='none';
 								}
