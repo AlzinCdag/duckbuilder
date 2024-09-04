@@ -1,6 +1,6 @@
-let cursorX=0;
-let cursorY = 0;
-let cursorZ =0;
+window.cursorX=0;
+window.cursorY = 0;
+window.cursorZ =0;
 
 let currently2dX = false;
 let currently2dY = false;
@@ -37,22 +37,22 @@ window.reset2d = reset2d;
 
 window.addEventListener('keydown',(event)=>{
 							if (event.key== "W" || event.key == "w") {
-								cursorY = curbInt(cursorY -1);
+								window.cursorY = curbInt(window.cursorY -1);
 							}
   							if (event.key== "S" || event.key == "s") {
-								cursorY = curbInt(cursorY + 1);
+								window.cursorY = curbInt(window.cursorY + 1);
 							}
   							if (event.key== "A" || event.key == "a") {
-								cursorX = curbInt(cursorX - 1);
+								window.cursorX = curbInt(window.cursorX - 1);
 							}
     							if (event.key== "D" || event.key == "d") {
-								cursorX = curbInt(cursorX + 1);
+								window.cursorX = curbInt(window.cursorX + 1);
 							}
 	    						if (event.key== "Z" || event.key == "z") {
-								cursorZ = curbInt(cursorZ + 1);
+								window.cursorZ = curbInt(window.cursorZ + 1);
 							}
 	    						if (event.key== "C" || event.key == "c") {
-								cursorZ = curbInt(cursorZ - 1);
+								window.cursorZ = curbInt(window.cursorZ - 1);
 							}
 						});
 
@@ -706,13 +706,17 @@ var counterNumber = 0;
 							drawGrid(gl,programInfoWireframe,wireframeBuffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2,now,shaderProgramWireframe);
 
 
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,window.cursorY,window.cursorZ);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,window.cursorX,0,window.cursorZ);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,window.cursorX,window.cursorY,0);
 
-							scene.changePositionOfCube("xAxisCube",6,cursorY,cursorZ);
-							scene.changePositionOfCube("yAxisCube",cursorX,6,cursorZ);
-							scene.changePositionOfCube("zAxisCube",cursorX,cursorY,6);
+							scene.changePositionOfCube("xAxisCube",6,window.cursorY,window.cursorZ);
+							scene.changePositionOfCube("yAxisCube",window.cursorX,6,window.cursorZ);
+							scene.changePositionOfCube("zAxisCube",window.cursorX,window.cursorY,6);
+
+							if (window.shipCurrentlyBeingPlaced) {
+								window.shipCurrentlyBeingPlaced.absoluteMove(window.cursorX,window.cursorY,window.cursorZ);
+							}
 						
 							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
@@ -732,9 +736,9 @@ var counterNumber = 0;
 							
 
 							//cursors
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
-							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,window.cursorY,window.cursorZ);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,window.cursorX,0,window.cursorZ);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,window.cursorX,window.cursorY,0);
 
 								
 							//drawOpaqueCube(gl, programInfoTex, buffers,sceneRotX,sceneRotY,sceneRotZ, texture, 10.2,0.8,0.8,0.8,2,2,2);
@@ -1372,7 +1376,7 @@ const far = 20;
 
 
 						function drawOpaqueCube(gl, programInfo, buffers, rotX,rotY,rotZ, texture, projectionScale,xScale,yScale,zScale,xShifta,yShifta,zShifta) {
-							if (((currently2dX)&&(xShifta === cursorX))||((currently2dY)&&(yShifta === cursorY))||((currently2dZ)&&(zShifta === cursorZ)) || ((!(currently2dX)) &&(!(currently2dY))&&(!(currently2dZ))   )) {
+							if (((currently2dX)&&(xShifta === window.cursorX))||((currently2dY)&&(yShifta === window.cursorY))||((currently2dZ)&&(zShifta === window.cursorZ)) || ((!(currently2dX)) &&(!(currently2dY))&&(!(currently2dZ))   )) {
 							
 						  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
 						  //gl.clearDepth(1.0); // Clear everything
@@ -1600,7 +1604,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 
 	var xShift, yShift, zShift, xScale, yScale, zScale;
 	if (currently2dX) {
-		xShift = 2*cursorX-1;
+		xShift = 2*wimdow.cursorX-1;
 		xScale = 0.25;
 	}
 	else {
@@ -1608,7 +1612,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 		xScale = 10;
 	}
 	if (currently2dY) {
-		yShift = 2*cursorY-1;
+		yShift = 2*window.cursorY-1;
 		yScale = 0.25;
 	}
 	else {
@@ -1616,7 +1620,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 		yScale = 10;
 	}
 		if (currently2dZ) {
-		zShift = 2*cursorZ-1;
+		zShift = 2*window.cursorZ-1;
 		zScale = 0.25;
 	}
 	else {
