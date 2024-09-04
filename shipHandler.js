@@ -135,12 +135,43 @@ return true;
 
 class ShipHandler {
   constructor() {
+       this.listOfShips1 = new Array();
+       this.listOfShips2 = new Array();
+       this.listOfNonShips = new Array();
   }
+
+ window.addEventListener("keydown",(event)=>{
+    if ((event.key === "Space") &&(window.shipCurrentlyBeingPlaced)) {
+        this.listOfShips1.push(window.shipCurrentlyBeingPlaced);
+        window.shipCurrentlyBeingPlaced = null;
+    }
+    
+  });
 
   //placeholder for now
   createRandomizedShip() {
     return new Ship("redPattern.png","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
   }
+
+ var basicShotNumber = 0;
+ createBasicShot() {
+   b = new BasicShotProjectile("basicShot"+basicShotNumber);
+  basicShotNumber = basicShotNumber+1;
+  window.shipCurrentlyBeingPlaced = b;
+  b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
+  
+  return b;
+ }
 }//shiphandler
+
+class BasicShotProjectile extends Ship{
+  constructor(name)
+ {
+  super("yellowPattern.png","basicShot",[[0,0,0],[0,0,1],[1,0,0],[0,1,0],[0,0,-1],[-1,0,0],[0,-1,0]],name);
+ }
+ absoluteMove(xShift,yShift,zShift) {
+   super.absoluteMoveFree(xShift,yShift,zShift);
+ }
+}
 
 window.shipHandler = new ShipHandler();
