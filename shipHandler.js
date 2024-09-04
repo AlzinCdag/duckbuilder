@@ -60,14 +60,43 @@ class Ship {
     return null;
   }
   move(xShift,yShift,zShift) {
-    if (checkIfPlacementWithinBounds(this.originX+xShift,this.originY+yShift,this.originZ+zShift))
+    if (this.checkIfPlacementWithinBounds(this.originX+xShift,this.originY+yShift,this.originZ+zShift))
     {
       for (let i = 0; i<this.cubeShape.length;i++) {
         window.scene.changePositionOfCube(this.id.toString()+i,this.originX+xShift+this.cubeShape[i][0],this.originY+yShift+this.cubeShape[i][1],this.originZ+zShift+this.cubeShape[i][2]);
       }
+     this.originX = this.originX+xShift;
+     this.originY = this.originY+yShift;
+     this.originZ = this.originZ+zShift;
 return true;
     }
     return false;
+  }
+
+   absoluteMove(xShift,yShift,zShift) {
+    if (this.checkIfPlacementWithinBounds(xShift,yShift,zShift))
+    {
+      for (let i = 0; i<this.cubeShape.length;i++) {
+        window.scene.changePositionOfCube(this.id.toString()+i,xShift+this.cubeShape[i][0],yShift+this.cubeShape[i][1],zShift+this.cubeShape[i][2]);
+      }
+     this.originX = xShift;
+     this.originY = yShift;
+     this.originZ = zShift;
+return true;
+    }
+    return false;
+  }
+
+ //don't worry about whether within bounds or not. Use, for instance, when the ship in question is actually a shot
+ absoluteMoveFree(xShift,yShift,zShift) {
+      for (let i = 0; i<this.cubeShape.length;i++) {
+        window.scene.changePositionOfCube(this.id.toString()+i,xShift+this.cubeShape[i][0],yShift+this.cubeShape[i][1],zShift+this.cubeShape[i][2]);
+      }
+     this.originX = xShift;
+     this.originY = yShift;
+     this.originZ = zShift;
+return true;
+
   }
   getOrigin() {return [this.originX,this.originY,this.originZ];}
   getTexture() {return this.texture;}
