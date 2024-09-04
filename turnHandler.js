@@ -16,8 +16,9 @@ class TurnHandler {
 
     this.listOfShips1 = new Array();
     this.listOfShips2 = new Array();
+
   }
-  
+
 
   startTurn() {}
 
