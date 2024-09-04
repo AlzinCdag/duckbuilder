@@ -428,9 +428,7 @@ input[type=range][orient=vertical]
 								}
 
 								function showCardsNumber() {
-									document.getElementById("card1").style.display = "block";
-									document.getElementById("card1").style.backgroundColor ="green";
-									let number1 = window.cardsNumber % 9;
+									let number1 = window.cardsNumber % 10;
 									window.cardsNumber = window.cardsNumber+1;
 									for (let i = 0; i<number1; i++) {
 										document.getElementById(String("card"+i)).style.display = "block";
