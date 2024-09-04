@@ -709,6 +709,10 @@ var counterNumber = 0;
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 10.0,0.25,0.25,0,cursorY,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,10.0,0.25,cursorX,0,cursorZ);
 							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,null,10.2, 0.25,0.25,10.0,cursorX,cursorY,0);
+
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,"xCube",10.2, 1.0,1.0,1.0,cursorX,6,6);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,"yCube",10.2, 1.0,1.0,1.0,6,cursorY,6);
+							drawOpaqueCube(gl,programInfoColor,buffers,sceneRotX,sceneRotY,sceneRotZ,"zCube",10.2, 1.0,1.0,1.0,6,6,cursorZ);
 						
 							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
