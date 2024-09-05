@@ -54,7 +54,7 @@ window.addEventListener('keydown',(event)=>{
 	    						if (event.key== "C" || event.key == "c") {
 								window.cursorZ = curbInt(window.cursorZ - 1);
 							}
-							    if ((event.key === "Space") &&(window.shipCurrentlyBeingPlaced)) {
+							    if ((event.key === " ") &&(window.shipCurrentlyBeingPlaced)) {
       								  window.shipHandler.listOfShips1.push(window.shipCurrentlyBeingPlaced);
         							  window.shipCurrentlyBeingPlaced = null;
    								 }
