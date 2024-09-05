@@ -157,7 +157,7 @@ class ShipHandler {
   }
 
  createBasicShot() {
-   b = new BasicShotProjectile("basicShot"+basicShotNumber);
+  let b = new BasicShotProjectile("basicShot"+basicShotNumber);
   basicShotNumber = basicShotNumber+1;
   window.shipCurrentlyBeingPlaced = b;
   b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
