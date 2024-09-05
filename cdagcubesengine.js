@@ -54,6 +54,13 @@ window.addEventListener('keydown',(event)=>{
 	    						if (event.key== "C" || event.key == "c") {
 								window.cursorZ = curbInt(window.cursorZ - 1);
 							}
+							    if ((event.key === "Space") &&(window.shipCurrentlyBeingPlaced)) {
+      								  window.shipHandler.listOfShips1.push(window.shipCurrentlyBeingPlaced);
+        							  window.shipCurrentlyBeingPlaced = null;
+   								 }
+							else if (window.shipCurrentlyBeingPlaced) {
+								window.shipCurrentlyBeingPlaced.absoluteMove(window.cursorX,window.cursorY,window.cursorZ);
+							}
 						});
 
 /** Restrict an integer to a value between 0 and 9*/
@@ -713,10 +720,6 @@ var counterNumber = 0;
 							scene.changePositionOfCube("xAxisCube",6,window.cursorY,window.cursorZ);
 							scene.changePositionOfCube("yAxisCube",window.cursorX,6,window.cursorZ);
 							scene.changePositionOfCube("zAxisCube",window.cursorX,window.cursorY,6);
-
-							if (window.shipCurrentlyBeingPlaced) {
-								window.shipCurrentlyBeingPlaced.absoluteMove(window.cursorX,window.cursorY,window.cursorZ);
-							}
 						
 							for (let i = 0; i < scene.listOfCubesInScene.length; i++)
 							{
