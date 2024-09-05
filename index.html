@@ -426,12 +426,11 @@ input[type=range][orient=vertical]
 									document.getElementById('cardTable').style.display='flex';
 									document.getElementById('hideCardsButton').style.display='block';
 									document.getElementById('showCardsButton').style.display='none';
+									
 								}
-
+									window.cardHandler.drawFreshHand();
 								function showCardsNumber() {
 									let number1 = window.cardsNumber % 10;
-
-									window.cardHandler.drawSingleCard();
 									
 									window.cardsNumber = window.cardsNumber+1;
 									for (let i = 0; i<number1; i++) {
