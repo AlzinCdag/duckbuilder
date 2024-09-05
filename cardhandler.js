@@ -14,8 +14,8 @@ class Card {
 }
 
 class BasicShot extends Card {
-  super.title = "Basic Shot";
-  super.description= "+ 7-shot";
+  this.title = "Basic Shot";
+  this.description= "+ 7-shot";
   onActivation() {
     window.shipHandler.createBasicShot();
   }
