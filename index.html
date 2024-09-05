@@ -429,9 +429,15 @@ input[type=range][orient=vertical]
 
 								function showCardsNumber() {
 									let number1 = window.cardsNumber % 10;
+
+									window.cardHandler.drawSingleCard();
+									
 									window.cardsNumber = window.cardsNumber+1;
 									for (let i = 0; i<number1; i++) {
 										document.getElementById(String("card"+i)).style.display = "block";
+										if (i <window.cardHandler.currentHand.length) {
+											window.cardHandler.currentHand[i].printCard(document.getElementById("card"+i));
+										}
 									}
 									for (let j = number1; j<10; j++) {
 										document.getElementById(String("card"+j)).style.display = "none";
