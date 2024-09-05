@@ -75,6 +75,6 @@ class CardHandler {
     }
   }
   
-
-
 }
+
+window.cardHandler = new CardHandler();
