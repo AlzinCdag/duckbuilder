@@ -9,7 +9,13 @@ class Card {
     div.getElementsByClassName("cardTitle")[0].innerHTML = this.title;
     div.getElementsByClassName("cardInfo")[0].innerHTML = this.description;
     div.getElementsByClassName("topButton")[0].onclick = ()=>{this.onActivation();};
-    
+  }
+  discardThis() {
+    if (window.cardHandler.currentHand.includes(this)) {
+    window.cardHandler.currentHand.splice(window.cardHandler.currentHand.indexOf(this),1);
+    window.cardHandler.discardPile.push(this);
+    window.updateCardsShown();
+    }
   }
 }
 
@@ -23,6 +29,7 @@ class BasicShot extends Card {
                 }
   onActivation() {
     window.shipHandler.createBasicShot();
+    this.discardThis();
   }
   
 }
