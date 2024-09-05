@@ -61,7 +61,7 @@ class CardHandler {
 
   discardHand() {
     while (this.currentHand.length != 0) {
-      this.discardPile.push(this.currentHand.pop())
+      this.discardPile.push(this.currentHand.pop());
     }
   }
 
