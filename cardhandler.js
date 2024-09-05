@@ -1,7 +1,4 @@
 class Card {
-
-  var title;
-  var description;
   
   constructor() {}
 
@@ -9,8 +6,8 @@ class Card {
   onDraw() {}
   onEndTurnInHand() {}
   printCard(div) {
-    div.getElementsByClassName("cardTitle")[0].innerHTML = title;
-    div.getElementsByClassName("cardInfo")[0].innerHTML = description;
+    div.getElementsByClassName("cardTitle")[0].innerHTML = this.title;
+    div.getElementsByClassName("cardInfo")[0].innerHTML = this.description;
     div.getElementsByClassName("topButton")[0].onclick = this.onActivation();
     
   }
