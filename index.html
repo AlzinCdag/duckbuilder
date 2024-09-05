@@ -430,9 +430,14 @@ input[type=range][orient=vertical]
 								}
 									window.cardHandler.drawFreshHand();
 								function showCardsNumber() {
-									let number1 = window.cardsNumber % 10;
-									
+									updateCardsShown();
 									window.cardsNumber = window.cardsNumber+1;
+												
+									
+								}
+
+								function updateCardsShown() {
+									let number1 = window.cardsNumber % 10;
 									for (let i = 0; i<number1; i++) {
 										if (i <window.cardHandler.currentHand.length) {
 											document.getElementById(String("card"+i)).style.display = "block";
@@ -441,14 +446,14 @@ input[type=range][orient=vertical]
 									}
 									for (let j = number1; j<10; j++) {
 										document.getElementById(String("card"+j)).style.display = "none";
-									}									
-									
+									}					
 								}
 								
 								window.cardsNumber = 0;
 								window.hideCards = hideCards;
 								window.showCards = showCards;
 								window.showCardsNumber = showCardsNumber;
+								window.updateCardsShown = updateCardsShown;
 								
 								window.addEventListener("keydown", (event)=>{
 									if (event.key == "j") {
