@@ -133,6 +133,8 @@ return true;
   //
 }//ship
 
+ var basicShotNumber = 0;
+
 class ShipHandler {
   constructor() {
        this.listOfShips1 = new Array();
@@ -154,7 +156,6 @@ class ShipHandler {
     return new Ship("redPattern.png","testShip",[[0,0,0],[0,0,1],[1,0,0]], "testShipOne");
   }
 
- var basicShotNumber = 0;
  createBasicShot() {
    b = new BasicShotProjectile("basicShot"+basicShotNumber);
   basicShotNumber = basicShotNumber+1;
