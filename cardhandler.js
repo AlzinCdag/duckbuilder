@@ -16,9 +16,10 @@ class Card {
 class BasicShot extends Card {
  
   constructor() {
+    super();
     this.title = "Basic Shot";
     this.description= "+ 7-shot";
-    super();
+
                 }
   onActivation() {
     window.shipHandler.createBasicShot();
