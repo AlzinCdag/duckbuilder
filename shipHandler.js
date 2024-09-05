@@ -138,15 +138,16 @@ class ShipHandler {
        this.listOfShips1 = new Array();
        this.listOfShips2 = new Array();
        this.listOfNonShips = new Array();
-  }
 
- window.addEventListener("keydown",(event)=>{
+    window.addEventListener("keydown",(event)=>{
     if ((event.key === "Space") &&(window.shipCurrentlyBeingPlaced)) {
         this.listOfShips1.push(window.shipCurrentlyBeingPlaced);
         window.shipCurrentlyBeingPlaced = null;
     }
     
   });
+  }
+
 
   //placeholder for now
   createRandomizedShip() {
