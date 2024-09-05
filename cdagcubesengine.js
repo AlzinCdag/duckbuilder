@@ -1607,7 +1607,7 @@ function drawGrid(gl, programInfo, buffers, rotX,rotY,rotZ, texture,projectionSc
 
 	var xShift, yShift, zShift, xScale, yScale, zScale;
 	if (currently2dX) {
-		xShift = 2*wimdow.cursorX-1;
+		xShift = 2*window.cursorX-1;
 		xScale = 0.25;
 	}
 	else {
