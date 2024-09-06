@@ -125,45 +125,15 @@ canvas {
 	margin: 0 auto;
 }
 
-/* https://stackoverflow.com/questions/15935837/how-to-display-a-range-input-slider-vertically*/
-input[type=range][orient=vertical]
-{
-    writing-mode: bt-lr; /* IE */
-    -webkit-appearance: slider-vertical; /* Chromium */;
-    padding: 0 5px;
-		background: #d3d3d3; /* Grey background */
-	  outline: none; /* Remove outline */
-	  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-	  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-	  transition: opacity .2s;
-}
 
-.sliderVertical::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-.sliderVertical::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-
-}
-
-
-			.topButton {
+.topButton {
   width:60px;
   height:10px;
   position: absolute;
   top:0px;
   left:27px;
   background-color:green;
- font-size:small;
+ font-size:x-small;
  line-height:10px;
 }
 .bottomButton {
@@ -173,7 +143,7 @@ input[type=range][orient=vertical]
   top:109px;
   left:27px;
   background-color:blue;
-  font-size:small;
+  font-size:x-small;
   line-height:10px;
 }
 .leftTopButton {
@@ -184,7 +154,7 @@ input[type=range][orient=vertical]
   left:-20px;
   transform:rotate(-60deg);
   background-color:black;
-  font-size:small;
+  font-size:x-small;
   color:white;
   line-height:10px;
   }
@@ -197,7 +167,7 @@ input[type=range][orient=vertical]
     left:-20px;
     transform:rotate(60deg);
     background-color:gray;
-    font-size:small;
+    font-size:x-small;
     line-height:10px;
     }
 
@@ -209,7 +179,7 @@ input[type=range][orient=vertical]
       left:75px;
       transform:rotate(60deg);
       background-color:yellow;
-      font-size:small;
+      font-size:x-small;
       line-height:10px;
       }
 
@@ -221,12 +191,11 @@ input[type=range][orient=vertical]
         left:75px;
         transform:rotate(-60deg);
         background-color:purple;
-        font-size:small;
+        font-size:x-small;
 	color:white;
 	line-height:10px;
         }
         .cardTitle {
-          width:80px;
           height:20px;
           position: absolute;
           font-weight:bold;
@@ -253,6 +222,21 @@ input[type=range][orient=vertical]
 		position:relative;
 		width:150px;
 		height:150px;
+	}
+
+	.drawPileHolderExtended {
+		position:absolute;
+		top:20%;
+		height:90%;
+		width:30%;
+		left:10%;
+		background-color:white;
+		overflow:scroll;
+	}
+	.drawPileHolderHidden{
+		position:absolute;
+		left:10%;
+		top:80%;
 	}
 
 		</style>
@@ -311,6 +295,11 @@ input[type=range][orient=vertical]
 				</tbody>
 			</table>
 		</div>
+		<div id = "drawPile" class="drawPileHolderHidden">
+			<button id="drawPileShow" onclick="showDrawPile()">Show Draw Pile</button>
+			<button id="drawPileHide" onclick="hideDrawPile()" style="display:hide">Hide Draw Pile</button>
+			<div id="drawPileInnards"></div>
+		</div>
 			
 			  		  		<script src="cdagcubesengine.js" type="module"></script>
 							<script src="shipHandler.js" type="module"></script>
@@ -351,7 +340,7 @@ input[type=range][orient=vertical]
 											window.cardHandler.currentHand[Math.min(i,Number(window.cardHandler.currentHand.length))].printCard(document.getElementById("card"+Math.min(i,Number(window.cardHandler.currentHand.length))));
 										}
 									}
-									document.getElementById("hideCardsButton").innerHTML= "drawPile"+window.cardHandler.drawPile.length +" currentHandLength:"+window.cardHandler.currentHand.length+" "+window.cardHandler.discardPile.length+" "+testString;
+									//document.getElementById("hideCardsButton").innerHTML= "drawPile"+window.cardHandler.drawPile.length +" currentHandLength:"+window.cardHandler.currentHand.length+" "+window.cardHandler.discardPile.length+" "+testString;
 									for (let j = number1; j<10; j++) {
 										document.getElementById(String("card"+j)).style.display = "none";
 									}					
@@ -418,6 +407,25 @@ input[type=range][orient=vertical]
 
 		for (let i = 0; i<10; i++) {
 			createBlankCard(document.getElementById("card"+i));
+		}
+
+		function showDrawPile() {
+			document.getElementById("drawPile").setAttribute("class","drawPileHolderExtended");
+			document.getElementById("drawPileShow").style.display="none";
+			document.getElementById("drawPileHide").style.display="block";
+			
+			for (let i = 0; i<window.cardHandler.drawPile.length; i++) {
+				let e = document.createElement("div");
+				document.getElementById("drawPileInnards").append(e);
+				createBlankCard(e);
+				window.cardHandler.drawPile[i].neutralPrint(e);
+			}
+		}
+		function hideDrawPile() {
+			document.getElementById("drawPile").setAttribute("class","drawPileHolderHidden");
+			document.getElementById("drawPileShow").style.display="block";
+			document.getElementById("drawPileHide").style.display="none";
+			document.getElementById("drawPileInnards").innerHTML = "";
 		}
 			      </script>
 			      <canvas id="glcanvas" width="500" height="500"></canvas>
