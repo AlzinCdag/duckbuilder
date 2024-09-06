@@ -438,6 +438,8 @@ input[type=range][orient=vertical]
 
 								function updateCardsShown() {
 									let number1 = window.cardsNumber % 10;
+
+									document.getElementById("hideCardsButton").innerHTML = window.cardHandler.currentHand.length+" " +number1 +" "+window.cardHandler.drawPile.length;
 									for (let i = 0; i<number1; i++) {
 										if (i <window.cardHandler.currentHand.length) {
 											document.getElementById(String("card"+i)).style.display = "block";
