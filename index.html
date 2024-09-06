@@ -389,13 +389,15 @@ input[type=range][orient=vertical]
 				card.appendChild(button5);
 				let button6 = document.createElement("button");
 				button6.setAttribute("class","rightBottomButton");
-				button1.appendChild(document.createTextNode("-Y"));
+				button6.appendChild(document.createTextNode("-Y"));
 				card.appendChild(button6);
 				let cardTitle = document.createElement("div");
 				cardTitle.setAttribute("class","cardTitle");
+				cardTitle.appendChild(document.createTextNode("T"));
 				card.appendChild(cardTitle);
 				let cardInfo = document.createElement("div");
-				cardTitle.setAttribute("class","cardInfo");
+				cardInfo.setAttribute("class","cardInfo");
+				cardInfo.appendChild(document.createTextNode("T"));
 				card.appendChild(cardInfo);
 				div.appendChild(card);
 			}
