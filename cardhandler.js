@@ -6,9 +6,13 @@ class Card {
   onDraw() {}
   onEndTurnInHand() {}
   printCard(div) {
+    this.neutralPrint(div);
+    div.getElementsByClassName("topButton")[0].onclick = ()=>{this.onActivation();};
+  }
+
+  neutralPrint(div) {
     div.getElementsByClassName("cardTitle")[0].innerHTML = this.title;
     div.getElementsByClassName("cardInfo")[0].innerHTML = this.description;
-    div.getElementsByClassName("topButton")[0].onclick = ()=>{this.onActivation();};
   }
   discardThis() {
     if (window.cardHandler.currentHand.includes(this)) {
