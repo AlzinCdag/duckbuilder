@@ -44,7 +44,7 @@ class CardHandler {
     let f = new BasicShot();
     
     this.fullDeck = [b,c,d,e,f];
-    this.drawPile = this.fullDeck;
+    this.drawPile = Array.from(this.fullDeck);
     this.discardPile = new Array();
     this.currentHand = new Array();
     
