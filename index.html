@@ -274,9 +274,10 @@ canvas {
   		<div style="top:0; right:75%; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui">EnemyShips</div>
 
 		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui" style="display:flex;">
-			<button id="hideCardsButton" onclick="window.hideCards()">X</button>
-			<button id = "hit" onclick="window.cardHandler.drawSingleCard()">Hit</button>
-			<button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button>
+			<table><tbody><tr><td style="border:none;"><button id="hideCardsButton" onclick="window.hideCards()">X</button></td>
+				<td style="border:none;"><button id = "hit" onclick="window.cardHandler.drawSingleCard()">Hit</button></td>
+				<td style="border:none;"><button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button></td></tr></tbody></table>
+			
 			<table id ="cardTable" style="display:flex; align-items:center; justify-content:center;">
 				<tbody>
 					<tr style="display:flex; align-items:center; justify-content:center;">
@@ -335,7 +336,7 @@ canvas {
 									document.getElementById('hideCardsButton').style.display='none';
 								}
 								function showCards() {
-									document.getElementById('cardHolder').style.height='40%';
+									document.getElementById('cardHolder').style.height='140px';
 									document.getElementById('cardHolder').style.top='60%';
 									document.getElementById('cardTable').style.display='flex';
 									document.getElementById('hideCardsButton').style.display='block';
