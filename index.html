@@ -259,7 +259,7 @@ input[type=range][orient=vertical]
 
 		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui" style="display:flex;">
 			<button id="hideCardsButton" onclick="window.hideCards()">X</button>
-			<button id = "hit" onclick="window.showCardsNumber()">Hit</button>
+			<button id = "hit" onclick="()={window.cardHandler.drawSingleCard(); updateCardsShown()}">Hit</button>
 			<button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button>
 			<table id ="cardTable" style="display:flex; align-items:center; justify-content:center;">
 				<tbody>
