@@ -447,7 +447,7 @@ input[type=range][orient=vertical]
 											window.cardHandler.currentHand[Math.min(i,Number(window.cardHandler.currentHand.length))].printCard(document.getElementById("card"+Math.min(i,Number(window.cardHandler.currentHand.length))));
 										}
 									}
-									document.getElementById("hideCardsButton").innerHTML= "drawPile"+window.cardHandler.drawPile.length +" currentHandLength:"+window.cardHandler.currentHand.length+" "+number1+" "+testString;
+									document.getElementById("hideCardsButton").innerHTML= "drawPile"+window.cardHandler.drawPile.length +" currentHandLength:"+window.cardHandler.currentHand.length+" "+window.cardHandler.discardPile.length+" "+testString;
 									for (let j = number1; j<10; j++) {
 										document.getElementById(String("card"+j)).style.display = "none";
 									}					
