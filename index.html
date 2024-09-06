@@ -442,7 +442,7 @@ input[type=range][orient=vertical]
 									 
 									for (let i = 0; i<number1; i++) {
 										if (i <window.cardHandler.currentHand.length) {
-											testString += window.cardHandler.currentHand[i].name+ " ";
+											testString += window.cardHandler.currentHand[i] + " ";
 											document.getElementById(String("card"+i)).style.display = "block";
 											window.cardHandler.currentHand[Math.min(i,Number(window.cardHandler.currentHand.length))].printCard(document.getElementById("card"+Math.min(i,Number(window.cardHandler.currentHand.length))));
 										}
