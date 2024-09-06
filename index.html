@@ -441,7 +441,7 @@ input[type=range][orient=vertical]
 									for (let i = 0; i<number1; i++) {
 										if (i <window.cardHandler.currentHand.length) {
 											document.getElementById(String("card"+i)).style.display = "block";
-											window.cardHandler.currentHand[i].printCard(document.getElementById("card"+i));
+											window.cardHandler.currentHand[Math.min(i,Number(window.cardHandler.currentHand.length))].printCard(document.getElementById("card"+Math.min(i,Number(window.cardHandler.currentHand.length))));
 										}
 									}
 									for (let j = number1; j<10; j++) {
