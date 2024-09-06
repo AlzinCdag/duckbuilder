@@ -66,8 +66,10 @@ class CardHandler {
       if(this.drawPile.length === 0) {
         this.shuffleDiscardPileIntoDrawPile();
       }
+       if(this.drawPile.length !== 0) {
     this.currentHand.push(this.drawPile.pop());
       window.cardsNumber = window.cardsNumber+1;
+       }
       //window.updateCardsShown();
     }
   }
