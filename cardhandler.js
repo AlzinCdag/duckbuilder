@@ -65,6 +65,7 @@ class CardHandler {
       }
     this.currentHand.push(this.drawPile.pop());
       window.cardsNumber = window.cardsNumber+1;
+      window.updateCardsShown();
     }
   }
 
@@ -78,6 +79,7 @@ class CardHandler {
   discardSingleCard(index) {
     this.discardPile.push(this.currentHand.splice(index,1));
     window.cardsNumber = window.cardsNumber -1;
+    window.updateCardsShown();
     
   }
 
