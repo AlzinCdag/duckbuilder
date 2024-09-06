@@ -80,6 +80,9 @@ class CardHandler {
     this.discardPile.push(this.currentHand.splice(index,1));
     window.cardsNumber = window.cardsNumber -1;
     //window.updateCardsShown();
+    if (this.drawPile.length === 0) {
+      this.shuffleDiscardPileIntoDrawPile();
+    }
     
   }
 
