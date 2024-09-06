@@ -80,7 +80,7 @@ class CardHandler {
   }
 
   discardSingleCard(index) {
-    this.discardPile.push(this.currentHand.splice(index,1));
+    this.discardPile.push(this.currentHand.splice(index,1)[0]);
     window.cardsNumber = window.cardsNumber -1;
     //window.updateCardsShown();
     if (this.drawPile.length === 0) {
@@ -91,7 +91,7 @@ class CardHandler {
 
   shuffleDiscardPileIntoDrawPile() {
     while (this.discardPile.length != 0) {
-      this.drawPile.push(this.discardPile.splice(Math.floor(Math.random()*this.discardPile.length),1));
+      this.drawPile.push(this.discardPile.splice(Math.floor(Math.random()*this.discardPile.length),1)[0]);
     }
   }
   
