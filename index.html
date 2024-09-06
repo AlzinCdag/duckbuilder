@@ -236,7 +236,7 @@ canvas {
 	.drawPileHolderHidden{
 		position:absolute;
 		left:10%;
-		top:80%;
+		top:70%;
 	}
 
 		</style>
@@ -296,8 +296,8 @@ canvas {
 			</table>
 		</div>
 		<div id = "drawPile" class="drawPileHolderHidden">
-			<button id="drawPileShow" onclick="showDrawPile()">Show Draw Pile</button>
-			<button id="drawPileHide" onclick="hideDrawPile()" style="display:hide">Hide Draw Pile</button>
+			<button id="drawPileShow" onclick="()=>{window.showDrawPile();}">Show Draw Pile</button>
+			<button id="drawPileHide" onclick="()=>{window.hideDrawPile();}" style="display:none">Hide Draw Pile</button>
 			<div id="drawPileInnards"></div>
 		</div>
 			
@@ -427,6 +427,8 @@ canvas {
 			document.getElementById("drawPileHide").style.display="none";
 			document.getElementById("drawPileInnards").innerHTML = "";
 		}
+		window.showDrawPile = showDrawPile;
+		window.hideDrawPile = hideDrawPile;
 			      </script>
 			      <canvas id="glcanvas" width="500" height="500"></canvas>
       </body>
