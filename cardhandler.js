@@ -14,7 +14,7 @@ class Card {
     if (window.cardHandler.currentHand.includes(this)) {
     window.cardHandler.currentHand.splice(window.cardHandler.currentHand.indexOf(this),1);
     window.cardHandler.discardPile.push(this);
-    window.updateCardsShown();
+    //window.updateCardsShown();
     window.cardsNumber = window.cardsNumber -1;
     }
   }
@@ -65,7 +65,7 @@ class CardHandler {
       }
     this.currentHand.push(this.drawPile.pop());
       window.cardsNumber = window.cardsNumber+1;
-      window.updateCardsShown();
+      //window.updateCardsShown();
     }
   }
 
@@ -79,7 +79,7 @@ class CardHandler {
   discardSingleCard(index) {
     this.discardPile.push(this.currentHand.splice(index,1));
     window.cardsNumber = window.cardsNumber -1;
-    window.updateCardsShown();
+    //window.updateCardsShown();
     
   }
 
