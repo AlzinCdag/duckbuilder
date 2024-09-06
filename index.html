@@ -36,13 +36,13 @@ body {
 }
 
 table{
-	border: 1px solid black;
+	border: none;
 }
 tr{
-	border: 1px solid black;
+	border: none;
 }
 tbody{
-	border: 1px solid black;
+	border: none;
 }
 td{
 	 border: 1px solid black;
@@ -274,9 +274,9 @@ canvas {
   		<div style="top:0; right:75%; background-color:rgba(180,180,0);" id="enemyShips" class="ship ui">EnemyShips</div>
 
 		<div id="cardHolder" style="top:60%; width:90%; height:40%;" class="ship ui" style="display:flex;">
-			<table><tbody><tr><td style="border:none;"><button id="hideCardsButton" onclick="window.hideCards()">X</button></td>
-				<td style="border:none;"><button id = "hit" onclick="window.cardHandler.drawSingleCard()">Hit</button></td>
-				<td style="border:none;"><button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button></td></tr></tbody></table>
+			<table><tbody><tr><td style="border:none; width:auto;height:auto;"><button id="hideCardsButton" onclick="window.hideCards()">X</button></td>
+				<td style="border:none; width:auto;height:auto;"><button id = "hit" onclick="window.cardHandler.drawSingleCard()">Hit</button></td>
+				<td style="border:none; width:auto;height:auto;"><button id="showCardsButton" style="display:none" onclick="window.showCards()">Show Cards</button></td></tr></tbody></table>
 			
 			<table id ="cardTable" style="display:flex; align-items:center; justify-content:center;">
 				<tbody>
