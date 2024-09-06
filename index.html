@@ -47,7 +47,7 @@ tbody{
 td{
 	 border: 1px solid black;
 	width:120px;
-	height:200px;
+	height:120px;
 }
 th {
 	 border: 1px solid black;
@@ -239,6 +239,22 @@ canvas {
 		top:60%;
 	}
 
+			.discardPileHolderExtended {
+		position:absolute;
+		top:20%;
+		height:90%;
+		width:200px;
+		right:20%;
+		background-color:white;
+		overflow:scroll;
+	}
+	.discardPileHolderHidden{
+		position:absolute;
+		right:10%;
+		top:60%;
+	}
+
+
 		</style>
 
     </head>
@@ -297,8 +313,13 @@ canvas {
 		</div>
 		<div id = "drawPile" class="drawPileHolderHidden">
 			<button id="drawPileShow" onclick="window.showDrawPile()">Show Draw Pile</button>
-			<button id="drawPileHide" onclick="window.hideDrawPile()">Hide Draw Pile</button>
+			<button id="drawPileHide" onclick="window.hideDrawPile()" style="display:none;">Hide Draw Pile</button>
 			<div id="drawPileInnards"></div>
+		</div>
+		<div id = "discardPile" class="discardPileHolderHidden">
+			<button id="discardPileShow" onclick="window.showDiscardPile()">Show Discard Pile</button>
+			<button id="discardPileHide" onclick="window.hideDiscardPile()" style="display:none;">Hide Discard Pile</button>
+			<div id="discardPileInnards"></div>
 		</div>
 			
 			  		  		<script src="cdagcubesengine.js" type="module"></script>
@@ -427,8 +448,29 @@ canvas {
 			document.getElementById("drawPileHide").style.display="none";
 			document.getElementById("drawPileInnards").innerHTML = "";
 		}
+
+	function showDiscardPile() {
+			document.getElementById("discardPile").setAttribute("class","discardPileHolderExtended");
+			document.getElementById("discardPileShow").style.display="none";
+			document.getElementById("discardPileHide").style.display="block";
+			
+			for (let i = 0; i<window.cardHandler.discardPile.length; i++) {
+				let e = document.createElement("div");
+				document.getElementById("discardPileInnards").append(e);
+				createBlankCard(e);
+				window.cardHandler.discardPile[i].neutralPrint(e);
+			}
+		}
+		function hideDiscardPile() {
+			document.getElementById("discardPile").setAttribute("class","discardPileHolderHidden");
+			document.getElementById("discardPileShow").style.display="block";
+			document.getElementById("discardPileHide").style.display="none";
+			document.getElementById("discardPileInnards").innerHTML = "";
+		}
 		window.showDrawPile = showDrawPile;
 		window.hideDrawPile = hideDrawPile;
+		window.showDiscardPile = showDiscardPile;
+		window.hideDiscardPile = hideDiscardPile;
 			      </script>
 			      <canvas id="glcanvas" width="500" height="500"></canvas>
       </body>
