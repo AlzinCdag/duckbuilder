@@ -16,8 +16,8 @@ class Card {
     window.cardHandler.discardPile.push(this);
     //window.updateCardsShown();
     window.cardsNumber = window.cardsNumber -1;
-          if (this.drawPile.length === 0) {
-      this.shuffleDiscardPileIntoDrawPile();
+          if (window.cardHandler.drawPile.length === 0) {
+      window.cardHandler.shuffleDiscardPileIntoDrawPile();
     }
     }
   }
