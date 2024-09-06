@@ -438,14 +438,16 @@ input[type=range][orient=vertical]
 
 								function updateCardsShown() {
 									let number1 = window.cardsNumber % 10;
-
-									document.getElementById("hideCardsButton").innerHTML = window.cardHandler.currentHand.length+" " +number1 +" "+window.cardHandler.drawPile.length;
+									let testString = "";
+									 
 									for (let i = 0; i<number1; i++) {
 										if (i <window.cardHandler.currentHand.length) {
+											testString += window.cardHandler.currentHand[i].name+ " ";
 											document.getElementById(String("card"+i)).style.display = "block";
 											window.cardHandler.currentHand[Math.min(i,Number(window.cardHandler.currentHand.length))].printCard(document.getElementById("card"+Math.min(i,Number(window.cardHandler.currentHand.length))));
 										}
 									}
+									document.getElementById("hideCardsButton").innerHTML= testString;
 									for (let j = number1; j<10; j++) {
 										document.getElementById(String("card"+j)).style.display = "none";
 									}					
