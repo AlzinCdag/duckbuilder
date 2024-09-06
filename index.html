@@ -295,9 +295,9 @@ canvas {
 				</tbody>
 			</table>
 		</div>
-		<div id = "drawPile" class="drawPileHolderHidden">
-			<button id="drawPileShow" onclick="()=>{document.getElementById('drawPileShow').innerHTML = 'yes'; window.showDrawPile();}">Show Draw Pile</button>
-			<button id="drawPileHide" onclick="()=>{window.hideDrawPile();}" style="display:none">Hide Draw Pile</button>
+		<div id = "drawPile" class="drawPileHolderExtended">
+			<button id="drawPileShow" onclick="window.showDrawPile()">Show Draw Pile</button>
+			<button id="drawPileHide" onclick="window.hideDrawPile()">Hide Draw Pile</button>
 			<div id="drawPileInnards"></div>
 		</div>
 			
