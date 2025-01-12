@@ -245,7 +245,7 @@ class MatryoshkaShip extends Ship{
   super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0]],name);}
   else if (name.indexOf("Medium") !== -1) {
   super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0]],name);}
- else (name.indexOf("Large") !== -1) {
+ else {
   super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0],[0,-1,0]],name);}
   this.placeDownInRandomUnoccupiedSpace();
   this.alreadyHit = false;
