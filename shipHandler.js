@@ -52,6 +52,7 @@ class Ship {
     if (!this.checkIfPlacementConflictsWithOtherShips(xRand,yRand,zRand)) {
      placeDown(xRand,yRand,zRand);
      successful = true;
+     document.getElementById("yourShips").innerHTML="+"+xRand+"+"+yRand+"+"+zRand;
      break;
     }
    }
