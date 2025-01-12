@@ -213,11 +213,14 @@ class ShipHandler {
   }
 
  createBasicShot() {
-  let b = new BasicShotProjectile("basicShot"+basicShotNumber);
+ // let b = new BasicShotProjectile("basicShot"+basicShotNumber);
+ // basicShotNumber = basicShotNumber+1;
+ // window.shipCurrentlyBeingPlaced = b;
+ // b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
+ // window.shipHandler.listOfNonShips.push(b);
+ // return b;*/
+    let b = new BasicShotProjectile("Matryoshka"+basicShotNumber);
   basicShotNumber = basicShotNumber+1;
-  window.shipCurrentlyBeingPlaced = b;
-  b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
-  window.shipHandler.listOfNonShips.push(b);
   return b;
  }
   createMatryoshka() {
