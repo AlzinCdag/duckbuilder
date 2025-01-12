@@ -45,7 +45,7 @@ class Ship {
   let yRand = 0;
   let zRand = 0;
   let successful = false;
-   for (let i = 0; i<1000; i++;) {
+   for (let i = 0; i<1000; i++) {
     xRand = Math.floor(Math.random()*10)-4;
     yRand = Math.floor(Math.random()*10)-4;
     zRand = Math.floor(Math.random()*10)-4;
