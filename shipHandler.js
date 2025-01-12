@@ -55,11 +55,11 @@ class Ship {
      break;
     }
    }
-if !(successful){
+if (!(successful)) {
  for (let i =-4; i<6; i++) {
   for (let j =-4; j<6; j++) {
    for (let k =-4; k<6; k++) {
-    if (!this.checkIfPlacementConflictsWithOtherShips(i,j,k)) {
+    if (!(this.checkIfPlacementConflictsWithOtherShips(i,j,k))) {
      placeDown(i,j,k);
      successful = true;
      break;
