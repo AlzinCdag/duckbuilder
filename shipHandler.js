@@ -214,14 +214,11 @@ class ShipHandler {
   }
 
  createBasicShot() {
- // let b = new BasicShotProjectile("basicShot"+basicShotNumber);
- // basicShotNumber = basicShotNumber+1;
- // window.shipCurrentlyBeingPlaced = b;
- // b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
- // window.shipHandler.listOfNonShips.push(b);
- // return b;*/
-    let b = new MatryoshkaShip("Matryoshka"+basicShotNumber);
+  let b = new BasicShotProjectile("basicShot"+basicShotNumber);
   basicShotNumber = basicShotNumber+1;
+  window.shipCurrentlyBeingPlaced = b;
+  b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
+ window.shipHandler.listOfNonShips.push(b);
   return b;
  }
   createMatryoshka() {
@@ -246,11 +243,11 @@ class MatryoshkaShip extends Ship{
  constructor(name,side) {
 
   if (name.indexOf("Small") !== -1) {
-  super("yellowPattern.png","Matryoshka",[[0,0,0],[0,1,0]],name);}
+  super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0]],name);}
   else if (name.indexOf("Medium") !== -1) {
-  super("yellowPattern.png","Matryoshka",[[0,0,0],[0,1,0]],name);}
+  super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0]],name);}
  else {
-  super("yellowPattern.png","Matryoshka",[[0,0,0],[0,1,0],[0,-1,0]],name);}
+  super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0],[0,-1,0]],name);}
   this.placeDownInRandomUnoccupiedSpace();
   this.alreadyHit = false;
     this.side = side;
