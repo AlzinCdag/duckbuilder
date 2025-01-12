@@ -220,12 +220,12 @@ class ShipHandler {
  // b.placeDown(window.cursorX,window.cursorY,window.cursorZ);
  // window.shipHandler.listOfNonShips.push(b);
  // return b;*/
-    let b = new BasicShotProjectile("Matryoshka"+basicShotNumber);
+    let b = new MatryoshkaShip("Matryoshka"+basicShotNumber);
   basicShotNumber = basicShotNumber+1;
   return b;
  }
   createMatryoshka() {
-  let b = new BasicShotProjectile("Matryoshka"+basicShotNumber);
+  let b = new MatryoshkaShip("Matryoshka"+basicShotNumber);
   basicShotNumber = basicShotNumber+1;
   return b;
  }
