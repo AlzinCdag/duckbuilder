@@ -50,7 +50,7 @@ class Ship {
     yRand = Math.floor(Math.random()*10)-4;
     zRand = Math.floor(Math.random()*10)-4;
     if (!this.checkIfPlacementConflictsWithOtherShips(xRand,yRand,zRand)) {
-     placeDown(xRand,yRand,zRand);
+     this.placeDown(xRand,yRand,zRand);
      successful = true;
      document.getElementById("enemyShips").innerHTML+= "+"+xRand+"+"+yRand+"+"+zRand;
      break;
@@ -61,7 +61,7 @@ if (!(successful)) {
   for (let j =-4; j<6; j++) {
    for (let k =-4; k<6; k++) {
     if (!(this.checkIfPlacementConflictsWithOtherShips(i,j,k))) {
-     placeDown(i,j,k);
+     this.placeDown(i,j,k);
      successful = true;
      break;
     }
