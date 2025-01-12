@@ -242,11 +242,11 @@ class MatryoshkaShip extends Ship{
  constructor(name,side) {
 
   if (name.indexOf("Small") !== -1) {
-  super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0]],name);}
+  super("yellowPattern.png","Matryoshka",[[0,0,0],[0,1,0]],name);}
   else if (name.indexOf("Medium") !== -1) {
-  super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0]],name);}
+  super("yellowPattern.png","Matryoshka",[[0,0,0],[0,1,0]],name);}
  else {
-  super("Fabergé_egg_Rome_08.JPG","Matryoshka",[[0,0,0],[0,1,0],[0,-1,0]],name);}
+  super("yellowPattern.png","Matryoshka",[[0,0,0],[0,1,0],[0,-1,0]],name);}
   this.placeDownInRandomUnoccupiedSpace();
   this.alreadyHit = false;
     this.side = side;
